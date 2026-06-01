@@ -21,5 +21,6 @@ nav:
   - หน้าแรก:
       - "บทเรียน": index.md
       - "บทที่ 1: Introduction": ch1_basics.md
+      - "บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์": ch2_variables.md
   - "การติดตั้งโปรแกรม vs code, nodejs": setup.md
   - "extension ที่ต้องติดตั้งเพิ่ม": extensions.md
