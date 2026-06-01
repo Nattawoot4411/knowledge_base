@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Playground</title>
+  <!-- Material Icons & Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar to match dark theme */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1329;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232d42;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2f3c57;
+    }
+  </style>
+</head>
+<body class="bg-[#0b1329] text-[#dae2fd] font-sans h-screen flex flex-col m-0 p-0 overflow-hidden border border-[#232d42] rounded-lg">
+
+  <!-- Header / Toolbar -->
+  <div class="bg-[#131d35] px-4 py-2 border-b border-[#232d42] flex justify-between items-center select-none">
+    <div class="flex items-center space-x-2">
+      <span class="material-symbols-outlined text-[#4cd7f6] text-[20px]">terminal</span>
+      <span class="text-sm font-semibold tracking-wide text-[#dae2fd]">Interactive JS Playground</span>
+    </div>
+    <button id="runBtn" class="flex items-center space-x-1.5 bg-[#4cd7f6]/20 hover:bg-[#4cd7f6]/30 border border-[#4cd7f6]/40 text-[#4cd7f6] px-4 py-1 rounded text-xs font-bold transition-all shadow-md active:scale-95">
+      <span class="material-symbols-outlined text-[16px]">play_arrow</span>
+      <span>Run Code</span>
+    </button>
+  </div>
+
+  <!-- Content Splitter -->
+  <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+    <!-- Editor Container -->
+    <div class="flex-1 h-3/5 md:h-full relative overflow-hidden bg-[#060e20]">
+      <div id="editorContainer" class="absolute inset-0 w-full h-full"></div>
+    </div>
+
+    <!-- Output Console -->
+    <div class="h-2/5 md:h-full md:w-[320px] bg-[#020617] border-t md:border-t-0 md:border-l border-[#232d42] flex flex-col overflow-hidden">
+      <div class="bg-[#0b1329]/50 px-3 py-1.5 border-b border-[#232d42] text-[10px] text-slate-400 font-bold uppercase tracking-wider select-none">
+        Console Output
+      </div>
+      <div id="consoleOutput" class="flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-emerald-400">
+        &gt; คลิก Run Code เพื่อรันคำสั่ง...
+      </div>
+    </div>
+  </div>
+
+  <!-- Monaco Editor loader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+  <script>
+    // Setup Monaco AMD path
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs' }});
+
+    let editor;
+
+    // Load editor
+    require(['vs/editor/editor.main'], function() {
+      // Decode initial code from URL hash
+      let initialCode = 'console.log("Hello, World!");';
+      try {
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        if (hashParams.has('code')) {
+          initialCode = decodeURIComponent(hashParams.get('code'));
+        } else if (window.location.search) {
+          // Fallback to query param
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has('code')) {
+            initialCode = urlParams.get('code');
+          }
+        }
+      } catch (e) {
+        console.error("Failed to decode code param", e);
+      }
+
+      editor = monaco.editor.create(document.getElementById('editorContainer'), {
+        value: initialCode,
+        language: 'javascript',
+        theme: 'vs-dark',
+        minimap: { enabled: false },
+        fontSize: 14,
+        fontFamily: "'JetBrains Mono', monospace",
+        scrollBeyondLastLine: false,
+        padding: { top: 12 },
+        automaticLayout: true
+      });
+    });
+
+    // Run Code Logic
+    document.getElementById('runBtn').addEventListener('click', function() {
+      if (!editor) return;
+
+      const code = editor.getValue();
+      const consoleOutput = document.getElementById('consoleOutput');
+      consoleOutput.innerHTML = ''; // Clear previous outputs
+
+      let logs = [];
+      const originalLog = console.log;
+
+      // Intercept console.log
+      console.log = function(...args) {
+        logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+        originalLog.apply(console, args);
+      };
+
+      try {
+        // Create an isolated sandbox environment via standard Function block
+        new Function(code)();
+        
+        if (logs.length > 0) {
+          consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-emerald-400";
+          consoleOutput.textContent = '> ' + logs.join('\n> ');
+        } else {
+          consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-slate-400";
+          consoleOutput.textContent = '> โค้ดทำงานสำเร็จ (ไม่มีการใช้ console.log)';
+        }
+      } catch (err) {
+        consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-rose-400";
+        consoleOutput.textContent = '> Error: ' + err.message;
+      }
+
+      // Restore original log
+      console.log = originalLog;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JavaScript Variables - JS Mastery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-on-surface": "#283044",
+                        "on-primary-fixed": "#001f26",
+                        "secondary-fixed": "#e9ddff",
+                        "on-background": "#dae2fd",
+                        "on-tertiary": "#67001b",
+                        "on-surface-variant": "#bcc9cd",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary-container": "#ff7f8b",
+                        "outline": "#869397",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-container": "#c4abff",
+                        "primary-container": "#06b6d4",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "primary-fixed": "#acedff",
+                        "surface-container-low": "#131b2e",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-tertiary-fixed": "#40000d",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed": "#ffdadb",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#7d0023",
+                        "on-primary": "#003640",
+                        "inverse-primary": "#00687a",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "surface-variant": "#2d3449",
+                        "on-primary-container": "#00424f",
+                        "on-error": "#690005",
+                        "on-surface": "#dae2fd",
+                        "primary": "#4cd7f6",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed": "#23005c",
+                        "background": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "inverse-surface": "#dae2fd",
+                        "outline-variant": "#3d494c",
+                        "error-container": "#93000a",
+                        "surface-tint": "#4cd7f6",
+                        "on-secondary": "#3c0091",
+                        "secondary": "#d0bcff",
+                        "surface-container": "#171f33",
+                        "tertiary": "#ffb2b7",
+                        "surface": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max-width": "1440px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Geist"],
+                        "code-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "code-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #020617; /* Level 0 Base Obsidian */
+            color: #dae2fd;
+        }
+        .glass-panel {
+            background-color: #0F172A; /* Level 1 Panel Obsidian */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-overlay {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.3);
+            transform: translateY(-2px);
+        }
+        .code-block {
+            background-color: #060e20; /* Slightly darker for code */
+            border-left: 2px solid #571bc1;
+        }
+        .syntax-keyword { color: #571bc1; } /* secondary-container */
+        .syntax-string { color: #4cd7f6; } /* primary */
+        .syntax-comment { color: #869397; } /* outline */
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl h-screen w-72 fixed left-0 top-0 border-r border-white/5 shadow-2xl flex flex-col h-full py-base z-50 hidden md:flex">
+<div class="px-gutter py-6 flex items-center space-x-3">
+<img alt="JS Mastery Logo" class="rounded-lg w-10 h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ7phz7cQ6rj2oFwpqNMRnUfBA4oMe1NQMY9ct0DYIZ15rCl7PyHLK4mM_-KtiP42aH7r1WwJF0ocGXXiexyrsivnaV3-dYBY4d-ewcI1FKZIsjAYqzJ5OrniyxZrmyjFyKZxRwnRZ5aUXegw1gCy41hgu34f9XGr-TfBq4tBzy9TmVmSDoQwNkCBRRZEaZWItbjfvRSvfGJKyNQa52-1g1ajR9hCLorMVKi6BnXkKFf1mb03ypiKPsFmE_fYOa2lwC64PKxITyMk"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim tracking-tight text-[20px] leading-tight">JS Mastery</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium Learning</p>
+</div>
+</div>
+<ul class="flex-1 mt-6 space-y-2 px-4">
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+<span class="font-label-sm text-label-sm">Setup</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim bg-primary/10 dark:bg-primary/20 border-l-4 border-primary scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-sm text-label-sm">JS Basics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">extension</span>
+<span class="font-label-sm text-label-sm">Extensions</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">play_circle</span>
+<span class="font-label-sm text-label-sm">Playground</span>
+</a>
+</li>
+</ul>
+<div class="px-4 mt-auto mb-6">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-sm text-label-sm font-bold neon-glow transition-all">Upgrade to Pro</button>
+</div>
+</nav>
+<!-- Main Content Area Wrapper -->
+<div class="flex-1 md:ml-72 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface/40 dark:bg-surface/40 backdrop-blur-md fixed top-0 right-0 w-full md:w-[calc(100%-288px)] h-16 z-40 flex justify-between items-center px-gutter w-full">
+<div class="flex items-center">
+<span class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed-dim text-[20px] md:hidden mr-4">JS Mastery</span>
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container border-b border-outline/30 focus:border-primary text-on-surface font-label-sm text-label-sm pl-9 pr-4 py-1 focus:outline-none focus:ring-0 transition-colors w-64 rounded-none placeholder-on-surface-variant/50" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary/30 rounded-full p-1">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary/30 rounded-full p-1 hidden sm:block">
+<span class="material-symbols-outlined">history</span>
+</button>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-white/10 cursor-pointer hover:ring-2 hover:ring-primary/30 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBML6iIChJHxiEuks3T6JwKIPWRcGORrc0whYorvmh3lwbv3C8q81Obx09BWeU2TaoA1tMIAS2mRFzNvmX8ZhZab9lMuROXzhLdm2q-axdPDsGCt2IpKN8fceefcL0YBluoFdQIm73HJ0YPvjBtDh60bwfFjnJzyongDHw5PA5_L7TCq1mgfkbetp1pDAP_kIyzg3utqPrLqnYFN60fUyBJbErf1wtE7HzC_T77ZLg_UYjCj0j2y8BX4DGAbkxLG_Cno35YVR_902Q"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 mt-16 p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<div class="max-w-[1000px] mx-auto">
+<!-- Header -->
+<div class="mb-12">
+<div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 rounded-full font-label-sm text-label-sm text-primary mb-4">Module 1.2</div>
+<h2 class="font-display-lg text-display-lg text-inverse-surface mb-4">JavaScript Variables:<br/><span class="text-primary">The Building Blocks</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+                        Variables are the foundational storage units of any programming language. In JavaScript, how you declare a variable dictates its scope, reassignability, and behavior. Let's master <code class="font-code-md text-code-md text-secondary">let</code>, <code class="font-code-md text-code-md text-secondary">const</code>, and <code class="font-code-md text-code-md text-secondary">var</code>.
+                    </p>
+</div>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-12">
+<!-- Left Column: Explanations -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Let Section -->
+<div class="glass-overlay rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-inverse-surface mb-3 flex items-center">
+<span class="material-symbols-outlined text-primary mr-2">data_object</span>
+                                The modern standard: <code class="ml-2 px-2 py-1 bg-surface-container rounded text-primary font-code-md text-code-md">let</code>
+</h3>
+<p class="text-on-surface-variant mb-4">Use <code class="text-secondary">let</code> when you know the value of a variable will change over time. It is block-scoped, meaning it only exists within the nearest set of curly braces <code class="text-secondary">{}</code>.</p>
+<div class="code-block p-4 rounded-lg font-code-md text-code-md relative group/code cursor-text transition-all duration-300 hover:bg-[#0a1228]">
+<pre><code><span class="syntax-keyword">let</span> score = <span class="text-on-surface">0</span>;
+<span class="syntax-comment">// User scores a point</span>
+score = <span class="text-on-surface">1</span>; <span class="syntax-comment">// Reassignment is allowed</span></code></pre>
+<button class="absolute top-2 right-2 p-1 text-on-surface-variant opacity-0 group-hover/code:opacity-100 transition-opacity hover:text-primary"><span class="material-symbols-outlined text-[16px]">content_copy</span></button>
+</div>
+</div>
+<!-- Const Section -->
+<div class="glass-overlay rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-inverse-surface mb-3 flex items-center">
+<span class="material-symbols-outlined text-secondary mr-2">lock</span>
+                                The immutable anchor: <code class="ml-2 px-2 py-1 bg-surface-container rounded text-secondary font-code-md text-code-md">const</code>
+</h3>
+<p class="text-on-surface-variant mb-4">Default to <code class="text-secondary">const</code>. It prevents accidental reassignment, making your code more predictable. Like <code class="text-secondary">let</code>, it is block-scoped.</p>
+<div class="code-block border-l-secondary p-4 rounded-lg font-code-md text-code-md relative group/code cursor-text transition-all duration-300 hover:bg-[#0a1228]">
+<pre><code><span class="syntax-keyword">const</span> API_KEY = <span class="syntax-string">"sk_test_123"</span>;
+<span class="syntax-comment">// API_KEY = "new_key"; // TypeError: Assignment to constant variable.</span></code></pre>
+<button class="absolute top-2 right-2 p-1 text-on-surface-variant opacity-0 group-hover/code:opacity-100 transition-opacity hover:text-primary"><span class="material-symbols-outlined text-[16px]">content_copy</span></button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<div class="space-y-8">
+<!-- Key Takeaways -->
+<div class="glass-overlay rounded-xl p-6">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-inverse-surface mb-4 border-b border-white/10 pb-2">Key Takeaways</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-[18px] mr-2 mt-0.5">check_circle</span>
+<span class="text-on-surface-variant text-sm"><strong class="text-on-surface">const</strong> by default.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary text-[18px] mr-2 mt-0.5">check_circle</span>
+<span class="text-on-surface-variant text-sm"><strong class="text-on-surface">let</strong> if it must mutate.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-error text-[18px] mr-2 mt-0.5">cancel</span>
+<span class="text-on-surface-variant text-sm">Avoid <strong class="text-on-surface">var</strong> in modern JS.</span>
+</li>
+</ul>
+</div>
+<!-- Interactive Playground -->
+<div class="glass-overlay rounded-xl overflow-hidden flex flex-col h-64">
+<div class="bg-surface-container px-4 py-2 flex justify-between items-center border-b border-white/5">
+<span class="font-label-sm text-label-sm text-on-surface">Try it Yourself</span>
+<button class="text-primary hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined text-[18px]">play_arrow</span></button>
+</div>
+<div class="flex-1 p-4 font-code-md text-code-md bg-[#060e20] text-on-surface-variant outline-none resize-none" contenteditable="true" spellcheck="false">
+<span class="syntax-keyword">const</span> greeting = <span class="syntax-string">"Hello, World!"</span>;
+console.log(greeting);
+                            </div>
+<div class="bg-surface-dim px-4 py-2 border-t border-white/5 font-code-md text-[12px] text-outline">
+                                &gt; Hello, World!
+                            </div>
+</div>
+</div>
+</div>
+<!-- Navigation Footer -->
+<div class="flex justify-between items-center pt-8 border-t border-white/10 mt-12">
+<button class="flex items-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined mr-2">arrow_back</span>
+                        Previous: Setup Environment
+                    </button>
+<button class="flex items-center px-6 py-2 bg-primary/10 border border-primary/30 text-primary rounded-lg hover:bg-primary/20 transition-all font-label-sm text-label-sm">
+                        Next: Data Types
+                        <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

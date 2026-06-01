@@ -1,0 +1,149 @@
+/* High-End Modern Stylesheet for JS Mastery (Material Customizations) */
+
+:root {
+  --md-default-bg-color: #0b0f19; /* Ultra Dark Slate */
+  --md-default-fg-color: #e2e8f0;
+}
+
+/* Base Body Font Enhancements */
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  background-color: #0b0f19 !important;
+}
+
+/* Premium Navigation Sidebar */
+.md-sidebar--navigation .md-nav__link--active {
+  color: #ffd600 !important;
+  font-weight: 600;
+  border-left: 2px solid #ffd600;
+  padding-left: 12px;
+}
+
+/* H1 Main Heading Styling - Modern Golden Slate Gradient */
+.md-content h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 40%, #ffecb3 70%, #ffd600 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 1rem;
+  margin-bottom: 1.8rem;
+  border-bottom: 2px solid rgba(255, 214, 0, 0.15);
+  padding-bottom: 0.8rem;
+  text-shadow: 0 2px 20px rgba(255, 214, 0, 0.05);
+}
+
+/* Beautiful H2 Sub-headings - Glow Yellow Styling */
+.md-content h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffd600 !important; /* Standout Yellow */
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  border-bottom: 1px dashed rgba(255, 214, 0, 0.2);
+  padding-bottom: 0.4rem;
+  text-shadow: 0 0 10px rgba(255, 214, 0, 0.15);
+}
+
+/* Sleek H3 Sub-headings - Muted Light Gold */
+.md-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffe082 !important; /* Soft Light Gold */
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 5px rgba(255, 224, 130, 0.1);
+}
+
+/* Content cards: minimalist border-glow style */
+.md-content section,
+.md-content article,
+.md-content .admonition {
+  background: rgba(17, 24, 39, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-radius: 12px !important;
+  padding: 1.8rem !important;
+  margin: 1.8rem 0 !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.md-content section:hover,
+.md-content article:hover {
+  border-color: rgba(255, 214, 0, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 214, 0, 0.03) !important;
+  transform: translateY(-2px);
+}
+
+/* Inline Code style: modern slate-gray with subtle yellow accent */
+.md-content code {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+  color: #ffd600 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  padding: 0.15rem 0.35rem !important;
+  border-radius: 6px !important;
+  font-size: 0.85em !important;
+  border: 1px solid rgba(255, 255, 0, 0.1) !important;
+}
+
+/* Admonitions styling overrides */
+.md-typeset .admonition.note,
+.md-typeset .admonition.tip {
+  border-left: 3px solid #ffd600 !important;
+}
+
+/* Custom list layout */
+.md-typeset ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.md-typeset ul li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  padding-left: 1.25rem;
+}
+
+.md-typeset ul li::before {
+  content: "•";
+  color: #ffd600;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Premium Video / Iframe wrapper card style with Resizable handle */
+.resizable-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 450px; /* Default height */
+  min-height: 250px;
+  max-height: 800px;
+  resize: vertical;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  background-color: #181a1f;
+  margin: 1.5rem 0;
+}
+
+/* Force iframe to expand inside the resizable wrapper */
+.resizable-iframe-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Custom visual indicator for resizing at the bottom-right corner */
+.resizable-iframe-container::-webkit-resizer {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path d="M10,0 L0,10 L10,10 Z" fill="rgba(255, 214, 0, 0.5)"/></svg>');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}

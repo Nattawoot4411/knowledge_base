@@ -1,0 +1,25 @@
+site_name: Javascript & Visual Studio Code
+site_url: https://Nattawoot4411.github.io/knowledge_base/javaScript/
+
+theme:
+  name: material
+  language: th
+  palette:
+    scheme: slate
+    primary: yellow
+    accent: yellow
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - หน้าแรก:
+      - "บทเรียน": index.md
+      - "บทที่ 1: Introduction": ch1_basics.md
+  - "การติดตั้งโปรแกรม vs code, nodejs": setup.md
+  - "extension ที่ต้องติดตั้งเพิ่ม": extensions.md
