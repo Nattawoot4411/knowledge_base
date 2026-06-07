@@ -1,0 +1,1330 @@
+
+<!doctype html>
+<html lang="th" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Nattawoot4411.github.io/knowledge_base/javaScript/ch3_conditions_loops/">
+      
+      
+        <link rel="prev" href="../ch2_variables/">
+      
+      
+        <link rel="next" href="../ch4_functions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops) - Javascript & Visual Studio Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="yellow" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-conditions-and-loops" class="md-skip">
+          ข้ามไปที่เนื้อหา
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="หัวข้อ">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-header__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Javascript & Visual Studio Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="ค้นหา" placeholder="ค้นหา" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="ค้นหา">
+        
+        <button type="reset" class="md-search__icon md-icon" title="ล้าง" aria-label="ล้าง" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            กำลังเริ่มต้นการค้นหา
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="แท็บ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  หน้าแรก
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  การติดตั้งโปรแกรม vs code, nodejs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../extensions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  extension ที่ต้องติดตั้งเพิ่ม
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ตัวนำทาง" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-nav__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Javascript & Visual Studio Code
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    หน้าแรก
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    หน้าแรก
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทเรียน
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2_variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-nested-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. การควบคุมการทำงานด้วยเงื่อนไขซ้อนทับ (Nested Conditions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-compound-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การประเมินหลายเงื่อนไขร่วมกัน (Compound Conditions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-switch-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. การเลือกกรณีการทำงานด้วย Switch - Case
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-for-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. โครงสร้างการทำซ้ำพื้นฐานด้วย For Loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nested-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การทำซ้ำแบบซ้อนทับ (Nested Loops)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-break-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. การควบคุมทิศทางในลูปด้วย Break และ Continue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-while-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. การทำซ้ำแบบตรวจสอบเงื่อนไขด้วย While Loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 แบบฝึกหัดท้ายบทเรียน (Workshop)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 4: การสร้างฟังก์ชัน (Functions)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6_advanced_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 6: การประมวลผลข้อมูลขั้นสูง (Advanced Data)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7_dom_bom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    การติดตั้งโปรแกรม vs code, nodejs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    extension ที่ต้องติดตั้งเพิ่ม
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-nested-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. การควบคุมการทำงานด้วยเงื่อนไขซ้อนทับ (Nested Conditions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-compound-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การประเมินหลายเงื่อนไขร่วมกัน (Compound Conditions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-switch-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. การเลือกกรณีการทำงานด้วย Switch - Case
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-for-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. โครงสร้างการทำซ้ำพื้นฐานด้วย For Loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nested-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การทำซ้ำแบบซ้อนทับ (Nested Loops)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-break-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. การควบคุมทิศทางในลูปด้วย Break และ Continue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-while-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. การทำซ้ำแบบตรวจสอบเงื่อนไขด้วย While Loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 แบบฝึกหัดท้ายบทเรียน (Workshop)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3-conditions-and-loops">บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)</h1>
+<p>ในการพัฒนาโปรแกรมคอมพิวเตอร์ การควบคุมทิศทางการทำงานของโค้ด (Control Flow) ถือเป็นหัวใจสำคัญที่ทำให้โปรแกรมมีความฉลาดและสามารถตอบสนองต่อสถานการณ์ที่แตกต่างกันได้ โดยปกติแล้วโปรแกรมจะทำงานเรียงลำดับจากบนลงล่างบรรทัดต่อบรรทัด แต่ในความเป็นจริง เรามักต้องการให้โปรแกรม "ตัดสินใจ" ทำงานบางอย่างเมื่อเข้าเงื่อนไขเฉพาะ หรือ "ทำซ้ำ" กระบวนการเดิมเพื่อลดความซ้ำซ้อนในการเขียนโค้ด บทเรียนนี้จะครอบคลุมสถาปัตยกรรมการควบคุมโปรแกรมด้วยคำสั่งเงื่อนไขที่ซับซ้อนขึ้น และการจัดการการวนซ้ำในรูปแบบต่างๆ</p>
+<hr />
+<h2 id="_1">จุดประสงค์การเรียนรู้</h2>
+<p>เมื่อศึกษาบทเรียนนี้จบแล้ว ผู้เรียนสามารถ:
+*   เข้าใจหลักการและสามารถเขียนโครงสร้างเงื่อนไขแบบซ้อนทับ (Nested if) ได้อย่างถูกต้อง
+*   ประยุกต์ใช้ตัวดำเนินการทางตรรกศาสตร์เพื่อตรวจสอบหลายเงื่อนไขพร้อมกันได้
+*   เลือกใช้งานคำสั่ง switch-case สำหรับการแยกกรณีทำงานได้อย่างเหมาะสม
+*   เข้าใจกลไกการทำงานและสามารถประยุกต์ใช้การวนลูปแบบ for และ while ได้
+*   ควบคุมทิศทางภายในการวนลูปด้วยคำสั่ง break และ continue ได้อย่างถูกต้อง</p>
+<hr />
+<h2 id="1-nested-conditions">1. การควบคุมการทำงานด้วยเงื่อนไขซ้อนทับ (Nested Conditions)</h2>
+<p>ในการตรวจสอบเงื่อนไข บางครั้งการตัดสินใจหนึ่งๆ จำเป็นต้องอาศัยปัจจัยหลายอย่างที่ต้องพิจารณาตามลำดับขั้น เราสามารถนำโครงสร้างคำสั่งเงื่อนไขมาซ้อนเข้าไปในบล็อกของคำสั่งเงื่อนไขอื่นได้</p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คำสั่ง <code>if</code> ที่อยู่ด้านใน จะถูกประมวลผลก็ต่อเมื่อเงื่อนไขของคำสั่ง <code>if</code> ในระดับที่ครอบมันอยู่ (ชั้นนอกสุด) มีค่าความจริงเป็น <code>true</code> เท่านั้น</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> การซ้อนทับกันไม่จำเป็นต้องอยู่ภายใต้บล็อก <code>if</code> เสมอไป แต่ยังสามารถนำไปซ้อนไว้ในบล็อกของ <code>else if</code> หรือ <code>else</code> ได้ ขึ้นอยู่กับตรรกะของโปรแกรมว่าต้องการให้ประเมินเงื่อนไขย่อยนั้นในจังหวะใด</li>
+</ul>
+<blockquote>
+<p>[!WARNING]
+แม้การเขียนเงื่อนไขซ้อนทับจะช่วยให้กรองข้อมูลได้ละเอียด แต่หากมีการซ้อนกันลึกมากเกินไป (Deeply Nested) จะทำให้โค้ดอ่านยาก สับสน และเกิดข้อผิดพลาดในการไล่ตรรกะได้ง่ายขึ้น</p>
+</blockquote>
+<h3 id="_2">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// การตรวจสอบสิทธิ์การเข้าใช้งานระบบ
+let isUserLoggedIn = true;
+let userRole = &quot;admin&quot;;
+
+if (isUserLoggedIn) {
+    // เงื่อนไขชั้นใน จะทำงานเมื่อ Logged In แล้วเท่านั้น
+    if (userRole === &quot;admin&quot;) {
+        console.log(&quot;ยินดีต้อนรับ ผู้ดูแลระบบ คุณมีสิทธิ์จัดการระบบเต็มรูปแบบ&quot;);
+    } else {
+        console.log(&quot;ยินดีต้อนรับ ผู้ใช้งานทั่วไป&quot;);
+    }
+} else {
+    console.log(&quot;กรุณาเข้าสู่ระบบก่อนใช้งาน&quot;);
+}
+</code></pre>
+<hr />
+<h2 id="2-compound-conditions">2. การประเมินหลายเงื่อนไขร่วมกัน (Compound Conditions)</h2>
+<p>เพื่อแก้ปัญหาการใช้ <code>if</code> ซ้อนกันหลายชั้นจนโค้ดซับซ้อน เราสามารถรวบรวมเงื่อนไขทั้งหมดมาประเมินผลพร้อมกันในบรรทัดเดียวได้ โดยอาศัยตัวดำเนินการทางตรรกศาสตร์ (Logical Operators)</p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ใช้ตัวดำเนินการ <code>&amp;&amp;</code> (AND) และ <code>||</code> (OR) เป็นตัวเชื่อมประโยคเงื่อนไข<ul>
+<li><code>&amp;&amp;</code> (AND): คำสั่งจะทำงานก็ต่อเมื่อเงื่อนไขย่อย <strong>ทุกอัน</strong> ต้องเป็นจริงทั้งหมด</li>
+<li><code>||</code> (OR): คำสั่งจะทำงานเมื่อมีเงื่อนไขย่อย <strong>อย่างน้อยหนึ่งอัน</strong> เป็นจริง</li>
+</ul>
+</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> เมื่อมีการเชื่อมเงื่อนไขมากกว่า 2 นิพจน์ ควรใช้วงเล็บ <code>()</code> เพื่อจัดกลุ่มเงื่อนไขให้ชัดเจนว่าต้องการให้โปรแกรมประเมินผลกลุ่มใดก่อน-หลัง ซึ่งจะช่วยป้องกันความผิดพลาดทางตรรกะ (Logic Error) ที่อาจเกิดขึ้นได้</li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT]
+วงเล็บมีความสำคัญมากในการลำดับความสำคัญของการดำเนินการ (Precedence) หากไม่ใส่วงเล็บ โปรแกรมอาจตีความลำดับการตรวจสอบผิดไปจากที่ผู้เขียนตั้งใจไว้</p>
+</blockquote>
+<h3 id="_3">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// ตรวจสอบสิทธิ์การรับทุนการศึกษา (ต้องเกรดถึงเกณฑ์ และ รายได้น้อย หรือ เป็นนักกีฬา)
+let gpa = 3.8;
+let lowIncome = false;
+let isAthlete = true;
+
+if (gpa &gt;= 3.5 &amp;&amp; (lowIncome === true || isAthlete === true)) {
+    console.log(&quot;คุณมีคุณสมบัติผ่านเกณฑ์การพิจารณารับทุน&quot;);
+}
+</code></pre>
+<hr />
+<h2 id="3-switch-case">3. การเลือกกรณีการทำงานด้วย Switch - Case</h2>
+<p>เมื่อตัวแปรหนึ่งตัวมีโอกาสที่จะมีค่าที่เจาะจงได้หลายรูปแบบ และแต่ละรูปแบบต้องการให้โปรแกรมทำงานแตกต่างกัน การใช้ <code>if-else if</code> ต่อกันยาวๆ อาจทำให้โค้ดไม่สวยงามและอ่านยาก คำสั่ง <code>switch-case</code> จึงถูกออกแบบมาเพื่อจัดการกับปัญหานี้</p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> <code>switch-case</code> นำค่าของตัวแปรหรือนิพจน์ตั้งต้น มาตรวจสอบเทียบกับค่าในแต่ละ <code>case</code> หากตรงกับ <code>case</code> ใด ก็จะเข้าไปทำงานในบล็อกคำสั่งของ <code>case</code> นั้น</li>
+<li><strong>รายละเอียดเชิงลึก:</strong><ul>
+<li><code>break</code>: เป็นคีย์เวิร์ดบังคับที่ควรใส่ไว้ท้ายสุดของแต่ละ <code>case</code> เพื่อสั่งให้โปรแกรม "หยุด" และกระโดดออกจากโครงสร้าง <code>switch</code> ทันที หากไม่มี <code>break</code> โปรแกรมจะทำงานทะลุลงไปยังคำสั่งใน <code>case</code> ถัดไปเรื่อยๆ โดยไม่สนใจว่าเงื่อนไขจะตรงหรือไม่ (เรียกว่าพฤติกรรม <strong>Fall-through</strong>) ซึ่งอาจส่งผลให้ผลลัพธ์การทำงานผิดเพี้ยนไป</li>
+<li><strong>การรวบกลุ่มเงื่อนไข:</strong> หากมีหลายๆ <code>case</code> ที่ต้องการให้ผลลัพธ์การทำงานออกมาเหมือนกัน เราสามารถเขียน <code>case</code> เหล่านั้นติดกันได้โดยไม่ต้องมีคำสั่งคั่น แล้วไปเขียนคำสั่งและ <code>break</code> ที่ <code>case</code> สุดท้ายของกลุ่ม</li>
+<li><code>default</code>: ทำหน้าที่คล้าย <code>else</code> ในคำสั่ง <code>if</code> คือเป็นกรณีครอบจักรวาล จะทำงานก็ต่อเมื่อค่าที่ตรวจสอบไม่ตรงกับ <code>case</code> ใดๆ เลยที่กำหนดไว้ก่อนหน้า (จะมีหรือไม่มีก็ได้)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+<code>switch-case</code> เหมาะกับการเปรียบเทียบค่าที่ตายตัวและแน่นอน (Exact Match) ไม่สามารถใช้กับการประเมินช่วงค่าข้อมูล (เช่น มากกว่า, น้อยกว่า) ได้โดยตรงเหมือนคำสั่ง <code>if</code></p>
+</blockquote>
+<h3 id="_4">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let packageType = &quot;Gold&quot;;
+
+switch (packageType) {
+    case &quot;Silver&quot;:
+        console.log(&quot;สิทธิ์การเข้าถึงระดับพื้นฐาน&quot;);
+        break;
+    case &quot;Gold&quot;:
+    case &quot;Platinum&quot;: // รวบกลุ่ม Gold และ Platinum ให้แสดงผลลัพธ์เดียวกัน
+        console.log(&quot;สิทธิ์การเข้าถึงระดับพรีเมียม&quot;);
+        break;
+    default:
+        console.log(&quot;ไม่พบประเภทแพ็กเกจในระบบ&quot;);
+        // default โดยปกติอยู่ล่างสุด จึงไม่จำเป็นต้องใส่ break ก็ได้
+}
+</code></pre>
+<hr />
+<h2 id="4-for-loop">4. โครงสร้างการทำซ้ำพื้นฐานด้วย For Loop</h2>
+<p>หากเราทราบจำนวนครั้งที่แน่นอนในการทำงานซ้ำ การใช้ <code>for loop</code> ถือเป็นโครงสร้างที่เหมาะสมและเป็นระเบียบที่สุด</p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คำสั่ง <code>for</code> จะรวบรวมองค์ประกอบสำคัญ 3 ส่วนของการทำซ้ำมาไว้ในวงเล็บเดียวกัน โดยคั่นด้วยเครื่องหมายอัฒภาค (Semicolon <code>;</code>) ได้แก่:<ol>
+<li><strong>ค่าเริ่มต้น (Initialization):</strong> การประกาศและกำหนดค่าตัวแปรเพื่อใช้เป็นตัวนับรอบ (ทำงานเพียงครั้งเดียวตอนเริ่ม)</li>
+<li><strong>เงื่อนไขการทำงาน (Condition):</strong> นิพจน์ตรรกศาสตร์ที่จะถูกตรวจสอบก่อนเริ่มรอบใหม่เสมอ หากเป็นจริงจะทำซ้ำ หากเป็นเท็จจะจบการทำงานของลูป</li>
+<li><strong>การเปลี่ยนแปลงค่า (Increment/Decrement):</strong> การปรับปรุงค่าตัวแปรตัวนับ (เช่น เพิ่มขึ้นทีละ 1, ลดลง, หรือคูณค่า) ซึ่งจะทำงานเมื่อจบคำสั่งในรอบนั้นๆ</li>
+</ol>
+</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> ตัวแปรนับรอบไม่ได้จำกัดว่าจะต้องเพิ่มค่าทีละ 1 เสมอไป เราสามารถกำหนดให้เพิ่มขึ้นทีละทศนิยม หรือลดค่าลงแบบนับถอยหลังก็ได้</li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT]
+โค้ดในส่วนของ "ค่าเริ่มต้น" "เงื่อนไข" และ "การเปลี่ยนแปลงค่า" ต้องสอดคล้องกัน หากกำหนดผิดพลาดอาจทำให้เกิดลูปที่ไม่รู้จบ (Infinite Loop) ได้</p>
+</blockquote>
+<h3 id="_5">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// แสดงผลแม่สูตรคูณแม่ 5 จำนวน 5 รอบ
+for (let counter = 1; counter &lt;= 5; counter++) {
+    let result = 5 * counter;
+    console.log(&quot;5 x &quot; + counter + &quot; = &quot; + result);
+}
+// ผลลัพธ์: 
+// 5 x 1 = 5
+// 5 x 2 = 10
+// 5 x 3 = 15
+// 5 x 4 = 20
+// 5 x 5 = 25
+</code></pre>
+<hr />
+<h2 id="5-nested-loops">5. การทำซ้ำแบบซ้อนทับ (Nested Loops)</h2>
+<p>ในทำนองเดียวกับคำสั่ง <code>if</code> เราสามารถนำลูปไปใส่ไว้ภายในบล็อกการทำงานของลูปอีกตัวหนึ่งได้ เรียกว่าการทำลูปซ้อนลูป</p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ลูปที่อยู่ชั้นใน (Inner Loop) จะต้องทำงานตั้งแต่ต้นจนจบกระบวนการครบทุกรอบของมัน สำหรับ "ทุกๆ หนึ่งรอบ" ของลูปชั้นนอก (Outer Loop) เสมอ</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> หากลูปนอกถูกตั้งให้รัน M รอบ และลูปในถูกตั้งให้รัน N รอบ จำนวนครั้งที่คำสั่งภายในลูปชั้นในสุดจะถูกประมวลผลคือ M คูณ N ครั้ง</li>
+</ul>
+<blockquote>
+<p>[!WARNING]
+ควรระมัดระวังในการใช้งานลูปซ้อนทับหลายชั้น เพราะจะทำให้โปรแกรมใช้ทรัพยากรการคำนวณสูงและทำงานช้าลงอย่างมากตามจำนวนชั้นที่เพิ่มขึ้น (Time Complexity จะเติบโตแบบทวีคูณ)</p>
+</blockquote>
+<h3 id="_6">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// การจำลองการสร้างพิกัดตาราง 3x2
+for (let row = 1; row &lt;= 3; row++) {      // ลูปชั้นนอก (แถว)
+    for (let col = 1; col &lt;= 2; col++) {  // ลูปชั้นใน (คอลัมน์)
+        console.log(&quot;พิกัด: แถว &quot; + row + &quot;, คอลัมน์ &quot; + col);
+    }
+}
+</code></pre>
+<hr />
+<h2 id="6-break-continue">6. การควบคุมทิศทางในลูปด้วย Break และ Continue</h2>
+<p>ปกติแล้วลูปจะทำงานจนกว่าเงื่อนไขหลักจะเป็นเท็จ แต่เราสามารถแทรกแซงพฤติกรรมนี้ได้จากภายในบล็อกคำสั่งของลูปเอง</p>
+<p><img alt="การทำงานของ break และ continue ในลูป" src="../js_break_continue.png" /></p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong><ul>
+<li><code>break</code>: เป็นคำสั่งที่ใช้สำหรับ "ทำลาย" หรือ "กระโดดออก" จากลูปนั้นทันที โดยไม่สนใจว่าเงื่อนไขหลักของลูปจะยังคงเป็นจริงอยู่หรือไม่ และข้ามการทำงานที่เหลือในลูปทั้งหมด</li>
+<li><code>continue</code>: เป็นคำสั่งสำหรับ "ข้าม" การทำงานใน "รอบปัจจุบัน" ทันที โดยโปรแกรมจะข้ามคำสั่งที่อยู่ใต้ <code>continue</code> ทั้งหมดในรอบนั้น แล้ววกกลับไปตรวจสอบเงื่อนไขหลัก (หรือประมวลผลการเปลี่ยนแปลงค่า) เพื่อเริ่มต้นรอบถัดไปทันที</li>
+</ul>
+</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> ในกรณีที่มีการวนลูปแบบซ้อนทับ (Nested loops) การทำงานของคำสั่ง <code>break</code> จะมีผลทำให้หลุดออกจากวงลูปชั้นที่คำสั่งนั้นอาศัยอยู่เท่านั้น จะไม่ได้กระโดดออกจากลูปชั้นนอกสุดไปด้วย</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+คำสั่งทั้งสองนี้มักใช้ร่วมกับคำสั่ง <code>if</code> ภายในลูป เพื่อดักจับเงื่อนไขพิเศษบางอย่างในระหว่างการรัน</p>
+</blockquote>
+<h3 id="_7">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// ตัวอย่างการใช้ break และ continue ร่วมกัน
+for (let number = 1; number &lt;= 10; number++) {
+    if (number === 4) {
+        continue; // ข้ามรอบที่ number มีค่าเท่ากับ 4 (จะไม่ถูกพิมพ์ออกมา)
+    }
+    if (number === 8) {
+        break;    // ยุติการทำงานของลูปทั้งหมดเมื่อ number มีค่าเท่ากับ 8
+    }
+    console.log(&quot;ตัวเลขที่ดำเนินการ: &quot; + number);
+}
+// ผลลัพธ์: พิมพ์ 1, 2, 3, 5, 6, 7 แล้วหยุดทำงานทันที
+</code></pre>
+<hr />
+<h2 id="7-while-loop">7. การทำซ้ำแบบตรวจสอบเงื่อนไขด้วย While Loop</h2>
+<p>ลูปประเภท <code>while</code> จะถูกนำมาใช้ในสถานการณ์ที่เรา <strong>ไม่ทราบจำนวนรอบที่แน่นอนล่วงหน้า</strong> ว่าโปรแกรมจะต้องวนซ้ำกี่ครั้ง แต่ทราบเพียงว่าโปรแกรมจะหยุดทำงานเมื่อใด (เงื่อนไขใด)</p>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> โครงสร้างจะมีเพียงการตรวจสอบเงื่อนไขก่อนเริ่มทำงาน หากเงื่อนไขในวงเล็บมีค่าความจริงเป็น <code>true</code> จะประมวลผลคำสั่งในบล็อก และจะวนกลับมาเช็คเงื่อนไขซ้ำไปเรื่อยๆ จนกว่าเงื่อนไขจะประเมินผลเป็น <code>false</code> จึงจะหลุดจากลูป</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> ผู้เขียนโปรแกรมจะต้องมีกลไก หรือเขียนคำสั่งบางอย่าง "ภายในบล็อกการทำงาน" ของลูป เพื่อเปลี่ยนแปลงค่าที่เป็นส่วนประกอบของเงื่อนไขหลักให้กลายเป็น <code>false</code> ในท้ายที่สุด</li>
+</ul>
+<blockquote>
+<p>[!CAUTION]
+หากในบล็อกคำสั่งของ <code>while</code> ไม่มีคำสั่งใดที่ส่งผลให้เงื่อนไขหลักเปลี่ยนเป็น <code>false</code> ได้เลย (เช่น ระบุเป็น <code>while(true)</code>) โปรแกรมจะติดอยู่ในสภาวะ <strong>วงวนไม่รู้จบ (Infinite Loop)</strong> ซึ่งจะทำให้ทรัพยากรระบบทำงานหนักจนโปรแกรมค้าง การจะหลุดจาก Infinite Loop ได้ ต้องอาศัยคำสั่ง <code>break</code> ช่วยดักจับภายในเท่านั้น</p>
+</blockquote>
+<h3 id="_8">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// โปรแกรมสุ่มหาตัวเลขเป้าหมาย
+let targetNumber = 7;
+let currentGuess = 0;
+let attempts = 0;
+
+// ลูปจะทำงานไปเรื่อยๆ ตราบใดที่ยังสุ่มไม่ได้เลข 7
+while (currentGuess !== targetNumber) {
+    // สมมติสถานการณ์จำลองการเปลี่ยนค่าในแต่ละรอบ
+    currentGuess += 1; // ในความเป็นจริงอาจเป็นการรับค่าจากผู้ใช้ หรือการสุ่ม
+    attempts++;
+}
+console.log(&quot;พบตัวเลขเป้าหมายในความพยายามครั้งที่: &quot; + attempts);
+</code></pre>
+<hr />
+<h2 id="_9">สรุปบทเรียน</h2>
+<p>การสร้างโปรแกรมที่มีความยืดหยุ่น จำเป็นต้องอาศัยคำสั่งเงื่อนไข (<code>if</code>, <code>switch-case</code>) เพื่อสร้างทางเลือกในการประมวลผลข้อมูล และอาศัยการวนลูป (<code>for</code>, <code>while</code>) เพื่อจัดการกับข้อมูลจำนวนมากหรือกระบวนการที่ซ้ำซ้อนได้อย่างทรงประสิทธิภาพ การเลือกใช้เครื่องมือเหล่านี้ ไม่ว่าจะเป็นการเชื่อมเงื่อนไขด้วยตัวดำเนินการตรรกศาสตร์ การปรับจังหวะการวนซ้ำด้วย <code>break</code> และ <code>continue</code> ขึ้นอยู่กับโครงสร้างตรรกะของโจทย์ปัญหาเป็นสำคัญ ผู้พัฒนาที่ดีควรเลือกใช้โครงสร้างที่ทำให้โปรแกรมทำงานได้ถูกต้อง และโค้ดมีความเป็นระเบียบอ่านง่าย</p>
+<hr />
+<h2 id="workshop">💻 แบบฝึกหัดท้ายบทเรียน (Workshop)</h2>
+<p>ให้ทดลองเขียนลอจิกควบคุมทิศทางและการทำงานซ้ำในกล่อง Playground ด้านล่างนี้ โดยฝึกการสลับตัวแปร หรือเขียนโปรแกรมสุ่มคำนวณตามตัวอย่าง</p>
+<hr />
+<h2 id="review-questions">❓ คำถามทบทวน (Review Questions)</h2>
+<p>คลิกที่การ์ดคำถามด้านล่างเพื่อแสดงเฉลยคำตอบของคำถามแต่ละข้อ:</p>
+<ol>
+<li>
+<p><strong>การใช้เงื่อนไขซ้อนทับ (Nested if) มีข้อควรระวังใดที่ส่งผลกระทบต่อคุณภาพของโค้ดโปรแกรม?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       หากมีการซ้อนกันของเงื่อนไขที่ลึกมากเกินไป (Deeply Nested) จะส่งผลให้โค้ดอ่านยากขึ้น เกิดความสับสนในการตรวจสอบตรรกะ และเพิ่มโอกาสการเกิดข้อผิดพลาด (Logic Error) ได้ง่ายขึ้น (หรือเรียกว่า "Pyramid of Doom") แนะนำให้รวบเงื่อนไขด้วยตัวดำเนินการตรรกศาสตร์ หรือขยับย้ายโครงสร้างบางส่วนไปเขียนเป็นฟังก์ชันย่อย
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากต้องการให้คำสั่งประมวลผลเมื่อเงื่อนไขใดเงื่อนไขหนึ่งจากทั้งหมด 3 เงื่อนไขเป็นจริง ควรใช้ตัวดำเนินการทางตรรกศาสตร์ใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ควรใช้ตัวดำเนินการ <code>||</code> (OR) เพื่อเชื่อมต่อเงื่อนไข เนื่องจากตัวดำเนินการนี้จะให้ผลลัพธ์เป็น <code>true</code> ขอเพียงแค่มีเงื่อนไขย่อยอย่างน้อยหนึ่งตัวเป็นจริง
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>วงเล็บ <code>()</code> มีความสำคัญอย่างไรเมื่อเราเขียนเงื่อนไขทางตรรกศาสตร์ที่มีความยาวและซับซ้อน?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       วงเล็บช่วยในการจัดกลุ่มเงื่อนไขและควบคุมลำดับความสำคัญ (Precedence) ของตัวดำเนินการ เพื่อให้โปรแกรมประมวลผลตรงกับลอจิกการทำงานจริงที่เราออกแบบไว้ ช่วยป้องกันข้อผิดพลาดทางตรรกะที่ระบบอาจประเมินผลผิดลำดับ
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ในคำสั่ง switch-case หากละเว้นการใส่คีย์เวิร์ด break ในแต่ละกรณี จะเกิดผลลัพธ์การทำงานอย่างไร?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       จะทำให้เกิดลักษณะการทำงานที่เรียกว่า <strong>Fall-through</strong> โดยโปรแกรมจะประมวลผลคำสั่งใน <code>case</code> ถัดๆ ไปด้านล่างต่อเนื่องทันทีโดยไม่ต้องตรวจสอบเงื่อนไขความสอดคล้องใดๆ อีก จนกว่าจะไปพบสัญลักษณ์คีย์เวิร์ด <code>break</code> ตัวถัดไป หรือทำงานเสร็จสิ้นกระบวนการทั้งหมดของสวิตช์นั้น
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>คีย์เวิร์ด default ในโครงสร้าง switch-case เทียบเท่ากับคำสั่งใดในโครงสร้าง if-else?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       เทียบเท่ากับคำสั่ง <code>else</code> ในโครงสร้าง <code>if-else</code> ซึ่งเป็นตัวคอยดักจับกรณีสุดท้าย (fallback) เมื่อค่าที่นำมาเปรียบเทียบไม่ตรงกับเคสก่อนหน้านี้เลยทั้งหมด
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>องค์ประกอบ 3 ส่วนที่อยู่ภายในวงเล็บของคำสั่ง for ประกอบด้วยอะไรบ้าง?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ประกอบด้วย 3 ส่วนสำคัญ คั่นด้วยเครื่องหมายเซมิโคลอน (<code>;</code>) คือ:
+       <ol>
+         <li><strong>ค่าเริ่มต้น (Initialization):</strong> การกำหนดค่าเริ่มต้นตัวแปรนับรอบ (รันครั้งแรกเพียงครั้งเดียว)</li>
+         <li><strong>เงื่อนไขการทำงาน (Condition):</strong> การตรวจสอบค่าความจริงหากสอดคล้องถึงจะรันต่อ</li>
+         <li><strong>การเปลี่ยนแปลงค่า (Increment/Decrement):</strong> การปรับเพิ่มหรือลดตัวแปรตัวนับหลังจากครบรอบคำสั่งภายในลูป</li>
+       </ol>
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากมีการเขียนลูปซ้อนลูป (Nested loops) ลูปชั้นในสุดจะทำงานจบกระบวนการกี่ครั้ง หากลูปนอกรัน 5 รอบ และลูปในรัน 3 รอบ?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       จะรันจบกระบวนการทั้งหมดเป็นจำนวน <strong>15 ครั้ง</strong> (มาจากความสัมพันธ์การคูณ <code>5 x 3</code> โดยลูปชั้นในสุดจะหมุนรอบตัวเองครบ 3 ครั้ง ทุกครั้งที่ลูปชั้นนอกขยับหมุน 1 รอบ)
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ความแตกต่างระหว่างคำสั่ง break และ continue คืออะไร?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       <ul>
+         <li><code>break</code>: จะขัดจังหวะการทำงานและทำการกระโดดออกจากลูปปัจจุบันที่อาศัยอยู่นั้นทันที</li>
+         <li><code>continue</code>: จะข้ามการประมวลผลในส่วนที่เหลือของรอบปัจจุบัน แล้วกระโดดข้ามไปรอเข้าสู่ขั้นตอนการตรวจประเมินเงื่อนไขเพื่อขึ้นรอบการทำงานใหม่</li>
+       </ul>
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ในการเขียน while loop ปัญหา "วงวนไม่รู้จบ" (Infinite Loop) เกิดขึ้นจากสาเหตุใดเป็นหลัก?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       เกิดขึ้นเพราะประโยคเงื่อนไขที่กำหนดไว้สำหรับเข้าทำงานวนซ้ำมีค่าสถานะเป็น <code>true</code> ตลอดเวลา โดยไม่มีการสั่งให้ตัวแปรที่เป็นนิพจน์ควบคุมถูกแก้ไขค่าให้กลายเป็น <code>false</code> หรือไม่มีคำสั่ง <code>break</code> เข้ามาทำลายลูปจากภายในบล็อก
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>สถานการณ์ใดที่การเลือกใช้ while loop จะเหมาะสมกว่าการใช้ for loop?</strong>
+    <details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+      <summary>ดูเฉลยคำตอบ</summary>
+      <div class="details-content">
+        เหมาะกับกรณีที่ <strong>"ไม่ทราบล่วงหน้าว่าต้องวนซ้ำกี่รอบจึงจะบรรลุเป้าหมาย"</strong> แต่ทราบแน่นอนว่าโปรแกรมควรหยุดหรือดำเนินต่อด้วยเงื่อนไขสภาวะแบบใด เช่น การวนสุ่มรหัสผ่านจนกว่าจะถูกต้อง หรือการคอยรับข้อความป้อนเข้าจนกว่าผู้ใช้งานจะกดปิดระบบ
+      </div>
+    </details></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e41\u0e25\u0e49\u0e27", "clipboard.copy": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01", "search.result.more.one": "\u0e2d\u0e35\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.more.other": "# \u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.none": "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.one": "\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.other": "\u0e1e\u0e1a # \u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.placeholder": "\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e23\u0e34\u0e48\u0e21\u0e04\u0e49\u0e19\u0e2b\u0e32", "search.result.term.missing": "\u0e44\u0e21\u0e48\u0e1e\u0e1a", "select.version": "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

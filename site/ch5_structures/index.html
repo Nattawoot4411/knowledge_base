@@ -1,0 +1,1679 @@
+
+<!doctype html>
+<html lang="th" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Nattawoot4411.github.io/knowledge_base/javaScript/ch5_structures/">
+      
+      
+        <link rel="prev" href="../ch4_functions/">
+      
+      
+        <link rel="next" href="../ch6_advanced_data/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON) - Javascript & Visual Studio Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="yellow" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-array-object-json" class="md-skip">
+          ข้ามไปที่เนื้อหา
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="หัวข้อ">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-header__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Javascript & Visual Studio Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="ค้นหา" placeholder="ค้นหา" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="ค้นหา">
+        
+        <button type="reset" class="md-search__icon md-icon" title="ล้าง" aria-label="ล้าง" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            กำลังเริ่มต้นการค้นหา
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="แท็บ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  หน้าแรก
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  การติดตั้งโปรแกรม vs code, nodejs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../extensions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  extension ที่ต้องติดตั้งเพิ่ม
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ตัวนำทาง" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-nav__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Javascript & Visual Studio Code
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    หน้าแรก
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    หน้าแรก
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทเรียน
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2_variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3_conditions_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 4: การสร้างฟังก์ชัน (Functions)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-array-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ลักษณะพื้นฐานและการสร้างอาร์เรย์ (Array Basics)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การเข้าถึงและจัดการสมาชิกของอาร์เรย์
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. การวนลูปเพื่อเข้าถึงสมาชิกในอาร์เรย์
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-array-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. เมธอดของอาร์เรย์ (Array Methods)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การส่งอาร์เรย์เข้าและออกจากฟังก์ชัน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2-multidimensional-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. อาร์เรย์แบบ 2 มิติ (Multidimensional Array)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-javascript-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ออบเจ็กต์ของจาวาสคริปต์ (JavaScript Objects)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. การเข้าถึงและการกำหนดค่าให้พร็อพเพอร์ตี้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. การเข้าถึงออบเจ็กต์ด้วยลูปและคำสั่งพิเศษ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-object-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. เมธอดของออบเจ็กต์ (Object Methods)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-json-javascript-object-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. ออบเจ็กต์แบบ JSON (JavaScript Object Notation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-object-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. การแปลงข้อมูลระหว่าง Object และ JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6_advanced_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 6: การประมวลผลข้อมูลขั้นสูง (Advanced Data)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7_dom_bom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    การติดตั้งโปรแกรม vs code, nodejs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    extension ที่ต้องติดตั้งเพิ่ม
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-array-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ลักษณะพื้นฐานและการสร้างอาร์เรย์ (Array Basics)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การเข้าถึงและจัดการสมาชิกของอาร์เรย์
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. การวนลูปเพื่อเข้าถึงสมาชิกในอาร์เรย์
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-array-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. เมธอดของอาร์เรย์ (Array Methods)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การส่งอาร์เรย์เข้าและออกจากฟังก์ชัน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2-multidimensional-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. อาร์เรย์แบบ 2 มิติ (Multidimensional Array)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-javascript-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ออบเจ็กต์ของจาวาสคริปต์ (JavaScript Objects)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. การเข้าถึงและการกำหนดค่าให้พร็อพเพอร์ตี้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. การเข้าถึงออบเจ็กต์ด้วยลูปและคำสั่งพิเศษ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-object-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. เมธอดของออบเจ็กต์ (Object Methods)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-json-javascript-object-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. ออบเจ็กต์แบบ JSON (JavaScript Object Notation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-object-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. การแปลงข้อมูลระหว่าง Object และ JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5-array-object-json">บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)</h1>
+<p>เมื่อโปรแกรมมีความซับซ้อนมากขึ้น การใช้ตัวแปรปกติเพื่อเก็บข้อมูลทีละค่าจะสร้างความยุ่งยากอย่างมหาศาล ตัวอย่างเช่น หากต้องการเก็บข้อมูลตัวเลข 10 จำนวน การสร้างตัวแปร n1 ถึง n10 จะทำให้โค้ดซ้ำซ้อนและขาดความยืดหยุ่น ภาษาจาวาสคริปต์จึงมีโครงสร้างข้อมูลเพื่อแก้ปัญหานี้ ได้แก่ "อาร์เรย์" (Array) สำหรับจัดการชุดข้อมูลที่เป็นลำดับต่อเนื่อง และ "ออบเจ็กต์" (Object) สำหรับจัดการข้อมูลที่มีลักษณะเป็นคุณสมบัติ (Property) นอกจากนี้ เมื่อต้องนำข้อมูลเหล่านี้ไปแลกเปลี่ยนข้ามระบบปฏิบัติการหรือภาษาคอมพิวเตอร์ที่แตกต่างกัน เราจำเป็นต้องพึ่งพารูปแบบข้อมูลมาตรฐานที่เรียกว่า JSON บทเรียนนี้จะเจาะลึกโครงสร้างข้อมูลทั้งสามรูปแบบนี้อย่างละเอียดครบถ้วน</p>
+<hr />
+<h2 id="_1">จุดประสงค์การเรียนรู้</h2>
+<p>เมื่อศึกษาบทเรียนนี้จบแล้ว ผู้เรียนควรมีความสามารถดังนี้:
+*   เข้าใจโครงสร้าง การสร้าง และการอ้างอิงลำดับดัชนี (Index) ของอาร์เรย์ได้อย่างถูกต้อง
+*   ประยุกต์ใช้คำสั่งวนลูปทุกรูปแบบ (for, for-in, for-of, forEach) กับอาร์เรย์และสตริงได้
+*   เลือกใช้งานเมธอด (Method) ทั้ง 15 คำสั่งเพื่อจัดการ ดัดแปลง และค้นหาข้อมูลในอาร์เรย์ได้อย่างมีประสิทธิภาพ
+*   เข้าใจกลไกของอาร์เรย์แบบ 2 มิติ (Array of Array) และการเข้าถึงสมาชิกย่อย
+*   อธิบายความแตกต่างระหว่างอาร์เรย์และออบเจ็กต์ พร้อมทั้งสร้างและจัดการพร็อพเพอร์ตี้ของออบเจ็กต์ได้
+*   เข้าใจการสร้างเมธอดในออบเจ็กต์ และการใช้งานคีย์เวิร์ด this
+*   อธิบายกฎเกณฑ์ของออบเจ็กต์แบบ JSON และสามารถแปลงข้อมูลกลับไปมาด้วย JSON.stringify() และ JSON.parse() ได้</p>
+<hr />
+<h2 id="1-array-basics">1. ลักษณะพื้นฐานและการสร้างอาร์เรย์ (Array Basics)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> อาร์เรย์ (Array) คือชุดข้อมูลที่รวบรวมข้อมูลย่อยๆ (Element/สมาชิก) มาเก็บไว้ภายใต้ตัวแปรชื่อเดียวกัน โดยสมาชิกแต่ละตัวจะมีเลขลำดับกำกับที่เรียกว่า ดัชนี (Index หรือ Subscript)<ul>
+<li>ดัชนีของอาร์เรย์จะ <strong>เริ่มต้นจาก 0 เสมอ</strong> ไปจนสิ้นสุดที่จำนวนสมาชิกตัวสุดท้าย</li>
+<li>จาวาสคริปต์อนุญาตให้อาร์เรย์หนึ่งชุด เก็บข้อมูลต่างชนิดกันได้ (เช่น ตัวเลข สตริง บูลีน อยู่รวมกันได้)</li>
+<li>การสร้างอาร์เรย์ทำได้ 2 วิธีหลัก คือ การใช้วงเล็บเหลี่ยม <code>[ ]</code> (แนะนำ) และ การใช้ออบเจ็กต์ <code>new Array()</code></li>
+</ul>
+</li>
+<li><strong>รายละเอียดเชิงลึกและประเด็นที่ควรรู้:</strong> กรณีใช้ <code>new Array()</code>: หากกำหนดค่าเริ่มต้นเป็นเลขจำนวนเต็มเพียงตัวเดียว เช่น <code>new Array(5)</code> โปรแกรมจะมองว่านั่นคือ "การจองพื้นที่ขนาด 5 ช่อง" (สมาชิกทุกตัวจะเป็น undefined) แต่หากใส่เลขทศนิยม เช่น <code>new Array(7.5)</code> จะเกิดข้อผิดพลาด (Error) ทันที แต่ถ้ากำหนดค่าตั้งแต่ 2 ตัวขึ้นไป หรือเป็นสตริง เช่น <code>new Array('Apple')</code> หรือ <code>new Array(10, 20)</code> จะถูกมองว่าเป็นข้อมูลสมาชิกตามปกติ</li>
+</ul>
+<h3 id="_2">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// วิธีที่ 1: ใช้เครื่องหมาย []
+let oddNumbers = [1, 3, 5, 7, 9];
+let mixedData = [1, true, &quot;three&quot;]; // เก็บข้อมูลต่างชนิดกันได้
+let emptyArray = []; // อาร์เรย์ว่าง
+
+// วิธีที่ 2: ใช้ new Array()
+let browsers = new Array('Chrome', 'Edge', 'Firefox', 'Safari');
+let slots = new Array(5); // ขนาด 5 ช่อง (ทุกช่องเป็น undefined)
+
+console.log(&quot;oddNumbers:&quot;, oddNumbers);
+console.log(&quot;mixedData:&quot;, mixedData);
+console.log(&quot;browsers:&quot;, browsers);
+console.log(&quot;slots length:&quot;, slots.length);
+</code></pre>
+<hr />
+<h2 id="2">2. การเข้าถึงและจัดการสมาชิกของอาร์เรย์</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> การอ่านค่าหรือกำหนดค่าใหม่ให้กับสมาชิกอาร์เรย์ ต้องอ้างอิงผ่านชื่อตัวแปรตามด้วยเครื่องหมายก้ามปูและเลขดัชนี เช่น <code>arrayName[index]</code></li>
+<li><strong>รายละเอียดเชิงลึกและประเด็นที่ควรรู้:</strong><ul>
+<li>หากเราอ้างถึงดัชนีที่ไม่มีอยู่จริง โปรแกรมจะคืนค่าเป็น <code>undefined</code> โดยไม่ฟ้อง Error</li>
+<li><strong>การกระโดดข้ามลำดับดัชนี:</strong> หากอาร์เรย์มีสมาชิกดัชนี 0, 1, 2 แล้วเราไปกำหนดค่าให้ดัชนีที่ 7 ทันที โปรแกรมจะขยายขนาดอาร์เรย์ให้ถึงดัชนี 7 อัตโนมัติ โดยช่องว่างที่ถูกกระโดดข้าม (ดัชนี 3 ถึง 6) จะมีค่าเป็น <code>undefined</code></li>
+<li><strong>การใช้คีย์เวิร์ด in:</strong> เราสามารถตรวจสอบว่ามี "ลำดับดัชนี" นั้นๆ อยู่ในอาร์เรย์หรือไม่ โดยใช้คำสั่ง <code>index in arrayName</code> (คืนค่าเป็น true/false)</li>
+</ul>
+</li>
+</ul>
+<h3 id="_3">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let browsers = new Array('Chrome', 'IE', 'Firefox', 'Safari');
+
+console.log(browsers[0]); // พิมพ์ Chrome
+console.log(browsers[4]); // พิมพ์ undefined เพราะมีแค่ดัชนี 0 ถึง 3
+
+browsers[1] = 'Edge';     // แก้ไข IE เป็น Edge
+browsers[7] = 'Netscape'; // เพิ่มข้ามลำดับ ดัชนี 4, 5, 6 จะเป็น undefined ทันที
+console.log(&quot;หลังแก้ไขและเพิ่ม:&quot;, browsers);
+
+// การตรวจสอบดัชนีด้วยคำสั่ง in
+let arr = [10, 20, 30]; // ดัชนี 0, 1, 2
+console.log(&quot;มีดัชนี 0 ในอาร์เรย์หรือไม่: &quot; + (0 in arr));  // true
+console.log(&quot;มีดัชนี 3 ในอาร์เรย์หรือไม่: &quot; + (3 in arr));  // false
+</code></pre>
+<hr />
+<h2 id="3">3. การวนลูปเพื่อเข้าถึงสมาชิกในอาร์เรย์</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> เมื่อมีข้อมูลจำนวนมาก การดึงข้อมูลทีละตัวแบบระบุดัชนีจึงไม่สะดวก เราจำเป็นต้องนำโครงสร้างการวนลูปมาประยุกต์ใช้ ซึ่งจาวาสคริปต์มีรูปแบบการวนลูปสำหรับอาร์เรย์ที่หลากหลายมาก</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่งวนลูป</th>
+<th style="text-align: left;">ลักษณะการทำงาน</th>
+<th style="text-align: left;">จุดเด่น / ข้อสังเกต</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>for</strong></td>
+<td style="text-align: left;">นำตัวแปรนับรอบ (มักใช้ i) ไปใช้เป็นลำดับดัชนี</td>
+<td style="text-align: left;">ต้องใช้ length เพื่อกำหนดเงื่อนไขหยุดลูป เหมาะกับการอ้างอิงตำแหน่งชัดเจน</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>for...in</strong></td>
+<td style="text-align: left;">ดึง "เลขลำดับดัชนี (Index)" ออกมาใส่ตัวแปรให้โดยอัตโนมัติ</td>
+<td style="text-align: left;">ไม่ต้องตั้งค่าตัวแปรนับรอบเอง เริ่มตั้งแต่ 0 ไปจนดัชนีสุดท้าย</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>for...of</strong></td>
+<td style="text-align: left;">เข้าถึง "ข้อมูล (Value)" โดยตรง ไม่ต้องพึ่งพาดัชนี</td>
+<td style="text-align: left;">โค้ดกระชับ อ่านง่าย และใช้ได้กับสตริงดึงอักษรทีละตัวได้</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>forEach()</strong></td>
+<td style="text-align: left;">เป็นเมธอดพิเศษของอาร์เรย์ ต้องรับพารามิเตอร์เป็น Callback</td>
+<td style="text-align: left;">ส่งข้อมูลสมาชิก (element) และดัชนี (index) เข้าไปในฟังก์ชันทีละรอบ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let nums = [10, 20, 30, 40, 50];
+
+// 1. ใช้ for แบบปกติ
+for (let i = 0; i &lt; nums.length; i++) {
+    console.log(&quot;For ปกติ: &quot; + nums[i]);
+}
+
+// 2. ใช้ for...in (ได้ Index มา)
+for (let i in nums) {
+    console.log(&quot;For-in ดัชนีที่ &quot; + i + &quot;: &quot; + nums[i]);
+}
+
+// 3. ใช้ for...of (ได้ Value มา)
+for (let value of nums) {
+    console.log(&quot;For-of ข้อมูล: &quot; + value);
+}
+
+// การประยุกต์ใช้ for-of กับสตริง
+let str = &quot;JS&quot;;
+for (let s of str) {
+    console.log(&quot;ตัวอักษร: &quot; + s); // พิมพ์ J, S ทีละบรรทัด
+}
+
+// 4. ใช้ forEach() พร้อม Callback
+let browsersList = ['Chrome', 'Edge', 'Firefox', 'Safari'];
+browsersList.forEach(function(element, index) {
+    console.log((index + 1) + &quot;. &quot; + element);
+});
+</code></pre>
+<hr />
+<h2 id="4-array-methods">4. เมธอดของอาร์เรย์ (Array Methods)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> อาร์เรย์ในจาวาสคริปต์มีเครื่องมือสำเร็จรูป (Method) ที่ช่วยให้เราจัดการ ดัดแปลง หรือค้นหาข้อมูลได้อย่างรวดเร็ว</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">กลุ่มการใช้งาน</th>
+<th style="text-align: left;">คำสั่ง (Method)</th>
+<th style="text-align: left;">หน้าที่และลักษณะการทำงาน</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ให้ข้อมูล/ค้นหา</strong></td>
+<td style="text-align: left;"><code>length</code> (Property)<br><code>includes(สมาชิก)</code><br><code>indexOf(สมาชิก)</code><br><code>lastIndexOf(สมาชิก)</code></td>
+<td style="text-align: left;">นับจำนวนสมาชิกทั้งหมด<br>ตรวจสอบว่ามีข้อมูลนั้นอยู่หรือไม่ (true/false)<br>ค้นหาตำแหน่งดัชนีแรกที่พบ (ไม่พบคืน -1)<br>ค้นหาตำแหน่งดัชนีสุดท้ายจากหลังมาหน้า</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>เพิ่ม/ลบ (ท้ายอาร์เรย์)</strong></td>
+<td style="text-align: left;"><code>push(สมาชิก, ...)</code><br><code>pop()</code></td>
+<td style="text-align: left;">เพิ่มสมาชิกเข้าไปต่อท้ายสุด<br>ลบและคืนค่าสมาชิกตัวสุดท้ายออก 1 ตัว</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>เพิ่ม/ลบ (หน้าอาร์เรย์)</strong></td>
+<td style="text-align: left;"><code>unshift(สมาชิก, ...)</code><br><code>shift()</code></td>
+<td style="text-align: left;">เพิ่มสมาชิกเข้าไปหน้าสุด (ดัชนี 0)<br>ลบและคืนค่าสมาชิกตัวแรกสุดออก 1 ตัว</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>จัดการโครงสร้าง</strong></td>
+<td style="text-align: left;"><code>join('ตัวคั่น')</code><br><code>concat(อาร์เรย์อื่น)</code><br><code>fill(ข้อมูล, ...)</code></td>
+<td style="text-align: left;">แปลงสมาชิกทั้งหมดเป็นสตริงคั่นด้วยตัวคั่น<br>เชื่อมต่ออาร์เรย์เพื่อสร้างอาร์เรย์ใหม่<br>เติมข้อมูลทับลงไปในสมาชิกทุกตัวตามช่วงที่กำหนด</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>เรียงลำดับ</strong></td>
+<td style="text-align: left;"><code>reverse()</code><br><code>sort()</code></td>
+<td style="text-align: left;">กลับลำดับข้อมูลจากหลังมาหน้า<br>เรียงข้อมูล A-Z (ควรระวังหากใช้เรียงตัวเลขตรงๆ)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>คัดลอก/ตัดต่อ</strong></td>
+<td style="text-align: left;"><code>slice(start, end)</code><br><code>splice(start, del, ...)</code></td>
+<td style="text-align: left;">คัดลอกสมาชิกบางส่วนออกมา (ต้นฉบับไม่เปลี่ยน)<br>ตัดสมาชิกเดิมออกและแทรกข้อมูลใหม่ลงไป (ต้นฉบับเปลี่ยน)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let arr1 = ['หมู', 'หมา', 'กา', 'ไก่'];
+arr1.sort();    // ได้ ['กา', 'ไก่', 'หมา', 'หมู'] (ตามลำดับพยัญชนะ)
+arr1.reverse(); // ได้ ['หมู', 'หมา', 'ไก่', 'กา']
+console.log(&quot;arr1:&quot;, arr1);
+
+let nums = [1, 2, 3, 4];
+nums.unshift(0); // [0, 1, 2, 3, 4]
+let x = nums.pop(); // x = 4, nums = [0, 1, 2, 3]
+console.log(&quot;nums:&quot;, nums, &quot;ค่าที่ pop ออกมา:&quot;, x);
+
+// ตัวอย่าง Slice (คัดลอก)
+let data = [10, 20, 30, 40, 50];
+let part1 = data.slice(2, 4); // คัดลอกดัชนี 2 ถึง 3 (ไม่รวม 4) -&gt; ได้ [30, 40]
+console.log(&quot;part1 (slice):&quot;, part1);
+
+// ตัวอย่าง Splice (ตัดออก)
+let part2 = data.splice(1, 3); // เริ่มตัดที่ดัชนี 1 จำนวน 3 ตัว -&gt; ได้ [20, 30, 40]
+console.log(&quot;part2 (splice):&quot;, part2);
+console.log(&quot;data ที่เหลืออยู่:&quot;, data); // เหลือแค่ [10, 50]
+</code></pre>
+<hr />
+<h2 id="5">5. การส่งอาร์เรย์เข้าและออกจากฟังก์ชัน</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> อาร์เรย์เป็นชุดข้อมูลที่สามารถถูกส่งผ่านไปให้ฟังก์ชันประมวลผล (ในฐานะพารามิเตอร์) และฟังก์ชันก็สามารถประมวลผลลัพธ์ที่ซับซ้อนแล้วส่งข้อมูลกลับออกมาเป็นชุดอาร์เรย์ได้เช่นกัน (ในฐานะค่า Return)</li>
+</ul>
+<h3 id="_6">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// ฟังก์ชันรับพารามิเตอร์เป็นอาร์เรย์
+function summation(dataArray) {
+    let sum = 0;
+    for (let n of dataArray) {
+        sum += n;
+    }
+    return sum;
+}
+let total = summation([1, 3, 5, 7]); // ส่งอาร์เรย์เข้าไป
+console.log(&quot;ผลรวม:&quot;, total); // พิมพ์ 16
+
+// ฟังก์ชันส่งค่ากลับเป็นอาร์เรย์
+function getRandomNumbers() {
+    let arr = new Array(5);
+    for (let i = 0; i &lt; arr.length; i++) {
+        arr[i] = parseInt(Math.random() * 100);
+    }
+    return arr; // ส่งอาร์เรย์กลับออกไป
+}
+console.log(&quot;สุ่มตัวเลข 5 ตัว:&quot;, getRandomNumbers());
+</code></pre>
+<hr />
+<h2 id="6-2-multidimensional-array">6. อาร์เรย์แบบ 2 มิติ (Multidimensional Array)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> สมาชิกของอาร์เรย์หนึ่งๆ สามารถมีค่าเป็น "อาร์เรย์อีกชุดหนึ่ง" ได้ โครงสร้างที่ซ้อนกันนี้เรียกว่า อาร์เรย์ 2 มิติ (หรือ Array of Array) เหมาะกับการเก็บข้อมูลประเภทตาราง แถว คอลัมน์ หรือพิกัด</li>
+<li><strong>รายละเอียดเชิงลึกและประเด็นที่ควรรู้:</strong><ul>
+<li><strong>การเข้าถึงข้อมูล:</strong> ใช้วงเล็บเหลี่ยม 2 ชุดซ้อนกัน <code>array[ดัชนีชั้นนอก][ดัชนีชั้นใน]</code> (เปรียบเสมือน <code>array[แถว][คอลัมน์]</code>)</li>
+<li><strong>การหาขนาด:</strong> ใช้ <code>array.length</code> (ได้จำนวนแถว) และ <code>array[index].length</code> (ได้จำนวนคอลัมน์ของแถวนั้นๆ)</li>
+<li><strong>การวนลูปอ่านข้อมูล:</strong> จำเป็นต้องใช้การวนลูปซ้อนลูป (Nested Loops)</li>
+</ul>
+</li>
+</ul>
+<h3 id="_7">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let colors = [
+    ['red', 'green', 'blue'],   // แถวที่ 0
+    ['black', 'white']          // แถวที่ 1
+];
+
+console.log(colors[1][0]); // พิมพ์ black (แถว 1 คอลัมน์ 0)
+console.log(&quot;จำนวนแถว:&quot;, colors.length); // พิมพ์ 2
+console.log(&quot;จำนวนคอลัมน์แถว 0:&quot;, colors[0].length); // พิมพ์ 3
+
+// การเพิ่มข้อมูลเข้าไปในอาร์เรย์ย่อย
+colors[1].push('yellow'); 
+console.log(&quot;แถว 1 หลังเพิ่มสีเหลือง:&quot;, colors[1]);
+
+// การวนลูปดึงข้อมูล 2 มิติด้วย for...of
+for (let row of colors) {
+    for (let col of row) {
+        console.log(&quot;สี: &quot; + col); // พิมพ์ค่าสีออกมาทีละสี
+    }
+}
+</code></pre>
+<hr />
+<h2 id="7-javascript-objects">7. ออบเจ็กต์ของจาวาสคริปต์ (JavaScript Objects)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> โครงสร้างข้อมูลแบบ ออบเจ็กต์ (Object) ใช้จัดโครงสร้างข้อมูลโดยมีชื่อที่สื่อความหมาย (Key) แทนการใช้ดัชนีตัวเลข โดยองค์ประกอบสำคัญของออบเจ็กต์มี 2 อย่างคือ:<ul>
+<li><strong>พร็อพเพอร์ตี้ (Property):</strong> การเก็บข้อมูลในลักษณะคู่ของ <code>key</code> (ชื่อคุณสมบัติ) และ <code>value</code> (ค่าข้อมูล)</li>
+<li><strong>เมธอด (Method):</strong> พฤติกรรมหรือฟังก์ชันการทำงานที่แนบอยู่กับออบเจ็กต์</li>
+</ul>
+</li>
+<li><strong>รายละเอียดเชิงลึก:</strong> การสร้างออบเจ็กต์พื้นฐาน นิยมใช้วงเล็บปีกกา <code>{ }</code> (Object Literal) หรือคำสั่ง <code>new Object()</code> โดยค่า Value สามารถเป็นชนิดข้อมูลใดก็ได้ ทั้งตัวเลข สตริง บูลีน อาร์เรย์ วันที่ หรือเป็นออบเจ็กต์ซ้อนอยู่ภายใน</li>
+</ul>
+<h3 id="_8">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// การสร้างออบเจ็กต์พร้อมข้อมูล (แบบ Object Literal)
+let rectangle = {
+    width: 10,
+    height: 20
+};
+console.log(&quot;Rectangle Width:&quot;, rectangle.width);
+
+// ข้อมูลที่มีความซับซ้อน (มีอาร์เรย์และออบเจ็กต์ซ้อนอยู่ภายใน)
+let language = {
+    name: 'JavaScript',
+    born: new Date(1995, 10, 1),
+    developer: ['Brendan Eich', 'ECMA'],
+    price: undefined,
+    browserSupport: {
+        Microsoft: 'Edge',
+        Google: 'Chrome'
+    }
+};
+console.log(&quot;Language Name:&quot;, language.name);
+console.log(&quot;Developer Team:&quot;, language.developer[1]);
+console.log(&quot;Chrome support status:&quot;, language.browserSupport.Google);
+</code></pre>
+<hr />
+<h2 id="8">8. การเข้าถึงและการกำหนดค่าให้พร็อพเพอร์ตี้</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> การอ่านค่า หรือเปลี่ยนแปลงค่าภายในออบเจ็กต์สามารถทำได้ 2 รูปแบบหลัก</li>
+<li><strong>รายละเอียดเชิงลึกและประเด็นที่ควรรู้:</strong><ul>
+<li><strong>แบบจุด (Dot Notation):</strong> เช่น <code>object.propertyName</code> เป็นวิธีที่สั้น สะดวก และนิยมใช้มากที่สุด</li>
+<li><strong>แบบวงเล็บ (Bracket Notation):</strong> เช่น <code>object['propertyName']</code> ต้องใส่ชื่อพร็อพเพอร์ตี้ไว้ในเครื่องหมายคำพูดเสมอ มีประโยชน์มากเมื่อชื่อพร็อพเพอร์ตี้ถูกเก็บอยู่ใน "ตัวแปร" ชนิดข้อความ</li>
+<li>เราสามารถเพิ่มพร็อพเพอร์ตี้ใหม่ให้กับออบเจ็กต์ในภายหลังได้ตลอดเวลา หรือใช้คำสั่ง <code>Object.assign()</code> เพื่อคัดลอกพร็อพเพอร์ตี้หลายๆ ตัวพร้อมกันได้</li>
+</ul>
+</li>
+</ul>
+<h3 id="_9">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let person = { name: &quot;John&quot;, age: 30 };
+
+// 1. เข้าถึงด้วย Dot Notation
+console.log(person.name); // John
+person.age = 31; // แก้ไขค่า
+
+// 2. เข้าถึงด้วย Bracket Notation
+console.log(person['age']); // 31
+let propToAccess = 'name';
+console.log(person[propToAccess]); // ใช้ตัวแปรเข้าถึงได้
+
+// การเพิ่มพร็อพเพอร์ตี้ใหม่ในภายหลัง
+person.country = &quot;USA&quot;; 
+
+// การเพิ่มหลายพร็อพเพอร์ตี้พร้อมกันด้วย Object.assign()
+Object.assign(person, {
+    job: &quot;Developer&quot;,
+    salary: 50000
+});
+console.log(&quot;ออบเจ็กต์หลังอัปเดต:&quot;, person);
+</code></pre>
+<hr />
+<h2 id="9">9. การเข้าถึงออบเจ็กต์ด้วยลูปและคำสั่งพิเศษ</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> เนื่องจากออบเจ็กต์ไม่มีลำดับดัชนีแบบอาร์เรย์ การวนลูปดึงคุณสมบัติทั้งหมดของออบเจ็กต์ออกใช้ จึงต้องใช้คำสั่งเฉพาะตัว ดังนี้</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่ง / ไวยากรณ์</th>
+<th style="text-align: left;">ลักษณะการทำงาน</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>for...in</strong></td>
+<td style="text-align: left;">วนลูปดึง "ชื่อคีย์ (Key)" ออกมาทีละรอบ (ต้องใช้ Bracket Notation เพื่อดึงค่า Value)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Object.keys(ออบเจ็กต์)</strong></td>
+<td style="text-align: left;">ดึงคีย์ทั้งหมดออกมาสร้างเป็น "อาร์เรย์ของชื่อคีย์" เพื่อนำไปประยุกต์ใช้กับลูป <code>for...of</code> ต่อได้</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>with (ออบเจ็กต์)</strong></td>
+<td style="text-align: left;"><em>ไวยากรณ์เก่า (ไม่แนะนำให้ใช้ในโค้ดใหม่)</em> ช่วยให้อ้างถึงคีย์ได้ตรงๆ โดยไม่ต้องพิมพ์ชื่อออบเจ็กต์นำหน้า</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let rectangle = { width: 10, height: 20 };
+
+// การใช้ for...in
+for (let p in rectangle) {
+    // ต้องใช้แบบวงเล็บเพราะ p เป็นตัวแปรเก็บชื่อคีย์
+    console.log(p + &quot; มีค่า: &quot; + rectangle[p]); 
+}
+
+// การใช้ Object.keys() ร่วมกับ for...of
+let keys = Object.keys(rectangle);
+for (let p of keys) {
+    console.log(&quot;คีย์ &quot; + p + &quot; มีค่า: &quot; + rectangle[p]);
+}
+</code></pre>
+<hr />
+<h2 id="10-object-methods">10. เมธอดของออบเจ็กต์ (Object Methods)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> หากนำฟังก์ชันไปกำหนดค่าให้กับพร็อพเพอร์ตี้ของออบเจ็กต์ จะเรียกว่า "เมธอด" ซึ่งเปรียบเสมือนพฤติกรรมหรือฟังก์ชันเฉพาะตัวของออบเจ็กต์นั้น</li>
+<li><strong>รายละเอียดเชิงลึกและประเด็นที่ควรรู้:</strong><ul>
+<li><strong>รูปแบบการเขียน:</strong> เขียนแบบฟังก์ชันปกติ <code>methodName: function() { ... }</code> หรือจะเขียนแบบย่อเป็น <code>methodName() { ... }</code> ก็ได้</li>
+<li><strong>คีย์เวิร์ด <code>this</code>:</strong> จำเป็นต้องใช้ <code>this</code> นำหน้าเสมอยามที่ฟังก์ชันต้องการเรียกดูพร็อพเพอร์ตี้อื่นๆ ภายในออบเจ็กต์เดียวกัน (เช่น <code>this.radius</code> หมายถึงค่ารัศมีในออบเจ็กต์ปัจจุบัน)</li>
+<li><strong>ข้อควรระวังเกี่ยวกับ Arrow Function:</strong> หากเขียนเมธอดด้วย Arrow Function <code>this</code> จะชี้ออกไปที่สโคปภายนอกออบเจ็กต์ หากต้องการอ้างอิงคุณสมบัติภายในออบเจ็กต์ ต้องใช้ "ชื่อออบเจ็กต์" ตรงๆ แทนการใช้ <code>this</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let circle = {
+    radius: 10,
+    // แบบฟังก์ชันปกติ
+    getArea: function(pi=3.14) {
+        return pi * (this.radius ** 2); // ใช้ this อ้างถึงพร็อพเพอร์ตี้ในตัวมันเอง
+    },
+    // แบบฟังก์ชันย่อ (Shorthand)
+    getPerimeter(pi=3.14) {
+        return 2 * pi * this.radius;
+    }
+};
+
+console.log(&quot;Area:&quot;, circle.getArea());
+console.log(&quot;Perimeter:&quot;, circle.getPerimeter());
+
+// การเพิ่มเมธอดภายหลังด้วย Arrow Function
+circle.sphereVolume = (pi=3.14) =&gt; {
+    // ห้ามใช้ this.radius เพราะนี่คือ Arrow Function
+    // ต้องอ้างชื่อออบเจ็กต์โดยตรง
+    return (4/3) * pi * (circle.radius ** 3); 
+};
+console.log(&quot;Volume:&quot;, circle.sphereVolume());
+</code></pre>
+<hr />
+<h2 id="11-json-javascript-object-notation">11. ออบเจ็กต์แบบ JSON (JavaScript Object Notation)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> JSON คือรูปแบบข้อความสตริงมาตรฐานสากล (Text-based Data Format) ที่ใช้แลกเปลี่ยนข้อมูลข้ามระบบปฏิบัติการและภาษาคอมพิวเตอร์ที่ต่างกัน โดยมีโครงสร้างเลียนแบบคู่ Key/Value ของจาวาสคริปต์</li>
+<li><strong>กฎเกณฑ์ที่เข้มงวดของ JSON:</strong><ul>
+<li><strong>คีย์และสตริงข้อมูล:</strong> ต้องถูกครอบด้วยเครื่องหมายอัญประกาศคู่ (<code>" "</code>) เท่านั้น ห้ามใช้ Single Quote (<code>' '</code>) หรือ Backtick (<code>`</code>) เด็ดขาด</li>
+<li><strong>ข้อมูลที่รองรับ (Value):</strong> สตริง, ตัวเลข, บูลีน, อาร์เรย์, ออบเจ็กต์ และ <code>null</code></li>
+<li><strong>สิ่งต้องห้าม:</strong> ห้ามมีฟังก์ชัน (Method), ห้ามใช้ค่า <code>undefined</code>, ห้ามใช้ค่า <code>NaN</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_12">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// สตริง JSON ที่ถูกต้องตามหลักการ 
+// (สังเกตเครื่องหมาย &quot; &quot; รอบคีย์และข้อมูลสตริง)
+let jsonStr = '{ &quot;name&quot;: &quot;Product 1&quot;, &quot;price&quot;: 500, &quot;inStock&quot;: true, &quot;images&quot;: [&quot;pic1.jpg&quot;, &quot;pic2.jpg&quot;] }';
+
+// แปลง JSON สตริงไปใช้งานในฐานะ JS Object
+let productObj = JSON.parse(jsonStr);
+console.log(&quot;ชื่อสินค้าจาก JSON:&quot;, productObj.name);
+console.log(&quot;รูปแรก:&quot;, productObj.images[0]);
+</code></pre>
+<hr />
+<h2 id="12-object-json">12. การแปลงข้อมูลระหว่าง Object และ JSON</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> จาวาสคริปต์มีเครื่องมือสำเร็จรูปสำหรับแปลงข้อมูลกลับไปกลับมาระหว่างออบเจ็กต์ในหน่วยความจำ กับข้อมูลประเภทสตริง JSON คือ <code>JSON.stringify()</code> และ <code>JSON.parse()</code></li>
+</ul>
+<p><img alt="การแปลงข้อมูลด้วย JSON.stringify และ JSON.parse" src="../js_json_conversion.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่ง (Method)</th>
+<th style="text-align: left;">หน้าที่การทำงาน</th>
+<th style="text-align: left;">ข้อสังเกตเมื่อใช้งาน</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>JSON.stringify(object)</strong></td>
+<td style="text-align: left;">แปลงจาก Object ให้กลายเป็นสตริง JSON</td>
+<td style="text-align: left;">พร็อพเพอร์ตี้ที่ไม่ตรงตามกฎ (ฟังก์ชัน หรือ <code>undefined</code>) จะถูก <strong>ตัดทิ้ง</strong> อัตโนมัติ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>JSON.parse(jsonString)</strong></td>
+<td style="text-align: left;">แปลงสตริง JSON ให้กลับมาเป็นออบเจ็กต์</td>
+<td style="text-align: left;">สตริงต้นทางจะต้องถูกต้องตามหลักไวยากรณ์ JSON ทุกประการ มิฉะนั้นจะเกิด Error</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// สร้าง JS Object ที่มีฟังก์ชันและค่า undefined ปะปนอยู่
+let circleObj = {
+    &quot;radius&quot;: 10,
+    &quot;color&quot;: &quot;yellow&quot;,
+    &quot;name&quot;: undefined, // ผิดกฎ JSON (จะถูกตัดทิ้ง)
+    getArea() {        // ผิดกฎ JSON (จะถูกตัดทิ้ง)
+        return 3.14 * (this.radius ** 2);
+    }
+};
+
+// 1. แปลง Object -&gt; JSON String
+let circleJsonStr = JSON.stringify(circleObj);
+console.log(&quot;JSON Stringที่ได้:&quot;, circleJsonStr); 
+// ผลลัพธ์: '{&quot;radius&quot;:10,&quot;color&quot;:&quot;yellow&quot;}' 
+
+// 2. แปลง JSON String -&gt; Object
+let rawData = '{ &quot;user&quot;: &quot;John&quot;, &quot;score&quot;: 95 }';
+let parsedObject = JSON.parse(rawData);
+console.log(&quot;ผู้ใช้ออบเจ็กต์:&quot;, parsedObject.user, &quot;คะแนน:&quot;, parsedObject.score);
+</code></pre>
+<hr />
+<h2 id="_14">สรุปบทเรียน</h2>
+<p>ข้อมูลในแอปพลิเคชันยุคใหม่แทบทั้งหมดถูกจัดเก็บและประมวลผลผ่านโครงสร้างพื้นฐานสองรูปแบบ คือ อาร์เรย์ ที่เก่งด้านการจัดการข้อมูลเป็นลำดับต่อเนื่อง ผ่านระบบตัวเลขดัชนีพร้อมเมธอดอำนวยความสะดวกมากมาย และ ออบเจ็กต์ ที่เน้นการจัดโครงสร้างเชิงคุณสมบัติและพฤติกรรมผ่านการกำหนด Key/Value และการสร้าง Method การเข้าใจคีย์เวิร์ด this คือหัวใจของการเขียนออบเจ็กต์ให้ทำงานได้สมบูรณ์ และเมื่อระบบต้องเชื่อมต่อกับโลกภายนอก การทำความเข้าใจข้อจำกัดอันเข้มงวดของรูปแบบข้อมูล JSON จะช่วยป้องกันข้อผิดพลาดในการแปลงและส่งผ่านข้อมูลข้ามแพลตฟอร์มได้อย่างราบรื่น</p>
+<hr />
+<h2 id="review-questions">❓ คำถามทบทวน (Review Questions)</h2>
+<p>คลิกที่การ์ดคำถามด้านล่างเพื่อแสดงเฉลยคำตอบของคำถามแต่ละข้อ:</p>
+<ol>
+<li>
+<p><strong>การใช้คำสั่ง new Array(10.5) แตกต่างจาก new Array(10) อย่างไรในแง่ของผลลัพธ์?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       <code>new Array(10)</code> คือการจองขนาดพื้นที่ในหน่วยความจำสำหรับอาร์เรย์จำนวน 10 ช่อง (โดยค่าเริ่มต้นในแต่ละช่องจะเป็น <code>undefined</code>) ในขณะที่ <code>new Array(10.5)</code> จะส่งผลให้ระบบเกิดข้อผิดพลาด <strong>Error (RangeError: Invalid array length)</strong> ทันที เนื่องจากดัชนีขนาดของอาร์เรย์ต้องเป็นเลขจำนวนเต็มเท่านั้น
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>คำสั่ง index in arrayName ใช้สำหรับตรวจสอบสิ่งใด และให้ผลลัพธ์เป็นข้อมูลประเภทใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ใช้สำหรับตรวจสอบว่ามี <strong>"ลำดับดัชนี (Index)"</strong> หรือตำแหน่งช่องนั้นๆ อยู่จริงในอาร์เรย์หรือไม่ โดยให้ผลลัพธ์กลับมาเป็นข้อมูลประเภทบูลีน (<code>true</code> หรือ <code>false</code>)
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ลูป for...in และลูป for...of มีจุดประสงค์การทำงานกับอาร์เรย์แตกต่างกันอย่างไร?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ลูป <code>for...in</code> จะดึง **"เลขตำแหน่งดัชนี (Index)"** ของสมาชิกอาร์เรย์ออกมาทีละตำแหน่ง ในขณะที่ลูป <code>for...of</code> จะดึง **"ค่าข้อมูล (Value)"** ของสมาชิกแต่ละช่องออกมาทำงานโดยตรงเลย
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากต้องการลบข้อมูลออกจากตรงกลางอาร์เรย์ และนำข้อมูลใหม่แทรกลงไปในจุดที่ลบแทน ควรใช้เมธอดใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ควรใช้เมธอด <code>splice(ตำแหน่งเริ่มต้น, จำนวนตัวที่จะลบ, ข้อมูลใหม่ที่จะแทรก, ...)</code>
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>เพราะเหตุใดการเรียงลำดับชุดตัวเลขเช่น [20, 5, 100] ด้วยเมธอด sort() จึงอาจให้ผลลัพธ์ที่ไม่ถูกต้อง?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       เนื่องจากเมธอด <code>sort()</code> โดยค่าเริ่มต้นจะทำการเรียงลำดับสมาชิกในรูปแบบของข้อความ (String/Unicode) ทำให้อักษร 1 นำหน้าอักษร 2 ส่งผลให้เลข 100 มาก่อน 20 (ผลลัพธ์เป็น <code>[100, 20, 5]</code> หรือ <code>[100, 5, 20]</code> ขึ้นกับการเทียบค่าสตริง) หากต้องการเรียงลำดับตัวเลขที่ถูกต้อง จำเป็นต้องส่งฟังก์ชันเปรียบเทียบ (Compare Function) เข้าไปกำกับด้วย
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ในอาร์เรย์ 2 มิติ คำสั่ง array[0].length หมายถึงการตรวจสอบค่าความยาวของสิ่งใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       หมายถึงการตรวจสอบ <strong>จำนวนสมาชิก (จำนวนคอลัมน์)</strong> ที่อยู่ในอาร์เรย์ย่อยแถวที่ 0 (แถวแรก)
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากต้องการเข้าถึงค่าในออบเจ็กต์ แต่ชื่อพร็อพเพอร์ตี้นั้นถูกเก็บอยู่ในตัวแปรชื่อ propKey เราจำเป็นต้องใช้ไวยากรณ์แบบใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ต้องใช้ไวยากรณ์แบบวงเล็บก้ามปู (Bracket Notation) นั่นคือ <code>objectName[propKey]</code> (โดยไม่มีการใส่เครื่องหมายคำพูดครอบตัวแปร)
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>เมื่อเราสร้างเมธอดในออบเจ็กต์ด้วยฟังก์ชันปกติ การใช้คีย์เวิร์ด this ภายในเมธอดนั้นจะหมายถึงสิ่งใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       คีย์เวิร์ด <code>this</code> จะหมายถึง <strong>ตัวออบเจ็กต์ปัจจุบัน (ออบเจ็กต์ที่เป็นเจ้าของเมธอดนั้นๆ)</strong> ช่วยให้เราอ้างอิงและดึงพร็อพเพอร์ตี้อื่นๆ ที่อยู่ในออบเจ็กต์เดียวกันมาใช้งานได้
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>กฎระเบียบข้อใดของออบเจ็กต์แบบ JSON ที่เข้มงวดกว่าการสร้างออบเจ็กต์แบบปกติในจาวาสคริปต์? ยกตัวอย่างมา 3 ข้อ</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ตัวอย่างกฎเหล็ก JSON ที่เข้มงวดกว่า:<br>1. ชื่อคีย์ (Key) ทุกตัวต้องครอบด้วยเครื่องหมายอัญประกาศคู่ (Double Quote <code>"</code>) เท่านั้น ห้ามละเว้นหรือใช้เดี่ยว <code>'</code><br>2. ห้ามมีฟังก์ชัน/เมธอด (Method) เก็บใน JSON โดยเด็ดขาด<br>3. ค่าประเภท <code>undefined</code> และ <code>NaN</code> จะต้องไม่มีอยู่ โดยค่าว่างเปล่าต้องระบุเป็น <code>null</code> แทน
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากใช้คำสั่ง JSON.stringify() กับออบเจ็กต์ที่มีพร็อพเพอร์ตี้เป็นฟังก์ชัน (Method) รวมอยู่ด้วย ผลลัพธ์สุดท้ายที่ได้จะเป็นอย่างไร?</strong>
+    <details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+      <summary>ดูเฉลยคำตอบ</summary>
+      <div class="details-content">
+        ผลลัพธ์ของสตริง JSON จะถูกแปลงออกมาตามปกติ แต่ตัวพร็อพเพอร์ตี้ที่เป็นฟังก์ชัน (Method) และพร็อพเพอร์ตี้ที่มีค่าเป็น <code>undefined</code> จะถูก <strong>ตัดออกทิ้งไปโดยอัตโนมัติ</strong> จากก้อนสตริงผลลัพธ์
+      </div>
+    </details></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e41\u0e25\u0e49\u0e27", "clipboard.copy": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01", "search.result.more.one": "\u0e2d\u0e35\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.more.other": "# \u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.none": "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.one": "\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.other": "\u0e1e\u0e1a # \u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.placeholder": "\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e23\u0e34\u0e48\u0e21\u0e04\u0e49\u0e19\u0e2b\u0e32", "search.result.term.missing": "\u0e44\u0e21\u0e48\u0e1e\u0e1a", "select.version": "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

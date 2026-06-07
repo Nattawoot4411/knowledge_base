@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/arrays_objects/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch1_basics/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/ch1_basics/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch2_variables/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/conditionals/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch3_conditions_loops/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/data_types/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch4_functions/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/extensions/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch5_structures/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/functions/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch6_advanced_data/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/loops/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/ch7_dom_bom/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/setup/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/extensions/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
     <url>
-         <loc>https://Nattawoot4411.github.io/js-vscode-guide/variables/</loc>
-         <lastmod>2026-05-30</lastmod>
+         <loc>https://Nattawoot4411.github.io/knowledge_base/javaScript/setup/</loc>
+         <lastmod>2026-06-07</lastmod>
     </url>
 </urlset>

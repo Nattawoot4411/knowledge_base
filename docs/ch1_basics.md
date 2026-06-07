@@ -20,6 +20,8 @@
 1.  **ผ่านเบราว์เซอร์ (Browser Console):** กดปุ่ม `F12` บนแป้นพิมพ์ขณะใช้งานเว็บเบราว์เซอร์ แล้วเลือกแท็บ **Console** จากนั้นลองพิมพ์คำสั่งทดสอบรันดูได้ทันที
 2.  **ผ่าน Node.js (Terminal):** เป็นแนวทางหลักสำหรับงาน Automation โดยเขียนโค้ดบันทึกลงไฟล์แล้วเปิดหน้าต่าง Command Line/Terminal พิมพ์รันผ่านคำสั่ง `node ชื่อไฟล์.js`
 
+![ช่องทางการรัน JavaScript](js_run_platforms.png)
+
 ---
 
 ## 3. การคอมเมนต์โค้ด และ คำสั่งแสดงผล
@@ -53,10 +55,6 @@
 4. เปิด Terminal ใน VS Code (คลิกเมนู **Terminal > New Terminal**)
 5. พิมพ์คำสั่งรันไฟล์: `node app.js` แล้วกด Enter
 6. ตรวจสอบว่าหน้าจอแสดงคำว่า `Hello Automation World!` ขึ้นมาหรือไม่
-
-<div class="resizable-iframe-container">
-  <iframe src="../playground_embed.html"></iframe>
-</div>
 
 ---
 

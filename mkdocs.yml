@@ -12,15 +12,34 @@ theme:
     - navigation.tabs
     - navigation.sections
     - search.suggest
+    - search.highlight
     - content.code.copy
+
+plugins:
+  - search:
+      lang:
+        - en
+        - th
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
 
 nav:
   - หน้าแรก:
       - "บทเรียน": index.md
       - "บทที่ 1: Introduction": ch1_basics.md
       - "บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์": ch2_variables.md
+      - "บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)": ch3_conditions_loops.md
+      - "บทที่ 4: การสร้างฟังก์ชัน (Functions)": ch4_functions.md
+      - "บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)": ch5_structures.md
+      - "บทที่ 6: การประมวลผลข้อมูลขั้นสูง (Advanced Data)": ch6_advanced_data.md
+      - "บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)": ch7_dom_bom.md
   - "การติดตั้งโปรแกรม vs code, nodejs": setup.md
   - "extension ที่ต้องติดตั้งเพิ่ม": extensions.md
