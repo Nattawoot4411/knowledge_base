@@ -75,7 +75,7 @@
     <div id="terminalResizeHandle" class="h-[5px] bg-[#282c34] hover:bg-[#ffd600] cursor-ns-resize transition-colors w-full z-10"></div>
 
     <!-- Output Console (Integrated terminal style matching One Dark Theme) -->
-    <div id="terminalContainer" class="h-[150px] bg-[#181a1f] flex flex-col overflow-hidden">
+    <div id="terminalContainer" class="h-1/2 md:h-[150px] bg-[#181a1f] flex flex-col overflow-hidden">
       <div class="bg-[#21252b] px-4 py-1.5 border-b border-[#181a1f] text-[10px] text-[#9da5b4] font-bold uppercase tracking-wider select-none font-mono flex items-center justify-between">
         <div class="flex items-center space-x-3">
           <span>Terminal</span>
@@ -258,15 +258,22 @@
     const termContainer = document.getElementById("terminalContainer");
     let isTermResizing = false;
 
-    termResizeHandle.addEventListener("mousedown", function(e) {
+    function startResize(e) {
       isTermResizing = true;
       document.body.style.userSelect = "none";
       document.body.style.cursor = "ns-resize";
-    });
+    }
 
-    document.addEventListener("mousemove", function(e) {
+    function doResize(e) {
       if (!isTermResizing) return;
-      const height = window.innerHeight - e.clientY;
+      
+      // Handle both mouse and touch events
+      let clientY = e.clientY;
+      if (e.type === 'touchmove') {
+        clientY = e.touches[0].clientY;
+      }
+      
+      const height = window.innerHeight - clientY;
       // Limit terminal height between 50px and 80% of window height
       if (height > 50 && height < window.innerHeight * 0.8) {
         termContainer.style.height = height + "px";
@@ -274,15 +281,34 @@
           editor.layout();
         }
       }
-    });
+    }
 
-    document.addEventListener("mouseup", function() {
+    function stopResize(e) {
       if (isTermResizing) {
         isTermResizing = false;
         document.body.style.userSelect = "";
         document.body.style.cursor = "";
       }
-    });
+    }
+
+    // Mouse events
+    termResizeHandle.addEventListener("mousedown", startResize);
+    document.addEventListener("mousemove", doResize);
+    document.addEventListener("mouseup", stopResize);
+
+    // Touch events for mobile
+    termResizeHandle.addEventListener("touchstart", function(e) {
+      startResize(e);
+    }, { passive: false });
+    
+    document.addEventListener("touchmove", function(e) {
+      if (isTermResizing) {
+        e.preventDefault(); // Prevent scrolling while resizing
+        doResize(e);
+      }
+    }, { passive: false });
+    
+    document.addEventListener("touchend", stopResize);
 
     // Listen for code load messages from the parent page
     window.addEventListener('message', function(event) {
