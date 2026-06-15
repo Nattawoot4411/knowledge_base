@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Playground</title>
+  <!-- Material Icons & Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar to match VS Code dark theme */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #181a1f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3e4451;
+      border: 2px solid #181a1f;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4b5263;
+    }
+  </style>
+</head>
+<body class="bg-[#181a1f] text-[#abb2bf] font-sans h-screen flex flex-col m-0 p-0 overflow-hidden border border-[#282c34] rounded-lg">
+
+  <!-- Header / Toolbar (VS Code Tab/Header Style matching the user's screenshot) -->
+  <div class="bg-[#21252b] px-4 py-2 border-b border-[#181a1f] flex justify-between items-center select-none">
+    <div class="flex items-center space-x-2">
+      <span class="material-symbols-outlined text-[#ffd600] text-[16px]">draft</span>
+      <span class="text-xs font-medium tracking-wide text-[#9da5b4] font-mono">test.js</span>
+    </div>
+    <div class="flex items-center space-x-2">
+      <!-- Font resize controls -->
+      <div class="flex items-center bg-[#1e2227] rounded border border-[#3e4451] overflow-hidden mr-2">
+        <button id="decFontBtn" title="ลดขนาดตัวอักษร" class="px-2.5 py-1 text-xs font-semibold text-[#abb2bf] hover:bg-[#3e4451] hover:text-[#ffffff] transition-colors border-r border-[#3e4451]">-A</button>
+        <button id="incFontBtn" title="เพิ่มขนาดตัวอักษร" class="px-2.5 py-1 text-xs font-semibold text-[#abb2bf] hover:bg-[#3e4451] hover:text-[#ffffff] transition-colors">+A</button>
+      </div>
+      <button id="clearBtn" class="flex items-center space-x-1.5 bg-red-500/10 hover:bg-red-500/25 border border-red-500/40 text-red-400 px-3.5 py-1 rounded text-xs font-bold transition-all shadow-md active:scale-95 mr-1">
+        <span class="material-symbols-outlined text-[14px]">delete</span>
+        <span>Clear</span>
+      </button>
+      <button id="runBtn" class="flex items-center space-x-1.5 bg-[#ffd600]/10 hover:bg-[#ffd600]/25 border border-[#ffd600]/40 text-[#ffd600] px-3.5 py-1 rounded text-xs font-bold transition-all shadow-md active:scale-95">
+        <span class="material-symbols-outlined text-[14px]">play_arrow</span>
+        <span>Run JS</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Content Splitter -->
+  <div class="flex-1 flex flex-col overflow-hidden bg-[#181a1f]">
+    <!-- Editor Container -->
+    <div class="flex-1 relative overflow-hidden bg-[#181a1f]">
+      <div id="editorContainer" class="absolute inset-0 w-full h-full"></div>
+    </div>
+
+    <!-- Resize Handle -->
+    <div id="terminalResizeHandle" class="h-[5px] bg-[#282c34] hover:bg-[#ffd600] cursor-ns-resize transition-colors w-full z-10"></div>
+
+    <!-- Output Console (Integrated terminal style matching One Dark Theme) -->
+    <div id="terminalContainer" class="h-[150px] bg-[#181a1f] flex flex-col overflow-hidden">
+      <div class="bg-[#21252b] px-4 py-1.5 border-b border-[#181a1f] text-[10px] text-[#9da5b4] font-bold uppercase tracking-wider select-none font-mono flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span>Terminal</span>
+          <!-- Font resize controls for Terminal -->
+          <div class="flex items-center bg-[#1e2227] rounded border border-[#3e4451] overflow-hidden normal-case ml-2">
+            <button id="decTermFontBtn" title="ลดขนาดตัวอักษร Terminal" class="px-2.5 py-0.5 text-[11px] font-semibold text-[#abb2bf] hover:bg-[#3e4451] hover:text-[#ffffff] transition-colors border-r border-[#3e4451]">-A</button>
+            <button id="incTermFontBtn" title="เพิ่มขนาดตัวอักษร Terminal" class="px-2.5 py-0.5 text-[11px] font-semibold text-[#abb2bf] hover:bg-[#3e4451] hover:text-[#ffffff] transition-colors">+A</button>
+          </div>
+        </div>
+        <span class="text-[#ffd600] lowercase text-[9px] font-normal">node test.js</span>
+      </div>
+      <div id="consoleOutput" class="flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-[#abb2bf] bg-[#181a1f]">
+        &gt; คลิก Run JS เพื่อรันคำสั่ง...
+      </div>
+    </div>
+  </div>
+
+  <!-- Monaco Editor loader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+  <script>
+    // Setup Monaco AMD path
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs' }});
+
+    let editor;
+
+    // Load editor
+    require(['vs/editor/editor.main'], function() {
+      // Decode initial code from URL hash
+      let initialCode = '';
+      try {
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        if (hashParams.has('code')) {
+          initialCode = decodeURIComponent(hashParams.get('code'));
+        } else if (window.location.search) {
+          // Fallback to query param
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has('code')) {
+            initialCode = urlParams.get('code');
+          }
+        }
+      } catch (e) {
+        console.error("Failed to decode code param", e);
+      }
+
+      // Defining a custom theme that matches the One Dark / VS Code styling in the user screenshot
+      monaco.editor.defineTheme('customOneDark', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [
+          { token: 'keyword', foreground: 'e06c75' }, // e.g. let, const
+          { token: 'identifier', foreground: 'e5c07b' }, // e.g. console
+          { token: 'delimiter', foreground: 'abb2bf' },
+          { token: 'string', foreground: '98c379' }, // Green for "Hello Automation World!"
+          { token: 'number', foreground: 'd19a66' },
+          { token: 'comment', foreground: '5c6370', fontStyle: 'italic' }
+        ],
+        colors: {
+          'editor.background': '#181a1f', // Match background color from screenshot
+          'editor.foreground': '#abb2bf',
+          'editorCursor.foreground': '#528bff',
+          'editor.lineHighlightBackground': '#2c313c',
+          'editorLineNumber.foreground': '#4b5263',
+          'editorLineNumber.activeForeground': '#c8ccd4',
+          'editor.selectionBackground': '#3e4451'
+        }
+      });
+
+      editor = monaco.editor.create(document.getElementById('editorContainer'), {
+        value: initialCode,
+        language: 'javascript',
+        theme: 'customOneDark',
+        minimap: { enabled: false },
+        fontSize: 15,
+        fontFamily: "'JetBrains Mono', monospace",
+        scrollBeyondLastLine: false,
+        padding: { top: 16 },
+        automaticLayout: true
+      });
+    });
+
+    // Run Code Logic
+    document.getElementById('runBtn').addEventListener('click', function() {
+      if (!editor) return;
+
+      const rawCode = editor.getValue();
+      const code = rawCode.trim();
+      const consoleOutput = document.getElementById('consoleOutput');
+      consoleOutput.innerHTML = ''; // Clear previous outputs
+
+      // Intercept Command Line Shell Commands
+      const trimmedLower = code.toLowerCase();
+      if (trimmedLower.startsWith('npm ') || 
+          trimmedLower.startsWith('npm.cmd') || 
+          trimmedLower.startsWith('node ') || 
+          trimmedLower.startsWith('git ') || 
+          trimmedLower.startsWith('npx ') ||
+          trimmedLower.startsWith('cd ')) {
+        consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-[#ffd600] bg-[#181a1f]";
+        consoleOutput.textContent = '⚠️ คำแนะนำสำหรับผู้เรียน:\nคำสั่ง Command Line (เช่น npm, node, git, npx, cd) เป็นคำสั่งสำหรับพิมพ์รันบน Terminal/Command Prompt ในเครื่องของคุณเอง (เช่น ในโปรแกรม VS Code)\n\n👉 ไม่สามารถนำมาเขียนและรันในกล่องทดสอบ JavaScript (Playground) นี้ได้โดยตรง\n\nโปรดเปิด Terminal ในเครื่องของคุณและรันคำสั่งเหล่านี้ตามขั้นตอนของบทเรียนครับ';
+        return;
+      }
+
+      let logs = [];
+      const originalLog = console.log;
+
+      // Intercept console.log
+      console.log = function(...args) {
+        logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+        originalLog.apply(console, args);
+      };
+
+      try {
+        // Create an isolated sandbox environment via standard Function block
+        new Function(rawCode)();
+        
+        if (logs.length > 0) {
+          consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-[#ffffff] bg-[#181a1f]";
+          consoleOutput.textContent = logs.join('\n');
+        } else {
+          consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-[#5c6370] bg-[#181a1f]";
+          consoleOutput.textContent = '(Executed successfully with no terminal output)';
+        }
+      } catch (err) {
+        consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-[#e06c75] bg-[#181a1f]";
+        consoleOutput.textContent = 'Error: ' + err.message;
+      }
+
+      // Restore original log
+      console.log = originalLog;
+    });
+
+    // Font Size Adjustment Logic
+    let currentFontSize = 15;
+    document.getElementById('incFontBtn').addEventListener('click', function() {
+      if (!editor) return;
+      if (currentFontSize < 30) {
+        currentFontSize += 1;
+        editor.updateOptions({ fontSize: currentFontSize });
+      }
+    });
+    document.getElementById('decFontBtn').addEventListener('click', function() {
+      if (!editor) return;
+      if (currentFontSize > 10) {
+        currentFontSize -= 1;
+        editor.updateOptions({ fontSize: currentFontSize });
+      }
+    });
+
+    // Terminal Font Size Adjustment Logic
+    let currentTermFontSize = 12;
+    document.getElementById('incTermFontBtn').addEventListener('click', function() {
+      const consoleOutput = document.getElementById('consoleOutput');
+      if (currentTermFontSize < 24) {
+        currentTermFontSize += 1;
+        consoleOutput.style.fontSize = currentTermFontSize + "px";
+      }
+    });
+    document.getElementById('decTermFontBtn').addEventListener('click', function() {
+      const consoleOutput = document.getElementById('consoleOutput');
+      if (currentTermFontSize > 9) {
+        currentTermFontSize -= 1;
+        consoleOutput.style.fontSize = currentTermFontSize + "px";
+      }
+    });
+
+    // Clear Code Logic
+    document.getElementById('clearBtn').addEventListener('click', function() {
+      if (editor) {
+        editor.setValue('');
+        const consoleOutput = document.getElementById('consoleOutput');
+        if (consoleOutput) {
+          consoleOutput.innerHTML = '&gt; คลิก Run JS เพื่อรันคำสั่ง...';
+          consoleOutput.className = "flex-1 p-4 font-mono text-xs overflow-y-auto whitespace-pre-wrap leading-relaxed select-text text-[#abb2bf] bg-[#181a1f]";
+        }
+      }
+    });
+
+    // Terminal height resize logic
+    const termResizeHandle = document.getElementById("terminalResizeHandle");
+    const termContainer = document.getElementById("terminalContainer");
+    let isTermResizing = false;
+
+    termResizeHandle.addEventListener("mousedown", function(e) {
+      isTermResizing = true;
+      document.body.style.userSelect = "none";
+      document.body.style.cursor = "ns-resize";
+    });
+
+    document.addEventListener("mousemove", function(e) {
+      if (!isTermResizing) return;
+      const height = window.innerHeight - e.clientY;
+      // Limit terminal height between 50px and 80% of window height
+      if (height > 50 && height < window.innerHeight * 0.8) {
+        termContainer.style.height = height + "px";
+        if (editor) {
+          editor.layout();
+        }
+      }
+    });
+
+    document.addEventListener("mouseup", function() {
+      if (isTermResizing) {
+        isTermResizing = false;
+        document.body.style.userSelect = "";
+        document.body.style.cursor = "";
+      }
+    });
+
+    // Listen for code load messages from the parent page
+    window.addEventListener('message', function(event) {
+      if (event.data && event.data.type === 'LOAD_CODE') {
+        if (editor) {
+          editor.setValue(event.data.code);
+        } else {
+          let checkInterval = setInterval(function() {
+            if (editor) {
+              editor.setValue(event.data.code);
+              clearInterval(checkInterval);
+            }
+          }, 50);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

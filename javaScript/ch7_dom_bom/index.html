@@ -1,0 +1,1736 @@
+
+<!doctype html>
+<html lang="th" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Nattawoot4411.github.io/knowledge_base/javaScript/ch7_dom_bom/">
+      
+      
+        <link rel="prev" href="../ch6_advanced_data/">
+      
+      
+        <link rel="next" href="../setup/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM) - Javascript & Visual Studio Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="yellow" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-dom-bom" class="md-skip">
+          ข้ามไปที่เนื้อหา
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="หัวข้อ">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-header__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Javascript & Visual Studio Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="ค้นหา" placeholder="ค้นหา" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="ค้นหา">
+        
+        <button type="reset" class="md-search__icon md-icon" title="ล้าง" aria-label="ล้าง" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            กำลังเริ่มต้นการค้นหา
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="แท็บ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  หน้าแรก
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  การติดตั้งโปรแกรม vs code, nodejs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../extensions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  extension ที่ต้องติดตั้งเพิ่ม
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ตัวนำทาง" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-nav__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Javascript & Visual Studio Code
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    หน้าแรก
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    หน้าแรก
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทเรียน
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2_variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3_conditions_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 4: การสร้างฟังก์ชัน (Functions)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6_advanced_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 6: การประมวลผลข้อมูลขั้นสูง (Advanced Data)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dom-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ความสัมพันธ์ระหว่างผู้ใช้, เบราว์เซอร์, DOM และ BOM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. การเตรียมสภาพแวดล้อมการเขียนสคริปต์บนเว็บเพจ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-output-dialog-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การรับส่งข้อมูลและการรับมือกับผู้ใช้งาน (Output &amp; Dialog Boxes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dom-dom-selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. โครงสร้างและการสืบค้น DOM (DOM Selectors)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-content-attribute-manipulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. การจัดการเนื้อหาและแอตทริบิวต์ (Content &amp; Attribute Manipulations)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-css-css-styles-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การควบคุมรูปแบบ CSS และจัดการคลาสสไตล์ (CSS Styles &amp; Classes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dynamic-dom-node-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. การสร้างและปรับผังตำแหน่งอิลิเมนต์แบบไดนามิก (Dynamic DOM Node Operations)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. การควบคุมและดึงข้อมูลสภาพแวดล้อมหน้าเว็บเบราว์เซอร์ (BOM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    การติดตั้งโปรแกรม vs code, nodejs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    extension ที่ต้องติดตั้งเพิ่ม
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dom-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ความสัมพันธ์ระหว่างผู้ใช้, เบราว์เซอร์, DOM และ BOM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. การเตรียมสภาพแวดล้อมการเขียนสคริปต์บนเว็บเพจ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-output-dialog-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การรับส่งข้อมูลและการรับมือกับผู้ใช้งาน (Output &amp; Dialog Boxes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dom-dom-selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. โครงสร้างและการสืบค้น DOM (DOM Selectors)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-content-attribute-manipulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. การจัดการเนื้อหาและแอตทริบิวต์ (Content &amp; Attribute Manipulations)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-css-css-styles-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การควบคุมรูปแบบ CSS และจัดการคลาสสไตล์ (CSS Styles &amp; Classes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dynamic-dom-node-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. การสร้างและปรับผังตำแหน่งอิลิเมนต์แบบไดนามิก (Dynamic DOM Node Operations)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. การควบคุมและดึงข้อมูลสภาพแวดล้อมหน้าเว็บเบราว์เซอร์ (BOM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-dom-bom">บทที่ 7: การสร้างเว็บเพจเชิงตอบสนองและการประมวลผลผ่าน DOM และ BOM</h1>
+<p>บทนำในการพัฒนาเว็บแอปพลิเคชันฝั่งผู้ใช้งาน (Client-Side Web Development) ภาษา JavaScript ไม่ได้ทำหน้าที่เพียงแค่ประมวลผลตรรกะหรือเก็บข้อมูลในตัวแปรเท่านั้น แต่หัวใจสำคัญคือการเข้าไปควบคุม โต้ตอบ และเปลี่ยนแปลงส่วนประกอบต่างๆ บนหน้าเว็บเพจแบบเรียลไทม์ บทนี้จะนำพานักพัฒนาเปลี่ยนผ่านจากระบบหลังบ้านอย่าง Node.js เข้าสู่การรันจาวาสคริปต์บนเว็บเบราว์เซอร์อย่างเต็มรูปแบบ ผ่านการศึกษาเครื่องมือทรงประสิทธิภาพ 2 ตัวหลัก คือ Document Object Model (DOM) ซึ่งทำหน้าที่เป็นตัวแทนโครงสร้างวัตถุของเอกสาร HTML และ Browser Object Model (BOM) ซึ่งทำหน้าที่ควบคุมคุณลักษณะภายนอกและหน้าต่างของโปรแกรมเบราว์เซอร์ การเข้าใจกระบวนการทำงานเหล่านี้เป็นกุญแจสำคัญในการเนรมิตเว็บเพจธรรมดาให้กลายเป็นแอปพลิเคชันที่ตอบสนองอย่างชาญฉลาด</p>
+<hr />
+<h2 id="_1">จุดประสงค์การเรียนรู้</h2>
+<p>เมื่อศึกษาบทเรียนนี้จบแล้ว ผู้เรียนควรมีความสามารถดังนี้:
+*   สามารถติดตั้งสภาพแวดล้อมและทดสอบโค้ดบนเบราว์เซอร์ผ่านระบบ Live Server บน VS Code ได้อย่างถูกต้อง
+*   เข้าใจสถาปัตยกรรมและโครงสร้างลำดับชั้นของ Document Object Model (DOM)
+*   ใช้งานตัวเลือกสืบค้น (DOM Selectors) ทั้งรูปแบบระบุพิกัดตรงตัวและรูปแบบประยุกต์ใช้ลวดลาย CSS ได้อย่างชำนาญ
+*   สามารถปรับเปลี่ยนเนื้อหา (Content), แอตทริบิวต์ (Attributes), และรูปแบบสไตล์ (CSS Styles &amp; Classes) ของอิลิเมนต์ HTML แบบไดนามิก
+*   มีทักษะการเพิ่ม ลบ แทรก และแทนที่อิลิเมนต์บนหน้าเว็บผ่านคำสั่งควบคุม Dynamic DOM Nodes
+*   เข้าใจหลักการและสามารถเรียกใช้ Browser Object Model (BOM) ในการจัดการหน้าต่าง ประวัติการท่องเว็บ และพิกัดตำแหน่ง URL</p>
+<hr />
+<h2 id="dom-bom">ความสัมพันธ์ระหว่างผู้ใช้, เบราว์เซอร์, DOM และ BOM</h2>
+<p>อินโฟกราฟิกด้านล่างแสดงโครงสร้างการเชื่อมโยงการทำงานเมื่อ JavaScript รันบนเว็บเบราว์เซอร์ โดยมี BOM ทำหน้าที่ควบคุมตัวแอปพลิเคชันเบราว์เซอร์ทั้งหมด และมี DOM (ภายใต้ออบเจกต์ <code>document</code>) ทำหน้าที่ควบคุมโครงสร้างเนื้อหาของเว็บเพจภายในหน้าต่างนั้น:</p>
+<p><img alt="ความสัมพันธ์ระหว่าง BOM และ DOM" src="dom_bom_infographic.png" /></p>
+<hr />
+<h2 id="1">1. การเตรียมสภาพแวดล้อมการเขียนสคริปต์บนเว็บเพจ</h2>
+<p>เบราว์เซอร์สมัยใหม่ทำงานในลักษณะผู้ตีความคำสั่ง (Interpreter) โดยจะประมวลผลไฟล์ HTML และแปลคำสั่งในแท็ก <code>&lt;script&gt;</code> ออกแสดงผลหน้าจอ การพัฒนาในยุคนี้สามารถจำลองเซิร์ฟเวอร์ท้องถิ่นขึ้นมาด้วย <strong>Live Server</strong> บน Visual Studio Code เพื่อเพิ่มความเร็วในการทดสอบระบบ</p>
+<h3 id="live-server-vs-code">การติดตั้งและใช้งาน Live Server บน VS Code</h3>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>ขั้นตอนการติดตั้ง Live Server สำหรับผู้เรียน:</strong></p>
+<ol>
+<li>เปิดโปรแกรม <strong>VS Code</strong> แล้วคลิกที่ไอคอน <strong>Extensions</strong> (หรือกดปุ่ม <code>Ctrl+Shift+X</code> บน Windows)</li>
+<li>ในช่องค้นหา ให้พิมพ์คำว่า <code>Live Server</code> (พัฒนาโดย <em>Ritwick Dey</em>) แล้วกดปุ่ม <strong>Install</strong></li>
+<li>เมื่อติดตั้งเสร็จ ให้คลิกเปิดโฟลเดอร์งานของคุณใน VS Code</li>
+<li>สร้างไฟล์ HTML (เช่น <code>index.html</code>) จากนั้นคลิกขวาที่ไฟล์แล้วเลือก <strong>Open with Live Server</strong> (หรือคลิกปุ่ม <strong>Go Live</strong> ที่มุมขวาล่างของหน้าต่างโปรแกรม)</li>
+<li>เบราว์เซอร์จะเปิดหน้าเว็บจำลองผ่านที่อยู่ <code>http://127.0.5.1:5500/</code> ขึ้นมาให้โดยอัตโนมัติ และจะทำการรีเฟรชหน้าเว็บให้ทันทีเมื่อคุณทำการแก้ไขและบันทึกโค้ด</li>
+</ol>
+</blockquote>
+<p><img alt="คู่มือการติดตั้ง Live Server บน VS Code" src="vscode-live-server-statusbar.jpg" /></p>
+<blockquote>
+<p><strong>ภาพเคลื่อนไหวสาธิตผลลัพธ์การทำงานของ Live Server (Live Reload):</strong></p>
+<p><img alt="สาธิตผลลัพธ์การทำงานของ Live Server" src="../vscode-live-server-demo.gif" /></p>
+</blockquote>
+<h3 id="script">หลักการสำคัญในการประกาศใช้แท็ก <code>&lt;script&gt;</code></h3>
+<ul>
+<li><strong>การจัดกลุ่มความรู้ข้ามบล็อก (Global Shared Scope):</strong> ตัวแปรหรือฟังก์ชันที่สร้างขึ้นในแท็ก <code>&lt;script&gt;</code> ตัวแรก (เช่น ในส่วน <code>&lt;head&gt;</code>) จะสามารถถูกนำมาเรียกใช้และคำนวณร่วมกับคำสั่งในแท็ก <code>&lt;script&gt;</code> ตัวถัดๆ ไป (เช่น ในส่วน <code>&lt;body&gt;</code>) ได้อย่างไร้รอยต่อ</li>
+<li><strong>สคริปต์ภายนอก (External JavaScript):</strong> การประกาศใช้แอตทริบิวต์ <code>src</code> ในแท็ก <code>&lt;script&gt;</code> เพื่อโหลดไฟล์สกุล <code>.js</code> ที่แยกสัดส่วนการเขียนตรรกะต่างหาก ช่วยให้โค้ดสะอาดตาและง่ายต่อการใช้ร่วมกันหลายๆ หน้าเพจ</li>
+</ul>
+<h3 id="_2">ตารางเปรียบเทียบลักษณะการจัดวางจาวาสคริปต์บนเว็บเพจ</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ลักษณะการจัดวาง</th>
+<th style="text-align: left;">รูปแบบไวยากรณ์</th>
+<th style="text-align: left;">จุดประสงค์และข้อดี</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Inline (ในบรรทัด)</strong></td>
+<td style="text-align: left;"><code>&lt;button onclick="alert('OK')"&gt;</code></td>
+<td style="text-align: left;">ใช้ตอบสนองเหตุการณ์กระชับ รวดเร็วบนอิลิเมนต์เฉพาะตัว</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Internal (ภายในหน้า)</strong></td>
+<td style="text-align: left;"><code>&lt;script&gt; let x = 10; &lt;/script&gt;</code></td>
+<td style="text-align: left;">เขียนเพื่อควบคุมโครงสร้างทั้งหมดของหน้าเว็บนั้นหน้าเดียว</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>External (ไฟล์ภายนอก)</strong></td>
+<td style="text-align: left;"><code>&lt;script src="assets/app.js"&gt;&lt;/script&gt;</code></td>
+<td style="text-align: left;">แยกไฟล์โค้ด มีระบบ Cache โหลดเร็ว ใช้ร่วมกันได้หลายเว็บเพจ</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับการรันตัวอย่างในส่วนนี้:</strong> เนื่องจากโค้ดต่อไปนี้เป็นโครงสร้างเว็บเพจ HTML สมบูรณ์ จึงไม่มีปุ่ม <em>Try It</em> ให้รันบนระบบเว็บนี้ แนะนำให้ผู้เรียนสร้างไฟล์ HTML ใน <strong>VS Code</strong> และทดสอบรันด้วย <strong>Live Server</strong> เพื่อดูการทำงานจริง</p>
+</blockquote>
+<h3 id="html">ตัวอย่างประกอบ: การแชร์ค่าตัวแปรข้ามบล็อกสคริปต์ใน HTML</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;th&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;แชร์ขอบเขตตัวแปร Global&lt;/title&gt;
+    &lt;!-- บล็อกที่ 1: ประกาศกำหนดค่าตั้งต้น --&gt;
+    &lt;script&gt;
+        const TAX_RATE = 0.07;
+        let productPrice = 2500;
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h3&gt;ประมวลผลภาษีมูลค่าเพิ่ม&lt;/h3&gt;
+    &lt;!-- บล็อกที่ 2: นำค่าที่ประกาศไว้ด้านบนมาคำนวณและแสดงผลออกหน้าจอ --&gt;
+    &lt;script&gt;
+        let vatAmount = productPrice * TAX_RATE;
+        let finalPrice = productPrice + vatAmount;
+
+        document.write(&quot;ราคาสินค้าเริ่มต้น: &quot; + productPrice + &quot; บาท&lt;br&gt;&quot;);
+        document.write(&quot;ภาษีมูลค่าเพิ่ม (7%): &quot; + vatAmount + &quot; บาท&lt;br&gt;&quot;);
+        document.write(&quot;&lt;strong&gt;ราคาสุทธิที่ต้องชำระ: &quot; + finalPrice + &quot; บาท&lt;/strong&gt;&quot;);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<hr />
+<h2 id="2-output-dialog-boxes">2. การรับส่งข้อมูลและการรับมือกับผู้ใช้งาน (Output &amp; Dialog Boxes)</h2>
+<p>JavaScript บนเบราว์เซอร์เตรียมกลไกการติดต่อกับผู้ใช้แบบเรียลไทม์ไว้ โดยมีความสามารถในการรับส่งข้อมูลผ่านกล่องไดอะล็อก และการพิมพ์ข้อความโครงสร้างเอกสารลงบนหน้าเว็บโดยตรงผ่านคำสั่ง <code>document.write()</code></p>
+<h3 id="dialog-boxes-3">แผนผังผลลัพธ์การทำงานของ Dialog Boxes ทั้ง 3 รูปแบบ</h3>
+<p><img alt="ผังผลลัพธ์การทำงานของ Dialog Boxes" src="js_dialog_boxes_infographic.png" /></p>
+<h3 id="_3">ตารางเปรียบเทียบไดอะล็อกสื่อสารกับผู้ใช้งาน</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่งระบบ</th>
+<th style="text-align: left;">พารามิเตอร์ที่รองรับ</th>
+<th style="text-align: left;">ชนิดข้อมูลส่งกลับ (Return Value)</th>
+<th style="text-align: left;">สถานการณ์ใช้งานที่เหมาะสม</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>alert(msg)</code></strong></td>
+<td style="text-align: left;">สตริงแจ้งเตือน</td>
+<td style="text-align: left;">ไม่มีค่าคืนกลับ (<code>undefined</code>)</td>
+<td style="text-align: left;">การแจ้งเหตุเตือนข้อผิดพลาดหรือยืนยันความสำเร็จ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>prompt(q, default)</code></strong></td>
+<td style="text-align: left;">คำถาม, ค่าเริ่มต้นในช่องกรอก</td>
+<td style="text-align: left;">สตริงข้อมูลที่พิมพ์เข้ามา (หรือได้ <code>null</code> หากกดยกเลิก)</td>
+<td style="text-align: left;">การรับอินพุตเบื้องต้นจากผู้ใช้โดยไม่ต้องสร้างฟอร์ม</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>confirm(msg)</code></strong></td>
+<td style="text-align: left;">คำถามยืนยันการตัดสินใจ</td>
+<td style="text-align: left;">ค่าบูลีน (<code>true</code> หรือ <code>false</code>)</td>
+<td style="text-align: left;">การสอบถามสิทธิ์ความสมัครใจ เช่น ก่อนลบข้อมูล</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับผู้เรียน:</strong> เนื่องจากคำสั่งโต้ตอบทางหน้าต่างเบราว์เซอร์ (Dialog Boxes) ต้องการเบราว์เซอร์จริงในการเรนเดอร์กล่องป๊อปอัป โค้ดด้านล่างนี้จึงเหมาะสำหรับคัดลอกไปรันบนไฟล์สคริปต์ที่เชื่อมต่อกับไฟล์ HTML ในเครื่องและเปิดผ่าน Live Server</p>
+</blockquote>
+<h3 id="_4">ตัวอย่างประกอบ: การคำนวณและตอบสนองผ่านไดอะล็อก</h3>
+<pre><code class="language-javascript">// สอบถามเพื่อเพิ่มระดับความมั่นใจของผู้ใช้
+let allowProcess = confirm(&quot;คุณต้องการเริ่มต้นคำนวณภาษีสะสมประจำปีใช่หรือไม่?&quot;);
+
+if (allowProcess) {
+    let incomeInput = prompt(&quot;กรุณากรอกยอดเงินได้สุทธิของคุณ (บาท):&quot;, &quot;300000&quot;);
+
+    // ตรวจสอบกรณีที่กดยกเลิก หรือไม่ระบุข้อมูล
+    if (incomeInput !== null &amp;&amp; incomeInput.trim() !== &quot;&quot;) {
+        let income = parseFloat(incomeInput);
+        let tax = income * 0.05; // สมมติอัตราภาษี 5%
+
+        alert(&quot;คำนวณเรียบร้อย!\nคุณมียอดภาษีสะสมที่ต้องชำระ: &quot; + tax + &quot; บาท&quot;);
+    } else {
+        alert(&quot;คุณไม่ได้กรอกตัวเลข หรือกดยกเลิกการทำงาน&quot;);
+    }
+} else {
+    console.log(&quot;ผู้ใช้ปฏิเสธการประมวลผลระบบ&quot;);
+}
+</code></pre>
+<hr />
+<h2 id="3-dom-dom-selectors">3. โครงสร้างและการสืบค้น DOM (DOM Selectors)</h2>
+<p>เบราว์เซอร์จะแปลงเนื้อหาของหน้าเว็บ HTML ให้กลายเป็นวัตถุโครงสร้างต้นไม้ที่เรียกว่า DOM ซึ่งสามารถเข้าถึงตัววัตถุเหล่านั้นได้ผ่านคลาสระบบ <code>document</code> ด้วยชุดฟังก์ชันสืบค้น (Selectors)</p>
+<h3 id="dom-selectors">ตารางสรุปการใช้งาน DOM Selectors ยอดนิยม</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่งเรียกใช้</th>
+<th style="text-align: left;">ขอบเขตการค้นหา</th>
+<th style="text-align: left;">ลักษณะค่าคืนกลับ</th>
+<th style="text-align: left;">ข้อสังเกตเชิงลึก</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>getElementById(id)</code></strong></td>
+<td style="text-align: left;">ไอดีระบุเฉพาะตัว</td>
+<td style="text-align: left;">ออบเจกต์ชิ้นเดียว</td>
+<td style="text-align: left;">มีประสิทธิภาพความเร็วสูงสุด ค้นตามตัวพิมพ์เล็ก-ใหญ่ตรงกัน</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>getElementsByName(name)</code></strong></td>
+<td style="text-align: left;">ค้นจากแอตทริบิวต์ name</td>
+<td style="text-align: left;">อาเรย์ออบเจกต์ (<code>NodeList</code>)</td>
+<td style="text-align: left;">มักใช้คู่กับฟอร์มและกลุ่มปุ่มตัวเลือก (<code>radio</code>, <code>checkbox</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>getElementsByTagName(tag)</code></strong></td>
+<td style="text-align: left;">ค้นจากชื่อแท็ก HTML</td>
+<td style="text-align: left;">อาเรย์ออบเจกต์ (<code>HTMLCollection</code>)</td>
+<td style="text-align: left;">สะดวกเมื่อต้องการเปลี่ยนค่าทั้งประเภท เช่น ลิสต์ <code>&lt;li&gt;</code> ทั้งหมด</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>getElementsByClassName(cls)</code></strong></td>
+<td style="text-align: left;">ค้นจากคลาสของ CSS</td>
+<td style="text-align: left;">อาเรย์ออบเจกต์ (<code>HTMLCollection</code>)</td>
+<td style="text-align: left;">สามารถระบุกลุ่มอิลิเมนต์ที่มีการตั้งคลาสซ้ำกันได้</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>querySelector(sel)</code></strong></td>
+<td style="text-align: left;">ระบุไวยากรณ์แบบ CSS Selector</td>
+<td style="text-align: left;">ออบเจกต์ชิ้นแรกตัวเดียว</td>
+<td style="text-align: left;">มีความยืดหยุ่นสูง ค้นหาเชิงลึก ซ้อนระดับได้ง่าย</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>querySelectorAll(sel)</code></strong></td>
+<td style="text-align: left;">ระบุไวยากรณ์แบบ CSS Selector</td>
+<td style="text-align: left;">อาเรย์ออบเจกต์ (<code>NodeList</code>)</td>
+<td style="text-align: left;">ดึงรายการที่ตรงทั้งหมดออกมา สามารถเข้าถึงผ่านลูปได้อย่างดี</td>
+</tr>
+</tbody>
+</table>
+<h3 id="css-selector-queryselector">ไวยากรณ์ลวดลายของ CSS Selector สำหรับ <code>querySelector</code></h3>
+<ul>
+<li><strong>ตัวเลือกคลาสและไอดี:</strong> <code>.box-warning</code> (ค้นหาคลาส), <code>#title</code> (ค้นหาไอดี)</li>
+<li><strong>ตัวเลือกแอตทริบิวต์:</strong> <code>input[type="checkbox"]</code>, <code>input[name="color"][readonly]</code></li>
+<li><strong>ตัวเลือกลำดับโครงสร้าง (Structural Pseudo-classes):</strong> <code>div &gt; span</code> (สแปนที่เป็นลูกตรงของดิฟ), <code>span:first-child</code> (ลูกคนแรกสุดที่เป็นสแปน), <code>span:nth-child(2)</code> (ลูกพิกัดตำแหน่งที่ 2)</li>
+</ul>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับผู้เรียน:</strong> ตัวอย่างโค้ด HTML ด้านล่างนี้อ้างอิงและจัดการโครงสร้างของหน้าเว็บด้วย DOM Selector กรุณานำโค้ดนี้ไปรันผ่านระบบ <strong>Live Server</strong> ใน VS Code เพื่อดูการบันทึกข้อความลงบนหน้าต่าง Web Developer Console ของเบราว์เซอร์จริง</p>
+</blockquote>
+<h3 id="dom-selectors_1">ตัวอย่างประกอบ: การสืบค้นพิกัดเดี่ยวและกลุ่มด้วย DOM Selectors</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;สาธิตสิทธิ์การสืบค้น DOM Selectors&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id=&quot;title&quot;&gt;หน้าหลักควบคุมร้านค้า&lt;/h1&gt;
+    &lt;ul class=&quot;product-list&quot;&gt;
+        &lt;li class=&quot;item&quot;&gt;เสื้อยืดลำลอง&lt;/li&gt;
+        &lt;li class=&quot;item&quot;&gt;กางเกงขายาวกีฬา&lt;/li&gt;
+        &lt;li class=&quot;item&quot;&gt;รองเท้าวิ่งฟิตเนส&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;script&gt;
+        // 1. สืบค้นพิกัดเดี่ยวผ่าน id
+        let mainHeader = document.getElementById(&quot;title&quot;);
+        console.log(&quot;หัวข้อเดิม:&quot;, mainHeader.innerHTML);
+
+        // 2. สืบค้นพิกัดยืดหยุ่นด้วย CSS Selector ดึงรายการทั้งหมด
+        let listItems = document.querySelectorAll(&quot;.product-list &gt; .item&quot;);
+
+        // วนลูปเพื่ออ่านข้อความของผลลัพธ์ทั้งหมด
+        for (let product of listItems) {
+            console.log(&quot;ชื่อสินค้าในลิสต์:&quot;, product.innerText);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<hr />
+<h2 id="4-content-attribute-manipulations">4. การจัดการเนื้อหาและแอตทริบิวต์ (Content &amp; Attribute Manipulations)</h2>
+<p>เมื่อเข้าถึงอิลิเมนต์เป้าหมายได้แล้ว เราสามารถเลือกเปลี่ยนข้อความภายในของมัน หรือควบคุมแอตทริบิวต์ต่างๆ ของตัวแท็ก เช่น เปลี่ยนพิกัดภาพสัญลักษณ์ เปลี่ยนสถานะการปิดปุ่มทำงาน เป็นต้น</p>
+<h3 id="innerhtml-innertext-value">ตารางสรุปการทำงานของ <code>innerHTML</code>, <code>innerText</code> และ <code>value</code></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">พร็อพเพอร์ตี้</th>
+<th style="text-align: left;">รูปแบบการเข้าทำงาน</th>
+<th style="text-align: left;">ผลลัพธ์เชิงเทคนิค</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>innerHTML</code></strong></td>
+<td style="text-align: left;">อ่าน/เขียน โครงสร้างเนื้อความ</td>
+<td style="text-align: left;">แสดงผลข้อความควบคู่ไปกับ <strong>การตีความแท็ก HTML</strong> คล้ายเบราว์เซอร์จริง</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>innerText</code></strong></td>
+<td style="text-align: left;">อ่าน/เขียน เฉพาะตัวหนังสือดิบ</td>
+<td style="text-align: left;">มองอักขระหรือแท็กที่ป้อนเข้าไปใหม่เป็นเพียงข้อความธรรมดา ไม่ประมวลผลแท็ก</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>value</code></strong></td>
+<td style="text-align: left;">ดึง/ตั้งค่า ข้อมูลของอินพุตฟอร์ม</td>
+<td style="text-align: left;">ใช้สำหรับดึงค่าพิมพ์กรอกจาก <code>input</code>, <code>textarea</code> หรือค่าตัวเลือก <code>select</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="attributes">ตารางฟังก์ชันการจัดการคุณสมบัติและแอตทริบิวต์ (Attributes)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่งเมธอด</th>
+<th style="text-align: left;">หน้าที่การทำงาน</th>
+<th style="text-align: left;">ตัวอย่างการประยุกต์ใช้งานจริง</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>getAttribute(name)</code></strong></td>
+<td style="text-align: left;">อ่านค่าพารามิเตอร์ของแอตทริบิวต์</td>
+<td style="text-align: left;"><code>img.getAttribute('src')</code> (อ่านพาร์ทรูปปัจจุบัน)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>setAttribute(name, val)</code></strong></td>
+<td style="text-align: left;">กำหนดค่าแอตทริบิวต์ใหม่ทดแทน</td>
+<td style="text-align: left;"><code>btn.setAttribute('disabled', 'true')</code> (สั่งบล็อกปุ่ม)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>removeAttribute(name)</code></strong></td>
+<td style="text-align: left;">ลบโครงสร้างแอตทริบิวต์ออกไปจากแท็ก</td>
+<td style="text-align: left;"><code>input.removeAttribute('readonly')</code> (เปิดให้อินพุตเขียนได้)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับผู้เรียน:</strong> ตัวอย่างด้านล่างจำลองการกดปุ่มเพื่อปลดล็อกแอตทริบิวต์ <code>readonly</code> และแก้ไขเนื้อความแบบไดนามิก กรุณานำไปทดสอบรันด้วย <strong>Live Server</strong> ใน VS Code</p>
+</blockquote>
+<h3 id="_5">ตัวอย่างประกอบ: การเปลี่ยนค่าเนื้อหาและควบคุมแอตทริบิวต์</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;จัดการแอตทริบิวต์&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;content-box&quot;&gt;&lt;/div&gt;
+    &lt;br&gt;
+    &lt;input type=&quot;text&quot; id=&quot;username&quot; value=&quot;guest_account&quot; readonly&gt;
+    &lt;button type=&quot;button&quot; id=&quot;btn-edit&quot; onclick=&quot;enableInput()&quot;&gt;อนุญาตให้ทำการแก้ไข&lt;/button&gt;
+
+    &lt;script&gt;
+        let contentDiv = document.getElementById(&quot;content-box&quot;);
+        let userInput = document.getElementById(&quot;username&quot;);
+
+        // 1. เปรียบเทียบ innerHTML และ innerText
+        contentDiv.innerHTML = &quot;&lt;span style='color:green; font-weight:bold;'&gt;โครงสร้างภายในแบบไดนามิกที่ผ่านการทดสอบแล้ว&lt;/span&gt;&quot;;
+
+        // 2. ปลดล็อกช่องอินพุตโดยการจัดการแอตทริบิวต์
+        function enableInput() {
+            userInput.removeAttribute(&quot;readonly&quot;);
+            userInput.setAttribute(&quot;style&quot;, &quot;border: 2px solid blue; padding: 4px;&quot;);
+            userInput.value = &quot;กรอกชื่อใหม่ที่นี่...&quot;;
+
+            let btn = document.getElementById(&quot;btn-edit&quot;);
+            btn.innerText = &quot;ปลดล็อกเรียบร้อย&quot;;
+            btn.setAttribute(&quot;disabled&quot;, &quot;true&quot;); // ปิดปุ่มเพื่อป้องกันการกดย้ำ
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<hr />
+<h2 id="5-css-css-styles-classes">5. การควบคุมรูปแบบ CSS และจัดการคลาสสไตล์ (CSS Styles &amp; Classes)</h2>
+<p>JavaScript สามารถเปลี่ยนรูปลักษณ์ความสวยงามของเว็บเพจได้ 2 รูปแบบหลัก คือ การตั้งค่าสไตล์แบบสอดแทรกตรงจุด (Inline Styles) ผ่านพร็อพเพอร์ตี้ <code>.style</code> และการเปลี่ยนชื่อคลาสสไตล์ CSS ผ่าน <code>.className</code> หรือออบเจกต์ความช่วยจัดระเบียบอย่าง <code>.classList</code></p>
+<h3 id="css-kebab-case-camelcase">การแปลงชื่อสไตล์ CSS จากเคบับ (Kebab-case) ไปเป็นคาเมล (CamelCase)</h3>
+<p>ในระบบสไตล์ของ CSS ปกติจะคั่นคำด้วยเครื่องหมายขีดล่างสั้น (<code>-</code>) แต่เมื่อถูกเรียกใช้งานบน JavaScript ระบบจะห้ามใช้สัญลักษณ์ขีดคั่น (เนื่องจากจะถูกมองเป็นการหักเลขคณิต) จึงปรับไปใช้การเขียนแบบตัวพิมพ์ใหญ่นำสายคำ (CamelCase) แทน ดังตัวอย่างนี้:</p>
+<pre><code>  สไตล์ใน CSS:         background-color        font-size        border-left-style
+                            │                      │                     │
+                            ▼                      ▼                     ▼
+  เรียกใช้ใน JS:      .style.backgroundColor    .style.fontSize   .style.borderLeftStyle
+</code></pre>
+<h3 id="_6">ตารางเครื่องมือจัดการคลาสสไตล์ของวัตถุอิลิเมนต์</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">เครื่องมือคุณสมบัติ</th>
+<th style="text-align: left;">หน้าที่การทำงาน</th>
+<th style="text-align: left;">ตัวอย่างการทำงานจริง</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>.className</code></strong></td>
+<td style="text-align: left;">จัดการกลุ่มคลาสทั้งหมดในรูปสตริงคำยาว</td>
+<td style="text-align: left;"><code>el.className = 'btn warning active';</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>.classList.add(cls)</code></strong></td>
+<td style="text-align: left;">เพิ่มรายชื่อคลาสใหม่แทรกลงไป</td>
+<td style="text-align: left;"><code>el.classList.add('new-animation');</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>.classList.remove(cls)</code></strong></td>
+<td style="text-align: left;">ลบรายชื่อคลาสเฉพาะตัวที่ระบุออก</td>
+<td style="text-align: left;"><code>el.classList.remove('temp-hidden');</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>.classList.toggle(cls)</code></strong></td>
+<td style="text-align: left;">ตรวจสอบเพื่อเปิด/ปิดสลับสถานะคลาส</td>
+<td style="text-align: left;"><code>el.classList.toggle('dark-mode');</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>.classList.contains(cls)</code></strong></td>
+<td style="text-align: left;">เช็คว่าอิลิเมนต์ถูกครอบด้วยคลาสนี้อยู่ไหม</td>
+<td style="text-align: left;"><code>if (el.classList.contains('active')) { ... }</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับผู้เรียน:</strong> ตัวอย่างโค้ดต่อไปนี้ช่วยสาธิตการใช้ <code>classList.toggle</code> ในการสลับคลาส CSS สไตล์เป็นโหมดเตือนภัย รวมถึงการดึงค่าสไตล์จริงที่ถูกเรนเดอร์ออกมา แนะนำรันด้วย Live Server</p>
+</blockquote>
+<h3 id="css-inline-style">ตัวอย่างประกอบ: การสลับคลาส CSS และตั้งค่า Inline Style แบบคาเมลเคส</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;สลับโหมด CSS Style&lt;/title&gt;
+    &lt;style&gt;
+        .box { width: 300px; padding: 20px; text-align: center; border: 1px solid #ccc; transition: all 0.3s; }
+        .danger-alert { background-color: #ffdddd; color: #ff0000; font-weight: bold; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;info-card&quot; class=&quot;box&quot;&gt;นี่คือกล่องข้อความเตือนภัย&lt;/div&gt;
+    &lt;br&gt;
+    &lt;button type=&quot;button&quot; onclick=&quot;triggerAlert()&quot;&gt;แสดงผลโหมดอันตราย&lt;/button&gt;
+
+    &lt;script&gt;
+        function triggerAlert() {
+            let card = document.getElementById(&quot;info-card&quot;);
+
+            // ใช้ classList สลับระดับกลุ่ม CSS
+            card.classList.toggle(&quot;danger-alert&quot;);
+
+            // หรือการปรับตั้งค่าแบบไดนามิกเฉพาะจุด (Inline style)
+            card.style.fontSize = &quot;22px&quot;;
+            card.style.borderLeftStyle = &quot;solid&quot;;
+            card.style.borderLeftWidth = &quot;10px&quot;;
+            card.style.borderLeftColor = &quot;darkred&quot;;
+
+            // การสืบค้นดึงค่าที่เบราว์เซอร์นำมาคำนวณสไตล์จริงในขณะนั้น
+            let finalColor = getComputedStyle(card).color;
+            console.log(&quot;สีที่เบราว์เซอร์เรนเดอร์ในขณะนี้:&quot;, finalColor);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<hr />
+<h2 id="6-dynamic-dom-node-operations">6. การสร้างและปรับผังตำแหน่งอิลิเมนต์แบบไดนามิก (Dynamic DOM Node Operations)</h2>
+<p>JavaScript สามารถสร้างอิลิเมนต์หรือส่วนประกอบใหม่ของหน้าเว็บขึ้นมากลางคัน และนำมันไปบรรจุ เสียบแทรก หรือลบออกจากโครงสร้างความสัมพันธ์ต้นไม้ (DOM Tree) ได้อย่างอิสระ</p>
+<h3 id="element-dom-tree">แผนภาพแสดงกระบวนการสร้างและติดตั้ง Element ใหม่ลงบน DOM Tree</h3>
+<pre><code>  [1] สร้าง Element ใหม่ด้วยคลาสระบบ
+      let newLink = document.createElement(&quot;a&quot;);
+                      │
+                      ▼
+  [2] เพิ่มแอตทริบิวต์และข้อความเนื้อใน
+      newLink.setAttribute(&quot;href&quot;, &quot;https://google.com&quot;);
+      newLink.innerHTML = &quot;ค้นหาผ่านกูเกิล&quot;;
+                      │
+                      ▼
+  [3] ค้นหาอิลิเมนต์เป้าหมายที่เป็นพ่อผู้รองรับ
+      let container = document.getElementById(&quot;link-panel&quot;);
+                      │
+                      ▼
+  [4] ติดตั้งและยึดโครงสร้างเชื่อมโยงเข้าด้วยกัน
+      container.appendChild(newLink);
+</code></pre>
+<h3 id="nodes">ตารางสรุปคำสั่งสร้างและจัดตำแหน่ง Nodes</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">คำสั่งควบคุมหลัก</th>
+<th style="text-align: left;">หน้าที่เชิงลึก</th>
+<th style="text-align: left;">ตัวอย่างการเขียนประยุกต์ใช้</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>createElement(tag)</code></strong></td>
+<td style="text-align: left;">สร้างออบเจกต์อิลิเมนต์ชนิดใหม่ขึ้นในหน่วยความจำ</td>
+<td style="text-align: left;"><code>let newDiv = document.createElement('div')</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>appendChild(childNode)</code></strong></td>
+<td style="text-align: left;">นำไปต่อท้ายเป็นลูกลำดับสุดท้ายภายใต้อิลิเมนต์เป้าหมาย</td>
+<td style="text-align: left;"><code>parent.appendChild(newDiv)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>insertBefore(new, ref)</code></strong></td>
+<td style="text-align: left;">แทรกอิลิเมนต์ใหม่ไว้ทางด้านหน้าของอิลิเมนต์อ้างอิง <code>ref</code></td>
+<td style="text-align: left;"><code>parent.insertBefore(newDiv, oldItem)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>replaceChild(new, old)</code></strong></td>
+<td style="text-align: left;">ถอดถอนอิลิเมนต์เก่า <code>old</code> แล้วแทนที่ด้วยอันใหม่ <code>new</code></td>
+<td style="text-align: left;"><code>parent.replaceChild(newDiv, oldItem)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>removeChild(childNode)</code></strong></td>
+<td style="text-align: left;">ปลดชิ้นส่วนอิลิเมนต์ลูกออกไปจากโครงสร้างเอกสาร</td>
+<td style="text-align: left;"><code>parent.removeChild(oldItem)</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับผู้เรียน:</strong> ตัวอย่างโค้ดนี้สาธิตการแทรกคิวงานสีแดง (งานเร่งด่วน) ก่อนงานอื่นๆ และลบรายการประชุมออกไปทันทีด้วยคำสั่ง Node ควบคุมแบบเรียลไทม์ กรุณาคัดลอกไปทดลองใช้งานบนเซิร์ฟเวอร์จำลอง Live Server</p>
+</blockquote>
+<h3 id="nodes_1">ตัวอย่างประกอบ: การประกอบ จัดตำแหน่ง และลบ Nodes</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;จัดการคิวงานด้วย Dynamic DOM&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;job-queue&quot;&gt;
+        &lt;li id=&quot;task-2&quot;&gt;ดำเนินการตรวจสอบระบบขนส่ง&lt;/li&gt;
+        &lt;li id=&quot;task-3&quot;&gt;ประชุมสรุปยอดจำหน่ายสินค้า&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;br&gt;
+    &lt;button onclick=&quot;manageQueue()&quot;&gt;แทรกคิวงานเร่งด่วน&lt;/button&gt;
+
+    &lt;script&gt;
+        function manageQueue() {
+            let queueList = document.getElementById(&quot;job-queue&quot;);
+
+            // 1. ดำเนินการสร้าง Task ใหม่ขึ้นมาทำงาน
+            let newTask = document.createElement(&quot;li&quot;);
+            newTask.setAttribute(&quot;id&quot;, &quot;task-1&quot;);
+            newTask.style.color = &quot;red&quot;;
+            newTask.style.fontWeight = &quot;bold&quot;;
+            newTask.innerText = &quot;งานเร่งด่วนที่สุด: ตรวจสอบเซิร์ฟเวอร์หลักล่ม!&quot;;
+
+            // 2. ทำการสืบค้นหาตัวชิ้นอ้างอิง เพื่อนำมาแทรกไว้ด้านหน้า
+            let refTask = document.getElementById(&quot;task-2&quot;);
+            queueList.insertBefore(newTask, refTask);
+
+            // 3. ตัวอย่างการถอดรายการออกจากการทำงาน
+            let completedTask = document.getElementById(&quot;task-3&quot;);
+            if (completedTask) {
+                queueList.removeChild(completedTask);
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<hr />
+<h2 id="7-bom">7. การควบคุมและดึงข้อมูลสภาพแวดล้อมหน้าเว็บเบราว์เซอร์ (BOM)</h2>
+<p>นอกจากโครงสร้างของหน้าเอกสาร HTML แล้ว JavaScript ยังสามารถดึงหรือตั้งค่าภายนอกของโปรแกรมผู้ท่องเว็บได้โดยตรงผ่านออบเจกต์แม่ <code>window</code> ซึ่งควบคุมส่วนย่อยที่น่าสนใจ เช่น ประวัติความหลังการเปลี่ยนหน้า (<code>history</code>), ท้องถิ่นข้อมูลยูอาร์แอลพิกัด (<code>location</code>), และข้อมูลของโปรแกรมเบราว์เซอร์เพื่อพิจารณาความพร้อมของระบบ (<code>navigator</code>)</p>
+<h3 id="browser-object-model-bom">ตารางคุณลักษณะและเมธอดเด่นของ Browser Object Model (BOM)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">กลุ่มออบเจกต์</th>
+<th style="text-align: left;">คำสั่ง / เมธอดเด่น</th>
+<th style="text-align: left;">หน้าที่ที่ทำงาน</th>
+<th style="text-align: left;">ตัวอย่างสถานการณ์ประยุกต์ใช้</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>history</code></strong></td>
+<td style="text-align: left;"><code>history.back()</code> <br> <code>history.forward()</code> <br> <code>history.go(offset)</code></td>
+<td style="text-align: left;">สั่งย้อนหลัง 1 หน้า <br> สั่งเดินหน้า 1 หน้า <br> ข้ามหน้าตามระยะ (ติดลบคือย้อน)</td>
+<td style="text-align: left;">สร้างปุ่มย้อนกลับภายในเพจ <br> ควบคุมการกรอกฟอร์มแบบทีละขั้นตอน <br> <code>history.go(-2)</code> (ย้อนกลับสองหน้า)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>location</code></strong></td>
+<td style="text-align: left;"><code>location.href</code> <br> <code>location.reload()</code></td>
+<td style="text-align: left;">อ่านหรือเปลี่ยนลิงก์ไปยัง URL ใหม่ <br> รีโหลดหรือปรับหน้าข้อมูลใหม่</td>
+<td style="text-align: left;"><code>location.href = 'url'</code> (เปลี่ยนหน้าเว็บ) <br> บังคับรีเฟรชค่าข้อมูลบนเว็บ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>window</code></strong></td>
+<td style="text-align: left;"><code>window.open(url)</code> <br> <code>window.close()</code></td>
+<td style="text-align: left;">เปิดแท็บ/หน้าต่างเบราว์เซอร์ใหม่ <br> สั่งปิดหน้าต่างที่สคริปต์เปิดขึ้น</td>
+<td style="text-align: left;">เปิดใบเสร็จรับเงินในแท็บใหม่ <br> ปิดแท็บป๊อปอัปหลังทำธุรกรรมเสร็จ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>navigator</code></strong></td>
+<td style="text-align: left;"><code>navigator.userAgent</code></td>
+<td style="text-align: left;">ดึงข้อมูลยี่ห้อและรุ่นของเบราว์เซอร์</td>
+<td style="text-align: left;">ตรวจสอบประเภทเบราว์เซอร์เพื่อแก้ไขบั๊กสไตล์</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+<strong>คำแนะนำสำหรับผู้เรียน:</strong> ออบเจกต์ <code>navigator</code> จะดึงข้อมูลแอปพลิเคชันเบราว์เซอร์ปัจจุบันมาวิเคราะห์หาประเภทและรุ่นผู้ใช้งาน เมื่อทดสอบรันด้วย Live Server โค้ดนี้จะแจ้งเตือนประเภทเบราว์เซอร์ของคุณออกมาทางป๊อปอัป</p>
+</blockquote>
+<h3 id="bom">ตัวอย่างประกอบ: การตรวจสอบรุ่นและยี่ห้อเบราว์เซอร์ของผู้ใช้ผ่าน BOM</h3>
+<pre><code class="language-javascript">function detectBrowser() {
+    let agent = navigator.userAgent;
+    console.log(&quot;User Agent ของคุณคือ:&quot;, agent);
+
+    if (agent.search(&quot;Edge&quot;) &gt;= 0) {
+        return &quot;Microsoft Edge&quot;;
+    } else if (agent.search(&quot;Firefox&quot;) &gt;= 0) {
+        return &quot;Mozilla Firefox&quot;;
+    } else if (agent.search(&quot;OPR&quot;) &gt;= 0) {
+        return &quot;Opera Browser&quot;;
+    } else if (agent.search(&quot;Chrome&quot;) &gt;= 0) {
+        return &quot;Google Chrome&quot;;
+    } else if (agent.search(&quot;Safari&quot;) &gt;= 0) {
+        return &quot;Apple Safari&quot;;
+    } else {
+        return &quot;ไม่สามารถระบุยี่ห้อเบราว์เซอร์จากฐานข้อมูลต้นฉบับได้&quot;;
+    }
+}
+
+alert(&quot;คุณเข้าสู่ระบบนี้โดยการประยุกต์ใช้งานเบราว์เซอร์: &quot; + detectBrowser());
+</code></pre>
+<hr />
+<h2 id="_7">สรุปบทเรียน</h2>
+<p>การสร้างสรรค์หน้าเว็บเพจที่มีความยืดหยุ่นและการทำงานแบบไดนามิกเกิดจากการประสานเครื่องมือสำคัญดังนี้:
+*   <strong>JavaScript Integration:</strong> นำโค้ดมาปรับพฤติกรรมบนโครงสร้างของสคริปต์แชร์ค่าข้ามบล็อกสคริปต์เพื่อประมวลผลร่วมกัน
+*   <strong>Dialogs:</strong> ควบคุมการนำเข้าข้อมูลและการรายงานผลตอบรับแก่ผู้เรียนด้วยชุดคำสั่ง <code>alert()</code>, <code>prompt()</code>, และ <code>confirm()</code>
+*   <strong>DOM Selectors:</strong> ค้นหาวัตถุเป้าหมายตามหลัก ID, Class, Name, Tag หรือประยุกต์ใช้ CSS Selector เพื่อสับเปลี่ยนโครงสร้างและเนื้อหาด้วย <code>innerHTML</code>, <code>innerText</code> และ <code>value</code>
+*   <strong>CSS Styles &amp; Classes:</strong> ปรับแต่ง CSS แบบ Inline โดยใช้รูปแบบคำสัญกรณ์แบบคาเมลเคส (CamelCase) หรือการจัดการรายชื่อคลาสอย่างมีประสิทธิภาพด้วย <code>.classList</code>
+*   <strong>Dynamic Nodes:</strong> ความสามารถในการสร้าง ลบ หรือสอดแทรกอิลิเมนต์ใหม่ๆ ลงบนตำแหน่งใดก็ได้ในเอกสาร HTML แบบเรียลไทม์
+*   <strong>BOM Objects:</strong> ดึงและตั้งค่าสภาพแวดล้อมภายนอก เช่น การรีโหลดหรือเปลี่ยนหน้าด้วย <code>location</code>, การควบคุมประวัติด้วย <code>history</code> และการตรวจสอบยี่ห้อเบราว์เซอร์ด้วย <code>navigator.userAgent</code></p>
+<hr />
+<h2 id="review-questions">❓ คำถามทบทวน (Review Questions)</h2>
+<p>คลิกที่การ์ดคำถามด้านล่างเพื่อแสดงเฉลยคำตอบของคำถามแต่ละข้อ:</p>
+<ol>
+<li>
+<p><strong>การเขียนโค้ดจาวาสคริปต์แชร์ค่าข้ามแท็ก <code>&lt;script&gt;</code> (Shared Scope) มีข้อควรระวังในเรื่องความต่อเนื่องและลำดับขั้นตอนการโหลดหน้าเว็บอย่างไรบ้าง?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       มีข้อควรระวังคือ **ลำดับการประมวลผลและการประกาศค่า (Execution Order)** เนื่องจากเบราว์เซอร์จะตีความสคริปต์จากบนลงล่าง หากแท็ก <code>&lt;script&gt;</code> บล็อกหลังดึงค่าตัวแปรหรือฟังก์ชันที่ถูกประกาศไว้ในบล็อกแรกมาทำงาน สคริปต์บล็อกแรกจะต้องถูกดาวน์โหลดและรันสำเร็จก่อน หากสลับตำแหน่งหรือบล็อกแรกเกิดข้อผิดพลาด บล็อกถัดไปจะไม่สามารถเรียกใช้ตัวแปรเหล่านั้นได้และจะส่งผลให้เกิดข้อผิดพลาดประเภท <code>ReferenceError</code> ทันที
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>คำสั่ง <code>document.write()</code> เหมาะสำหรับกระบวนการพัฒนาหน้าเว็บประเภทใด และในขั้นตอนใดที่เราควรเปลี่ยนไปใช้การปรับค่าสไตล์ระดับ DOM แทนที่จะใช้คำสั่งนี้?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       <code>document.write()</code> เหมาะสำหรับขั้นตอนการเรียนรู้เบื้องต้นและการทดสอบเขียนข้อความลงบนหน้าเว็บในช่วงเริ่มต้นเท่านั้น แต่มีข้อจำกัดอย่างร้ายแรงคือ หากมีการเรียกใช้คำสั่งนี้หลังจากที่เบราว์เซอร์เรนเดอร์เอกสาร HTML โหลดเสร็จสิ้นแล้ว (เช่น เรียกใช้ผ่านปุ่มคลิก) มันจะล้างเนื้อหาของหน้าเว็บเดิมทิ้งทั้งหมดและเขียนใหม่ทับทันที ดังนั้น ในขั้นตอนที่หน้าเว็บโหลดสมบูรณ์แล้ว หรือต้องการแก้ไขเนื้อหาบางจุด เราจึงต้องเปลี่ยนมาใช้การเข้าถึงและปรับแต่งสไตล์/ข้อมูลผ่านแอตทริบิวต์ระดับ DOM เช่น <code>innerHTML</code>, <code>innerText</code> หรือจัดการสไตล์ผ่านคุณสมบัติ <code>.style</code> แทน
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>จงอธิบายพฤติกรรมและความแตกต่างในการคืนค่าข้อมูลกลับมา (Return Value) ของไดอะล็อก <code>prompt()</code> เมื่อผู้ใช้อิลิเมนต์ป้อนข้อมูลแล้วกดยืนยัน เปรียบเทียบกับตอนที่ผู้ใช้กดยกเลิก</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       - หากผู้ใช้กรอกข้อมูลแล้วกดยืนยัน (OK): ไดอะล็อก <code>prompt()</code> จะคืนค่ากลับมาเป็น **ข้อมูลข้อความสตริง (String)** เสมอ แม้ว่าผู้ใช้จะป้อนตัวเลขหรือไม่ได้ป้อนอะไรเลยก็ตาม (จะได้สตริงว่าง <code>""</code>)<br>
+       - หากผู้ใช้กดปฏิเสธหรือยกเลิก (Cancel): ไดอะล็อกจะคืนค่าพิเศษที่มีประเภทเป็นวัตถุว่างเปล่าคือ **<code>null</code>**
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ถ้าเราพบอิลิเมนต์บนหน้าเว็บ 2 ตัวใช้คีย์ไอดีระบุซ้ำกัน คำสั่ง <code>document.getElementById()</code> จะได้ผลลัพธ์ในการทำงานอย่างไร? จงอธิบายเหตุผลประกอบเชิงเทคนิค</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ในทางเทคนิคเบราว์เซอร์จะตรวจสอบและส่งกลับออบเจกต์ **อิลิเมนต์ตัวแรกสุดที่ตรวจพบในโครงสร้างเอกสาร (First Matching Element)** เพียงตัวเดียวเท่านั้น เนื่องจากตามมาตรฐานโครงสร้าง HTML ค่าไอดี (ID) จะต้องเป็นค่าเฉพาะที่ไม่ซ้ำกันในหน้าเดียวกัน หากเราทำซ้ำระบบจะไม่สืบค้นต่อหลังจากพบเป้าหมายแรกเพื่อจำกัดทรัพยากรการค้นหา
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>เปรียบเทียบและวิเคราะห์ผลลัพธ์ความแตกต่างในการแสดงผลเมื่อนักพัฒนาพิมพ์ใส่โครงสร้างข้อความสตริงอย่าง <code>&lt;b&gt;Warning!&lt;/b&gt;</code> เข้าไปใน <code>innerHTML</code> และ <code>innerText</code></strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       - หากระบุใส่ใน <code>innerHTML</code>: เบราว์เซอร์จะทำการตีความแท็ก <code>&lt;b&gt;</code> ทำให้ตัวอักษร <code>Warning!</code> แสดงผลออกมาเป็น **ตัวหนา** บนหน้าจอเว็บเพจ<br>
+       - หากระบุใส่ใน <code>innerText</code>: ระบบจะไม่ตีความแท็ก และจะนำสายอักขระดังกล่าวไปแสดงผลเป็นข้อความดิบๆ ตรงตัวตามอักษร ทำให้อ่านได้เป็น <code>&lt;b&gt;Warning!&lt;/b&gt;</code> ทันที
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>เพราะเหตุใดในการแปลงคำสั่งสไตล์จาก CSS ไปเขียนใช้งานใน JavaScript พร็อพเพอร์ตี้อย่าง <code>background-image</code> และ <code>padding-left</code> จึงจำเป็นต้องปรับแต่งให้อยู่ในรูปคาเมลเคส (CamelCase)?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       เนื่องจากในภาษา JavaScript เครื่องหมายขีดกลาง (<code>-</code>) ถูกใช้เป็นตัวดำเนินการทางคณิตศาสตร์คือ "เครื่องหมายลบ" (Minus Sign) หากนำคำว่า <code>element.style.background-color</code> ไปใช้ ระบบจะตีความว่าเป็นการนำตัวแปร <code>background</code> มาลบกับตัวแปร <code>color</code> ซึ่งทำให้เกิดข้อผิดพลาดในการเขียนโปรแกรม ดังนั้นไวยากรณ์จึงต้องทำการแปลงตัวย่อจากเครื่องหมายขีดล่างสั้นเป็นอักษรพิมพ์ใหญ่แทนในลักษณะของ CamelCase เช่น <code>backgroundColor</code> และ <code>paddingLeft</code>
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากต้องการเช็คสถานะว่ากล่องข้อความเป้าหมายถูกเปิดใช้งานคลาสสไตล์อันตรายอย่าง <code>.error</code> อยู่ในขณะนี้หรือไม่ ควรเลือกใช้งานเมธอดและชุดตรวจสอบใดของ <code>classList</code>?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ควรใช้เมธอด <code>element.classList.contains('error')</code> ซึ่งจะช่วยตรวจสอบโครงสร้างสไตล์คลาสและคืนค่าข้อมูลมาเป็นชนิดบูลีน (<code>true</code> หากมีคลาสนั้นอยู่ หรือ <code>false</code> หากไม่มี)
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>เมื่อเราสั่งสร้างออบเจกต์ชิ้นใหม่ทางหน้าจอเว็บด้วย <code>document.createElement("p")</code> เพราะเหตุใดตัวอักษรนั้นจึงยังไม่ปรากฏให้ผู้ใช้เห็นบนจอภาพเว็บ และเราต้องนำคำสั่งใดมาสั่งยึดติดโยงจึงจะได้ผลลัพธ์บนจอภาพสมบูรณ์?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       เนื่องจากคำสั่ง <code>createElement()</code> จะสร้างวัตถุอิลิเมนต์ขึ้นมาจัดเก็บไว้ในหน่วยความจำชั่วคราวเท่านั้น แต่ตัวอิลิเมนต์ดังกล่าวยังไม่มีความเชื่อมโยงกับสายโครงสร้างต้นไม้หน้าเอกสารจริง (DOM Tree) เราจำเป็นต้องระบุตัวพ่อเพื่อไปเป็นจุดเกาะยึดโยงด้วยคำสั่งเชื่อมโยง เช่น <code>appendChild(childNode)</code> หรือ <code>insertBefore(newNode, referenceNode)</code> จึงจะสามารถจัดวางและเรนเดอร์ภาพขึ้นสู่จอภาพสมบูรณ์ได้
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>อธิบายวิธีการทำงานหักลบตำแหน่งพิกัดของคำสั่งการเปลี่ยนหน้าประวัติย้อนหลังอย่าง <code>history.go(-2)</code> มีค่าเท่ากับการทำงานของคำสั่งใดของชุดเมธอด BOM?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       คำสั่ง <code>history.go(-2)</code> หมายถึงการสั่งให้เบราว์เซอร์เปลี่ยนหน้าย้อนกลับหลังประวัติไปจำนวน 2 หน้า ซึ่งสามารถเทียบได้กับการรันเมธอด <code>history.back()</code> สองครั้งต่อเนื่องกัน
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>จากฐานข้อมูลโปรแกรมวิเคราะห์ User Agent ในตำราเรียน ยี่ห้อเบราว์เซอร์ Chrome, Safari และ Edge มีคีย์เวิร์ดใดเฉพาะตัวที่จาวาสคริปต์ใช้ในการค้นหาและแยกแยะประเภทความแตกต่างของสภาพแวดล้อมการทำงานจริง?</strong>
+    <details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+      <summary>ดูเฉลยคำตอบ</summary>
+      <div class="details-content">
+        เมื่อวิเคราะห์จากข้อมูลสตริงของ <code>navigator.userAgent</code>:<br>
+        - <strong>Microsoft Edge</strong> แยกแยะได้โดยใช้คีย์เวิร์ด <code>"Edge"</code> (หรือ <code>"Edg"</code>)<br>
+        - <strong>Mozilla Firefox</strong> แยกแยะได้โดยใช้คีย์เวิร์ด <code>"Firefox"</code><br>
+        - <strong>Opera Browser</strong> แยกแยะได้โดยใช้คีย์เวิร์ด <code>"OPR"</code><br>
+        - <strong>Google Chrome</strong> แยกแยะได้โดยใช้คีย์เวิร์ด <code>"Chrome"</code><br>
+        - <strong>Apple Safari</strong> แยกแยะได้โดยใช้คีย์เวิร์ด <code>"Safari"</code> (โดยต้องไม่มีคีย์เวิร์ดของ Chrome หรือ Edge ผสมอยู่ เนื่องจาก Chrome/Edge ก็ใช้เอนจินที่มีคำว่า Safari เช่นกัน)
+      </div>
+    </details></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e41\u0e25\u0e49\u0e27", "clipboard.copy": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01", "search.result.more.one": "\u0e2d\u0e35\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.more.other": "# \u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.none": "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.one": "\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.other": "\u0e1e\u0e1a # \u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.placeholder": "\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e23\u0e34\u0e48\u0e21\u0e04\u0e49\u0e19\u0e2b\u0e32", "search.result.term.missing": "\u0e44\u0e21\u0e48\u0e1e\u0e1a", "select.version": "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1238 @@
+
+<!doctype html>
+<html lang="th" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Nattawoot4411.github.io/knowledge_base/javaScript/ch2_variables/">
+      
+      
+        <link rel="prev" href="../ch1_basics/">
+      
+      
+        <link rel="next" href="../ch3_conditions_loops/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์ - Javascript & Visual Studio Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="yellow" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          ข้ามไปที่เนื้อหา
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="หัวข้อ">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-header__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Javascript & Visual Studio Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="ค้นหา" placeholder="ค้นหา" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="ค้นหา">
+        
+        <button type="reset" class="md-search__icon md-icon" title="ล้าง" aria-label="ล้าง" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            กำลังเริ่มต้นการค้นหา
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="แท็บ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  หน้าแรก
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  การติดตั้งโปรแกรม vs code, nodejs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../extensions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  extension ที่ต้องติดตั้งเพิ่ม
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ตัวนำทาง" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-nav__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Javascript & Visual Studio Code
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    หน้าแรก
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    หน้าแรก
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทเรียน
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-naming-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. หลักการกำหนดและการตั้งชื่อตัวแปร (Naming Variables)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-variable-declaration-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การประกาศตัวแปรและการกำหนดค่า (Variable Declaration &amp; Assignment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-primitive-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ชนิดข้อมูลพื้นฐาน (Primitive Data Types)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ตัวดำเนินการ (Operators)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-type-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การแปลงและตรวจสอบชนิดข้อมูลเบื้องต้น (Data Type Conversion)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-console-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. การรับข้อมูลผ่าน Console บนสภาพแวดล้อม Node.js
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 แบบฝึกหัดท้ายบทเรียน (Workshop)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ข้อมูลเพิ่มเติมสำหรับการเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3_conditions_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 4: การสร้างฟังก์ชัน (Functions)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6_advanced_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 6: การประมวลผลข้อมูลขั้นสูง (Advanced Data)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7_dom_bom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    การติดตั้งโปรแกรม vs code, nodejs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    extension ที่ต้องติดตั้งเพิ่ม
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-naming-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. หลักการกำหนดและการตั้งชื่อตัวแปร (Naming Variables)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-variable-declaration-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การประกาศตัวแปรและการกำหนดค่า (Variable Declaration &amp; Assignment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-primitive-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ชนิดข้อมูลพื้นฐาน (Primitive Data Types)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ตัวดำเนินการ (Operators)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-type-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. การแปลงและตรวจสอบชนิดข้อมูลเบื้องต้น (Data Type Conversion)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-console-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. การรับข้อมูลผ่าน Console บนสภาพแวดล้อม Node.js
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workshop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 แบบฝึกหัดท้ายบทเรียน (Workshop)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ข้อมูลเพิ่มเติมสำหรับการเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2">บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์</h1>
+<p>ในบทเรียนนี้ เราจะเจาะลึกเข้าไปสู่โครงสร้างหัวใจสำคัญของการเขียนโปรแกรมด้วยภาษา JavaScript ได้แก่ การเก็บข้อมูลในตัวแปร ชนิดของข้อมูลแบบต่างๆ และการจัดการประมวลผลข้อมูลเหล่านั้นด้วยเครื่องหมายการคำนวณและตัวดำเนินการ (Operators)</p>
+<hr />
+<h2 id="1-naming-variables">1. หลักการกำหนดและการตั้งชื่อตัวแปร (Naming Variables)</h2>
+<p><strong>ตัวแปร (Variable)</strong> คือกล่องสำหรับใช้อ้างอิงหรือจัดเก็บข้อมูลเพื่อนำไปใช้คำนวณ แสดงผล หรือเปลี่ยนแปลงค่าในภายหลัง การตั้งชื่อตัวแปรใน JavaScript มีกฎเกณฑ์ที่สำคัญดังนี้:</p>
+<ul>
+<li><strong>ตัวอักษรที่อนุญาต:</strong> ต้องประกอบด้วยตัวอักษรภาษาอังกฤษ <code>a-z</code>, <code>A-Z</code>, ตัวเลข <code>0-9</code>, เครื่องหมายขีดล่าง (Underscore: <code>_</code>) หรือสัญลักษณ์ดอลลาร์ (Dollar Sign: <code>$</code>) เท่านั้น</li>
+<li><strong>ห้ามขึ้นต้นด้วยตัวเลข:</strong> เช่น <code>num1</code> (ถูกต้อง) แต่ <code>1num</code> (ไม่ถูกต้อง)</li>
+<li><strong>ห้ามมีช่องว่างหรืออักขระพิเศษอื่นๆ:</strong> เช่น <code>myVar</code> (ถูกต้อง) แต่ <code>my Var</code> หรือ <code>my&amp;Var</code> (ไม่ถูกต้อง)</li>
+<li><strong>เป็น Case-Sensitive:</strong> ตัวพิมพ์เล็กและใหญ่ถือเป็นคนละตัวแปรกันอย่างสิ้นเชิง เช่น <code>age</code>, <code>Age</code>, และ <code>AGE</code> แยกขาดจากกันทั้งหมด</li>
+<li><strong>ห้ามใช้คำสงวน (Reserved Keywords):</strong> เช่น <code>var</code>, <code>let</code>, <code>const</code>, <code>if</code>, <code>for</code>, <code>class</code></li>
+</ul>
+<h3 id="naming-conventions">มาตรฐานที่เป็นนิยม (Naming Conventions)</h3>
+<p>ในภาษา JavaScript นิยมตั้งชื่อตัวแปรและฟังก์ชันด้วยสไตล์ <strong>camelCase</strong> (อูฐ) โดยเริ่มต้นด้วยตัวอักษรพิมพ์เล็ก หากมีหลายคำรวมกัน ให้คำถัดไปขึ้นต้นด้วยตัวพิมพ์ใหญ่ เช่น <code>numProducts</code>, <code>isValidInput</code>, <code>dayOfMonth</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ลักษณะการตั้งชื่อที่ <strong>ถูกต้อง</strong></th>
+<th style="text-align: left;">ลักษณะการตั้งชื่อที่ <strong>ไม่ถูกต้อง</strong> (Error)</th>
+<th style="text-align: left;">สาเหตุที่ผิดพลาด</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>x</code>, <code>_x</code>, <code>$</code></td>
+<td style="text-align: left;"><code>1stName</code></td>
+<td style="text-align: left;">ขึ้นต้นด้วยตัวเลข</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>num1</code>, <code>firstname</code></td>
+<td style="text-align: left;"><code>a&amp;b</code></td>
+<td style="text-align: left;">มีอักขระพิเศษ <code>&amp;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>english2thai</code></td>
+<td style="text-align: left;"><code>var</code></td>
+<td style="text-align: left;">ใช้คำสงวนของภาษา</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>date_month_year</code>, <code>us$dollar</code></td>
+<td style="text-align: left;"><code>my name</code></td>
+<td style="text-align: left;">มีช่องว่างระหว่างคำ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-variable-declaration-assignment">2. การประกาศตัวแปรและการกำหนดค่า (Variable Declaration &amp; Assignment)</h2>
+<p>ก่อนที่จะเรียกใช้งานตัวแปร เราจำเป็นต้องสร้างหรือประกาศตัวแปรขึ้นมาก่อน โดย JavaScript มีคีย์เวิร์ดหลัก 3 ตัวในการประกาศดังนี้:</p>
+<h3 id="21-var-vs-let-vs-const">2.1 คีย์เวิร์ดประกาศตัวแปร <code>var</code> vs <code>let</code> vs <code>const</code></h3>
+<ul>
+<li><code>var</code>: คำสั่งดั้งเดิมของ JavaScript (ปัจจุบันหลีกเลี่ยงการใช้งานเพื่อป้องกันปัญหาสโคปตัวแปรทับซ้อน) สามารถประกาศซ้ำในสโคปเดิมได้</li>
+<li><code>let</code>: คีย์เวิร์ดมาตรฐานใหม่ (เปิดตัวใน <strong>ES6 / ES2015</strong>) เป็นแบบ Block-scoped (ทำงานเฉพาะในบล็อกวงเล็บปีกกา <code>{}</code> ที่สลักไว้) และ <strong>ไม่สามารถประกาศซ้ำในสโคปเดียวกันได้</strong> (แต่เปลี่ยนค่าได้)</li>
+<li><code>const</code>: สำหรับประกาศ <strong>ค่าคงที่ (Constant)</strong> ที่เมื่อกำหนดค่าเริ่มต้นแล้วจะไม่สามารถแก้ไขหรือเปลี่ยนค่าใหม่ได้ และต้องกำหนดค่าทันทีที่ประกาศ</li>
+</ul>
+<p><img alt="ตารางเปรียบเทียบ var vs let vs const" src="js_variables_comparison.png" /></p>
+<pre><code class="language-javascript">// ตัวแปรที่เปลี่ยนค่าได้ (Reassignable)
+let price = 100;
+price = 120; // ทำได้ปกติ
+
+// ค่าคงที่ที่เปลี่ยนค่าไม่ได้ (Immutable Reference)
+const PI = 3.14159;
+// PI = 3.14; // จะเกิด Error: Assignment to constant variable.
+</code></pre>
+<h3 id="22">2.2 รูปแบบการประกาศและกำหนดค่า</h3>
+<p>เมื่อเราประกาศตัวแปรโดยไม่มีการกำหนดค่าเริ่มต้น ค่าเริ่มต้นทางภาษาของมันจะเป็น <code>undefined</code> เสมอ ซึ่งเราสามารถเขียนระบุค่าได้หลากหลายรูปแบบ:</p>
+<p><strong>แบบที่ 1: ประกาศตัวแปรก่อน แล้วกำหนดค่าในภายหลัง</strong></p>
+<pre><code class="language-javascript">let text;
+text = &quot;Hello World&quot;;
+</code></pre>
+<p><strong>แบบที่ 2: ประกาศและกำหนดค่าเริ่มต้นทันที (Initialization)</strong></p>
+<pre><code class="language-javascript">let score = 0;
+</code></pre>
+<p><strong>แบบที่ 3: ประกาศตัวแปรหลายตัวพร้อมกันในบรรทัดเดียว (คั่นด้วยเครื่องหมายจุลภาค <code>,</code>)</strong></p>
+<pre><code class="language-javascript">let x, y, z; // ได้ค่า undefined ทั้ง 3 ตัว
+let a = 1, b = 2, c = 3;
+let width, height = 50, depth; // กำหนดค่าเฉพาะ height เป็น 50 ส่วนตัวอื่นเป็น undefined
+</code></pre>
+<hr />
+<h2 id="3-primitive-data-types">3. ชนิดข้อมูลพื้นฐาน (Primitive Data Types)</h2>
+<p>ภาษา JavaScript เป็นภาษาประเภท <strong>Loosely Typed</strong> หมายความว่าเราไม่ต้องกำหนดชนิดข้อมูลล่วงหน้าขณะประกาศ และตัวแปรสามารถเปลี่ยนชนิดข้อมูลที่จัดเก็บข้ามประเภทไปมาได้ตลอดเวลา</p>
+<pre><code class="language-javascript">let item = 100;      // ตอนแรกจัดเก็บข้อมูล Number
+item = &quot;One Hundred&quot;; // เปลี่ยนไปเก็บข้อมูล String ได้โดยไม่เกิด Error
+</code></pre>
+<p>ชนิดข้อมูลพื้นฐานที่จำเป็นต้องทราบมีดังนี้:</p>
+<h3 id="31-number">3.1 ข้อมูลชนิดตัวเลข (Number)</h3>
+<p>ครอบคลุมทั้งจำนวนเต็ม (Integer) ทศนิยม (Float) และจำนวนติดลบ ในการพิมพ์ตัวเลข ห้ามใส่เครื่องหมายจุลภาคคั่น (เช่น <code>123,456</code> จะเกิด Error) 
+*   <strong>ข้อมูลเพิ่มเติม:</strong> ใน JavaScript มาตรฐานใหม่ (ES2021) สามารถใช้เครื่องหมายขีดล่าง <code>_</code> คั่นสายตาเพื่อให้กระชับสายตาได้ เช่น <code>let salary = 1_000_000;</code> (ซึ่งมีค่าเท่ากับ <code>1000000</code>)</p>
+<pre><code class="language-javascript">let age = 25;        // จำนวนเต็ม
+let temp = -5.5;     // จำนวนติดลบและทศนิยม
+let num = 007;       // ค่าเท่ากับ 7
+</code></pre>
+<h3 id="32-string">3.2 ข้อมูลชนิดข้อความ (String)</h3>
+<p>คือข้อความอักขระที่ครอบด้วยเครื่องหมายอัญประกาศ ซึ่งเราเลือกใช้ได้ 3 รูปแบบ:
+1.  <strong>Double Quotes (<code>"..."</code>):</strong> <code>"JavaScript"</code>
+2.  <strong>Single Quotes (<code>'...'</code>):</strong> <code>'JavaScript'</code>
+3.  <strong>Backticks (<code>`...`</code>):</strong> สำหรับสร้าง <strong>Template Literals</strong> (ดูรายละเอียดเพิ่มเติมในข้อ 4.8)</p>
+<h4 id="multi-line-string">การเขียนข้อความหลายบรรทัด (Multi-line String)</h4>
+<p>หากเรากดขึ้นบรรทัดใหม่ตรงๆ ภายในเครื่องหมายอัญประกาศคู่หรือเดี่ยวธรรมดา จะทำให้ระบบแปลภาษาเกิดการสับสนและ Error ได้ เรามีวิธีแก้ 3 แบบดังนี้:</p>
+<pre><code class="language-javascript">// วิธีที่ 1: ใส่ Backslash (\) ไว้ท้ายบรรทัดที่ต้องการขึ้นต่อ
+let text1 = &quot;Lorem Ipsum is simply dummy text \
+of the printing and \
+typesetting industry&quot;;
+
+// วิธีที่ 2: แยกเป็นสตริงย่อยแล้วนำมารวมกันด้วยเครื่องหมายบวก (+)
+let text2 = &quot;Lorem Ipsum is simply dummy text &quot; +
+            &quot;of the printing and &quot; +
+            &quot;typesetting industry&quot;;
+
+// วิธีที่ 3: ใช้เครื่องหมาย Backtick (`) ครอบคลุมหลายบรรทัดได้โดยตรง (ดีที่สุด)
+let text3 = `Lorem Ipsum is simply dummy text
+of the printing and
+typesetting industry`;
+</code></pre>
+<h4 id="escape-characters">อักขระพิเศษ (Escape Characters)</h4>
+<p>ใช้สำหรับการแทรกสัญลักษณ์พิเศษที่พิมพ์ลงในข้อความสตริงตรงๆ ไม่ได้:
+*   <code>\n</code>: ขึ้นบรรทัดใหม่ (New Line)
+*   <code>\t</code>: เว้นระยะ 1 แท็บ (Tab)
+*   <code>\"</code>: ใส่เครื่องหมายคำพูดคู่ลงไปในข้อความที่เป็น Double Quotes
+*   <code>\'</code>: ใส่เครื่องหมายคำพูดเดี่ยวลงไปในข้อความที่เป็น Single Quotes
+*   <code>\\</code>: แสดงเครื่องหมาย Backslash</p>
+<h3 id="33-boolean">3.3 ข้อมูลชนิดบูลีน (Boolean)</h3>
+<p>มีค่าสถานะเพียง 2 ค่าเท่านั้นคือ <code>true</code> (จริง) หรือ <code>false</code> (เท็จ) เท่านั้น (พิมพ์พิมพ์เล็กทั้งหมด)</p>
+<pre><code class="language-javascript">let isLogged = true;
+let hasError = false;
+// let status = True; // Error! คำว่า True พิมพ์ใหญ่ไม่ใช่คีย์เวิร์ดบูลีน
+</code></pre>
+<h3 id="34">3.4 ค่าพิเศษในระบบตัวเลขและระบบวัตถุ</h3>
+<ul>
+<li><strong>null:</strong> แปลว่า "ไม่มีค่า" หรือ "ค่าว่างเปล่า" มักใช้กำหนดให้กับตัวแปรเพื่อระบุว่าตั้งใจให้มันว่าง (โดยเฉพาะกับการจัดการกับ Object) </li>
+<li><strong>undefined:</strong> แปลว่า "ยังไม่ได้กำหนดค่าใดๆ" มักเกิดตอนประกาศตัวแปรแล้วปล่อยว่างไว้ หรืออ้างอิงถึงตัวแปรที่ยังไม่มีตัวตนอยู่จริง<ul>
+<li><em>ข้อสังเกต:</em> <code>typeof null</code> จะคืนค่าเป็น <code>"object"</code> (ซึ่งเป็นช่องโหว่ทางดีไซน์ดั้งเดิมของภาษาจาวาสคริปต์) ในขณะที่ <code>typeof undefined</code> จะคืนค่าเป็น <code>"undefined"</code></li>
+</ul>
+</li>
+<li><strong>NaN (Not a Number):</strong> ค่าพิเศษทางคณิตศาสตร์แปลว่า "ไม่ใช่ตัวเลข" เกิดขึ้นจากการคำนวณที่ผิดพลาดหรือไม่ได้ผลลัพธ์ที่เป็นตัวเลข เช่น เอาตัวเลขไปคำนวณคณิตศาสตร์ร่วมกับข้อความ<ul>
+<li><em>ตัวอย่าง:</em> <code>30 - "Minutes"</code> หรือ <code>"Hello" * "World"</code> หรือ <code>0 / 0</code></li>
+<li><em>การตรวจสอบ:</em> สามารถใช้ฟังก์ชัน <code>isNaN(ค่าที่ต้องการตรวจ)</code> เพื่อเช็คได้ เช่น <code>isNaN("100Bath")</code> จะได้ค่าเป็น <code>true</code></li>
+<li><em>ข้อควรระวัง:</em> สำหรับค่า <code>null</code> หากนำไปบวกลบคูณหารปกติ จาวาสคริปต์จะแปลงค่า <code>null</code> ให้เทียบเท่าตัวเลข <code>0</code> เสมอ (เช่น <code>null + 10</code> จะได้ <code>10</code> ไม่ใช่ <code>NaN</code>)</li>
+</ul>
+</li>
+<li><strong>Infinity / -Infinity:</strong> ค่าอนันต์เชิงบวก/ลบ เกิดขึ้นเมื่อหารตัวเลขใดๆ ที่ไม่ใช่ศูนย์ ด้วยศูนย์ (เช่น <code>1 / 0</code> ได้ <code>Infinity</code>) หรือกำหนดตัวเลขที่มีค่าสูงเกินความจุสูงสุดที่ระบบรองรับตัวเลขปกติได้ (<code>1.7976931348623157e+308</code>)<ul>
+<li><em>การตรวจสอบ:</em> ใช้ฟังก์ชัน <code>isFinite(ค่าที่ต้องการตรวจ)</code> เพื่อตรวจเช็คว่าค่านั้นไม่ใช่ Infinity หรือ NaN หรือไม่</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="4-operators">4. ตัวดำเนินการ (Operators)</h2>
+<h3 id="41-assignment-operator">4.1 เครื่องหมายกำหนดค่า (Assignment Operator: <code>=</code>)</h3>
+<p>ใช้สำหรับการส่งค่าจากฝั่งขวาไปเก็บไว้ในตัวแปรฝั่งซ้าย และสามารถเขียนแบบเชื่อมโยงกันหลายๆ ตัวแปรเพื่อกำหนดค่าเดียวพร้อมกันได้ (เรียกว่า Chaining Assignment โดยระบบจะประมวลผลจากขวาไปซ้าย):</p>
+<pre><code class="language-javascript">let x, y, z;
+x = y = z = 10; // ทั้ง x, y, z จะเก็บค่า 10 เหมือนกันทั้งหมด
+</code></pre>
+<h3 id="42-arithmetic-operators">4.2 เครื่องหมายทางคณิตศาสตร์ (Arithmetic Operators)</h3>
+<p>ประมวลผลคำนวณตัวเลข:
+*   <code>+</code> (บวก), <code>-</code> (ลบ), <code>*</code> (คูณ), <code>/</code> (หาร)
+*   <code>%</code> (Modulo / หารเอาเศษ): หาเศษจากการหาร เช่น <code>10 % 3</code> ได้ผลเศษเป็น <code>1</code> หรือ <code>12 % 3.5</code> ได้เศษเป็น <code>1.5</code>
+*   <code>**</code> (Exponentiation / ยกกำลัง): เช่น <code>10 ** 2</code> ได้ผลลัพธ์เป็น <code>100</code> (เทียบเท่าคำสั่ง <code>Math.pow(10, 2)</code>)</p>
+<blockquote>
+<p>[!WARNING]
+หากใช้โอเปอเรเตอร์คณิตศาสตร์ (<code>-</code>, <code>*</code>, <code>/</code>, <code>**</code>) ร่วมกับตัวเลขที่อยู่ในฟอร์แมตข้อความ (เช่น <code>"100" * "10"</code>) จาวาสคริปต์จะแปลงชนิดข้อมูลให้อัตโนมัติและหาค่าให้เสร็จสิ้นเป็นจำนวนตัวเลขปกติ</p>
+<p>แต่สำหรับเครื่องหมาย <strong>บวก (<code>+</code>)</strong> จะถูกมองเป็นการ <strong>เชื่อมต่อข้อความ (String Concatenation)</strong> ทันทีหากมีฝั่งใดฝั่งหนึ่งเป็นข้อความ เช่น <code>108 + '1009'</code> จะส่งผลลัพธ์เป็นข้อความต่อกันยืดๆ ว่า <code>"1081009"</code></p>
+</blockquote>
+<h3 id="43-compound-assignment">4.3 เครื่องหมายคำนวณและกำหนดค่าร่วม (Compound Assignment)</h3>
+<p>ลดรูปการเขียนคำนวณค่าตัวแปรตัวเดิมแล้วเขียนทับค่าตัวเอง:
+*   <code>x += 10</code> ลดรูปจาก <code>x = x + 10</code>
+*   <code>x -= 50</code> ลดรูปจาก <code>x = x - 50</code>
+*   <code>x *= 2</code>  ลดรูปจาก <code>x = x * 2</code>
+*   <code>x /= 20</code> ลดรูปจาก <code>x = x / 20</code>
+*   <code>x %= 3</code>  ลดรูปจาก <code>x = x % 3</code>
+*   <code>x **= 3</code> ลดรูปจาก <code>x = x ** 3</code></p>
+<h3 id="44-1-increment-decrement">4.4 โอเปอเรเตอร์เพิ่ม/ลดค่าทีละ 1 (Increment &amp; Decrement)</h3>
+<ul>
+<li><code>++</code> (บวกเพิ่มขึ้น 1), <code>--</code> (ลดลง 1) โดยแยกออกเป็น 2 รูปแบบที่ส่งผลการคำนวณในนิพจน์ต่างกัน:<ol>
+<li><strong>Prefix (วางไว้ด้านหน้า เช่น <code>++x</code>):</strong> ทำการบวก/ลดค่าของ <code>x</code> ก่อนทันที 1 ค่า แล้วจึงส่งค่าผลลัพธ์ใหม่ไปคำนวณต่อในนิพจน์นั้นๆ</li>
+<li><strong>Suffix (วางไว้ด้านหลัง เช่น <code>x++</code>):</strong> ส่งค่าปัจจุบันของ <code>x</code> ไปประมวลผลคำนวณในนิพจน์ก่อน แล้วจึงสั่งบวก/ลดค่าตัวแปร <code>x</code> เพิ่มขึ้นลับหลังในบรรทัดนั้น</li>
+</ol>
+</li>
+</ul>
+<pre><code class="language-javascript">let x = 10;
+let y = 2 + (++x); // x เพิ่มเป็น 11 ทันที, จากนั้น y = 2 + 11 จะได้ y = 13
+
+let a = 10;
+let b = 2 + (a++); // นำ a ปัจจุบัน (10) ไปคำนวณก่อน b = 2 + 10 จะได้ b = 12 จากนั้นตัวแปร a จึงขยับเพิ่มเป็น 11 ในระบบทีหลัง
+</code></pre>
+<h3 id="45-comparison-operators">4.5 เครื่องหมายเปรียบเทียบ (Comparison Operators)</h3>
+<p>ใช้ทดสอบความสัมพันธ์ของค่า 2 ค่า ผลลัพธ์ส่งค่าบูลีน <code>true</code>/<code>false</code> ออกมาเสมอ:
+*   <code>==</code> (เท่ากับ - เปรียบเทียบเฉพาะค่าโดยอาจละเว้นความต่างชนิดข้อมูล), <code>!=</code> (ไม่เท่ากับ)
+*   <code>&gt;</code> (มากกว่า), <code>&lt;</code> (น้อยกว่า), <code>&gt;=</code> (มากกว่าหรือเท่ากับ), <code>&lt;=</code> (น้อยกว่าหรือเท่ากับ)</p>
+<blockquote>
+<p>[!NOTE]
+สำหรับข้อมูลชนิดข้อความ (String) จะอาศัยการเปรียบเทียบลำดับอักษรตามมาตรฐาน Unicode และมีความอ่อนไหวเรื่องขนาดตัวอักษร (Case-Sensitive) เช่น <code>'abcd' != 'ABCD'</code> จะมีค่าเป็น <code>true</code></p>
+</blockquote>
+<h3 id="46-logical-operators">4.6 เครื่องหมายทางตรรกศาสตร์ (Logical Operators)</h3>
+<p>ใช้เชื่อมหลายเงื่อนไข:
+*   <code>&amp;&amp;</code> (AND - และ): ผลลัพธ์จะเป็นจริง (<code>true</code>) ก็ต่อเมื่อ <strong>ทุกเงื่อนไข</strong> รอบเครื่องหมายเป็นจริงทั้งหมด
+*   <code>||</code> (OR - หรือ): ผลลัพธ์จะเป็นจริง (<code>true</code>) ขอเพียงแค่มี <strong>อย่างน้อยหนึ่งเงื่อนไข</strong> รอบเครื่องหมายที่เป็นจริง
+*   <code>!</code> (NOT - ปฏิเสธ): สลับสถานะบูลีนเป็นตรงข้าม เช่น <code>!true</code> จะกลายเป็น <code>false</code></p>
+<h3 id="47-3-ternary-operator">4.7 เครื่องหมายเปรียบเทียบแบบย่อ 3 ส่วน (Ternary Operator)</h3>
+<p>ช่วยย่อคำสั่งเขียนตัดสินใจและคืนค่าเงื่อนไขโดยเขียนสั้นๆ ในแถวเดียว:</p>
+<pre><code class="language-javascript">// รูปแบบ: ตัวแปร = (เงื่อนไข) ? ค่าถ้าจริง : ค่าถ้าเท็จ;
+let x = 20;
+let result = (x % 2 === 0) ? &quot;Even&quot; : &quot;Odd&quot;; // จะได้ค่า result = &quot;Even&quot;
+</code></pre>
+<h3 id="48-falsy-short-circuiting">4.8 การใช้เครื่องหมาย <code>||</code> กำหนดค่าเริ่มต้น (Falsy Short-circuiting)</h3>
+<p>ใน JavaScript ข้อมูลจำพวก <code>false</code>, <code>0</code>, <code>""</code> (ข้อความว่าง), <code>null</code>, <code>undefined</code>, และ <code>NaN</code> จะเรียกว่า <strong>Falsy values</strong> (ค่าที่เสมือนว่าเป็นเท็จ)
+เราสามารถนำคณิตศาสตร์ตรรกะตัวเชื่อม <code>||</code> มาใช้อ้างอิงเพื่อเติมค่าเริ่มต้นให้กับตัวแปรยามที่เกิดสภาวะว่างเปล่าได้ง่ายๆ:</p>
+<pre><code class="language-javascript">let userSetting; // ปัจจุบันมีสถานะเป็น undefined (Falsy)
+let themeColor = userSetting || &quot;dark&quot;; // หากฝั่งซ้ายเป็น Falsy ระบบจะโยนค่าเริ่มต้นฝั่งขวา &quot;dark&quot; ไปเก็บไว้แทน
+</code></pre>
+<h3 id="49-template-literals-interpolation">4.9 เทมเพลตสตริง (Template Literals และ Interpolation)</h3>
+<p>เพื่อลดความรุงรังในการเชื่อมสายอักขระและค่าตัวแปรด้วยเครื่องหมายบวก (<code>+</code>) เรานิยมใช้เครื่องหมาย Backtick (<code>`</code>) ครอบข้อความ และระบุแทรกค่าตัวแปรหรือนิพจน์คณิตศาสตร์ลงไปตรงๆ ด้วยฟอร์แมต <code>${ตัวแปรหรือการคำนวณ}</code></p>
+<pre><code class="language-javascript">let name = &quot;สมชาย&quot;;
+let score = 95;
+// แบบเดิม: console.log(&quot;นักเรียนชื่อ &quot; + name + &quot; สอบได้คะแนน &quot; + score + &quot; คะแนน&quot;);
+// แบบใหม่ที่เรียบร้อยกว่า:
+console.log(`นักเรียนชื่อ ${name} สอบได้คะแนน ${score} คะแนน`);
+
+// สามารถคำนวณนิพจน์ภายในสัญลักษณ์ ${} ได้โดยตรง
+let miles = 10;
+console.log(`ระยะทาง ${miles} ไมล์ เทียบเท่ากับ ${miles * 1.6} กิโลเมตร`);
+</code></pre>
+<hr />
+<h2 id="5-data-type-conversion">5. การแปลงและตรวจสอบชนิดข้อมูลเบื้องต้น (Data Type Conversion)</h2>
+<p>เพื่อแก้ปัญหากรณีตัวเลขติดอยู่ในรูปของข้อความ (String Number) แล้วนำมาบวกกันแบบผิดพลาด เราสามารถจัดระเบียบข้อมูลใหม่ด้วยฟังก์ชันเหล่านี้:</p>
+<ol>
+<li><strong><code>parseInt(ข้อมูล)</code>:</strong> แปลงสตริงให้กลายเป็นตัวเลขจำนวนเต็มหลักสิบหลักหน่วยปกติ เช่น <code>"123"</code> -&gt; <code>123</code></li>
+<li><strong><code>parseFloat(ข้อมูล)</code>:</strong> แปลงสตริงให้กลายเป็นตัวเลขทศนิยม เช่น <code>"120.25"</code> -&gt; <code>120.25</code></li>
+<li><strong><code>Number.isInteger(ข้อมูล)</code>:</strong> ใช้เช็คว่าค่าตัวแปรนั้นเป็นจำนวนเต็มตัวจริงหรือไม่ คืนค่าเป็น <code>true</code> / <code>false</code></li>
+</ol>
+<h4 id="extraction-feature">ความพิเศษในการคัดลอกถอดรหัสตัวเลข (Extraction Feature)</h4>
+<p>ฟังก์ชัน <code>parseInt()</code> และ <code>parseFloat()</code> มีความสามารถพิเศษในการพยายามดึงตัดเลขที่อยู่ <strong>ส่วนหน้าสุด</strong> ของข้อความออโตเมติกจนกระทั่งไปปะทะตัวอักษร แต่หากตัวหน้าสุดเป็นอักษรทันทีจะคืนค่า <code>NaN</code> แทน:</p>
+<pre><code class="language-javascript">parseInt(&quot;100MB&quot;);        // ได้ผลลัพธ์เป็น 100
+parseFloat(&quot;120.25GB&quot;);   // ได้ผลลัพธ์เป็น 120.25
+parseInt(&quot;-90degree&quot;);    // ได้ผลลัพธ์เป็น -90
+parseInt(&quot;ECMAScript8&quot;);  // ได้ผลลัพธ์เป็น NaN (เพราะตัวแรกสุดขึ้นต้นด้วยอักษรตัว E ไม่ใช่ตัวเลข)
+</code></pre>
+<hr />
+<h2 id="6-console-nodejs">6. การรับข้อมูลผ่าน Console บนสภาพแวดล้อม Node.js</h2>
+<p>ในการเขียนโปรแกรมแบบตอบโต้อินเตอร์แอคทีฟบนหน้าจอ Terminal คีย์เวิร์ดรับข้อมูลแบบ GUI บนเว็บเบราว์เซอร์จะไม่สามารถใช้งานได้ เราจึงต้องติดตั้งโมดูลอำนวยความสะดวกชื่อว่า <code>prompt-sync</code> เพิ่มเติมในโปรเจกต์</p>
+<h3 id="_1">วิธีการติดตั้ง</h3>
+<p>เปิดแถบ Terminal ในโฟลเดอร์โปรเจกต์ของคุณแล้วเรียกใช้คำสั่งติดตั้งผ่าน npm:</p>
+<pre><code class="language-bash">npm install prompt-sync
+</code></pre>
+<h3 id="_2">รูปแบบการนำไปประยุกต์ใช้งานในโค้ด</h3>
+<pre><code class="language-javascript">// ดึงโมดูลเข้ามาทำงาน
+const prompt = require('prompt-sync')();
+
+// รับข้อมูลจากคีย์บอร์ด (ค่าที่ได้กลับมาจะเป็นข้อมูลชนิด String เสมอ)
+let num1 = prompt(&quot;ป้อนตัวเลขที่ 1: &quot;);
+let num2 = prompt(&quot;ป้อนตัวเลขที่ 2: &quot;);
+
+// จำเป็นต้องแปลงเป็นตัวเลขก่อนคำนวณผลบวก (+) เพื่อป้องกันสตริงเชื่อมกันเอง
+let result = parseFloat(num1) + parseFloat(num2);
+
+console.log(`ผลบวกรวมที่ได้คือ: ${result}`);
+</code></pre>
+<hr />
+<h2 id="workshop">💻 แบบฝึกหัดท้ายบทเรียน (Workshop)</h2>
+<p><strong>เป้าหมาย:</strong> สร้างโปรแกรมคอมพิวเตอร์คำนวณอายุและน้ำหนักดัชนีมวลกายอย่างง่ายผ่านการรับค่าทางคีย์บอร์ด</p>
+<p><strong>ขั้นตอนปฏิบัติ:</strong>
+1.  ตรวจสอบว่าคุณได้ติดตั้งโมดูลด้วยคำสั่ง <code>npm install prompt-sync</code> ในโฟลเดอร์เรียบร้อยแล้ว
+2.  สร้างไฟล์โค้ดใหม่ชื่อ <code>calculator.js</code>
+3.  เขียนโค้ดตามแนวทางด้านล่างนี้ลงในไฟล์และทำการบันทึก:</p>
+<pre><code class="language-javascript">// ดึงโมดูล prompt-sync
+const prompt = require('prompt-sync')();
+
+console.log(&quot;=== โปรแกรมคำนวณน้ำหนัก BMI และคำนวณปีเกิด ===&quot;);
+
+// 1. รับข้อมูลจากผู้ใช้งาน
+let name = prompt(&quot;กรุณาระบุชื่อของคุณ: &quot;);
+let currentYear = prompt(&quot;กรุณาระบุปี ค.ศ. ปัจจุบัน (เช่น 2026): &quot;);
+let birthYear = prompt(&quot;กรุณาระบุปี ค.ศ. เกิดของคุณ: &quot;);
+let weight = prompt(&quot;ระบุน้ำหนักตัวของคุณ (กิโลกรัม): &quot;);
+let heightCm = prompt(&quot;ระบุส่วนสูงของคุณ (เซนติเมตร): &quot;);
+
+// 2. แปลงข้อมูลและคำนวณผลลัพธ์
+let age = parseInt(currentYear) - parseInt(birthYear);
+
+// คำนวณ BMI = น้ำหนัก (kg) / ส่วนสูงเมตรยกกำลังสอง (m^2)
+let heightM = parseFloat(heightCm) / 100;
+let bmi = parseFloat(weight) / (heightM ** 2);
+
+// 3. แสดงผลลัพธ์โดยใช้ Template Literal
+console.log(&quot;-----------------------------------------&quot;);
+console.log(`สวัสดีคุณ ${name}`);
+console.log(`ปัจจุบันคุณมีอายุประมาณ: ${age} ปี`);
+console.log(`ค่าดัชนีมวลกาย (BMI) ของคุณคือ: ${bmi.toFixed(2)}`);
+console.log(&quot;-----------------------------------------&quot;);
+</code></pre>
+<ol>
+<li>เปิดหน้าต่าง Terminal ใน VS Code และพิมพ์สั่งรันโปรแกรม:
+    <code>bash
+    node calculator.js</code></li>
+<li>ลองป้อนค่าต่างๆ เพื่อดูผลการประมวลผลและการปัดเศษทศนิยม BMI ด้วยคำสั่ง <code>.toFixed(2)</code></li>
+</ol>
+<hr />
+<h2 id="_3">💡 ข้อมูลเพิ่มเติมสำหรับการเรียนรู้</h2>
+<p>ในบทเรียนนี้ เราได้ทำความเข้าใจโครงสร้างเบื้องต้นของการประมวลผลทางสัญลักษณ์คณิตศาสตร์ ตัวแปร และชนิดข้อมูลหลักเรียบร้อยแล้ว แต่อย่างไรก็ตาม โค้ดยังไม่มีการตัดสินใจหรือการควบคุมทิศทางอย่างยืดหยุ่น เช่น หากผู้ใช้ป้อนน้ำหนักเป็น 0 หรือข้อความธรรมดา โปรแกรมก็จะคำนวณผลผิดพลาด ในบทถัดไปเรื่อง <strong>การควบคุมทิศทางของโปรแกรม (Control Flow - if/else, loops)</strong> เราจะมาไขข้อข้องใจเหล่านี้และเขียนโปรแกรมที่มีความฉลาดรอบคอบยิ่งขึ้นไปอีกระดับ!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e41\u0e25\u0e49\u0e27", "clipboard.copy": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01", "search.result.more.one": "\u0e2d\u0e35\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.more.other": "# \u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.none": "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.one": "\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.other": "\u0e1e\u0e1a # \u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.placeholder": "\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e23\u0e34\u0e48\u0e21\u0e04\u0e49\u0e19\u0e2b\u0e32", "search.result.term.missing": "\u0e44\u0e21\u0e48\u0e1e\u0e1a", "select.version": "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

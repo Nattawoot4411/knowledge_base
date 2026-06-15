@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* High-End Modern Stylesheet for JS Mastery (Material Customizations) */
+
+:root {
+  /* Soothing Premium Midnight Obsidian Background */
+  --md-default-bg-color: #0c0e17 !important; 
+  --md-default-bg-color--light: #14182b !important;
+  
+  /* Comfortable Readable Silver-Gray Text */
+  --md-default-fg-color: #d1d7e0 !important; 
+  --md-default-fg-color--light: #9aa2b1 !important;
+  
+  /* Warm Gold Accent Theme */
+  --md-primary-fg-color: #101324 !important; 
+  --md-primary-fg-color--transparent: rgba(16, 19, 36, 0.9) !important;
+  --md-primary-bg-color: #ffd54f !important;
+  
+  --md-accent-fg-color: #ffd54f !important;
+  --md-accent-bg-color: rgba(255, 213, 79, 0.15) !important;
+  
+  --md-code-bg-color: #161a2e !important;
+  --md-grid-width: 100rem !important;
+}
+
+/* Base Body Font Enhancements */
+body, input, button, select, textarea, .md-typeset, h1, h2, h3, h4, h5, h6, .md-nav__link {
+  font-family: 'Mali', cursive !important;
+}
+
+/* Base text minimum size of 16px */
+body,
+.md-typeset,
+.md-typeset p,
+.md-typeset li,
+.md-typeset td,
+.md-typeset th,
+.md-nav__link,
+input,
+button,
+select,
+textarea {
+  font-size: 16px !important;
+}
+
+body {
+  background-color: #0c0e17 !important;
+  color: #d1d7e0 !important;
+}
+
+/* Premium Navigation Sidebar */
+.md-nav__link {
+  line-height: 1.35 !important; /* Extremely tight but clear line height */
+  padding-top: 0.05rem !important; /* Minimal top spacing */
+  padding-bottom: 0.05rem !important; /* Minimal bottom spacing */
+}
+
+.md-nav__item {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.md-sidebar--navigation .md-nav__link--active {
+  color: #34d399 !important; /* Emerald active navigation */
+  font-weight: 600;
+  border-left: 2px solid #34d399;
+  padding-left: 12px;
+}
+
+/* H1 Main Heading Styling - Modern Golden Slate Gradient */
+.md-content h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 30%, #ffd54f 70%, #ffb300 100%); /* Golden Sunset */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 1rem;
+  margin-bottom: 1.8rem;
+  border-bottom: 2px solid rgba(255, 213, 79, 0.25);
+  padding-top: 0.3em; /* Prevent Thai tone marks from being clipped at the top */
+  padding-bottom: 0.8rem;
+  line-height: 1.5;   /* Add vertical breathing room for Thai vowels */
+  text-shadow: 0 2px 20px rgba(255, 213, 79, 0.08);
+}
+
+/* Beautiful H2 Sub-headings - Glow Yellow Styling */
+.md-content h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a7f3d0 0%, #34d399 55%, #059669 100%); /* Emerald-Teal */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  border-bottom: 1px dashed rgba(52, 211, 153, 0.25);
+  padding-top: 0.3em; /* Prevent Thai tone marks from being clipped at the top */
+  padding-bottom: 0.4rem;
+  line-height: 1.5;   /* Add vertical breathing room for Thai vowels */
+  text-shadow: 0 0 12px rgba(52, 211, 153, 0.12);
+}
+
+/* Sleek H3 Sub-headings - Muted Light Gold */
+.md-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #bae6fd 0%, #60a5fa 60%, #3b82f6 100%); /* Sky-Indigo */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  padding-top: 0.3em; /* Prevent Thai tone marks from being clipped at the top */
+  line-height: 1.5;   /* Add vertical breathing room for Thai vowels */
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.1);
+}
+
+/* Content cards: minimalist border-glow style */
+.md-content section,
+.md-content article,
+.md-content .admonition {
+  background: rgba(17, 24, 39, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-radius: 12px !important;
+  padding: 1.8rem !important;
+  margin: 1.8rem 0 !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.md-content section:hover,
+.md-content article:hover {
+  border-color: rgba(255, 213, 79, 0.28) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 213, 79, 0.04) !important;
+  transform: translateY(-2px);
+}
+
+/* Inline Code style: modern slate-gray with subtle yellow accent */
+.md-content code {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  color: #38bdf8 !important; /* Sky Blue Code text */
+  font-family: 'JetBrains Mono', monospace !important;
+  padding: 0.15rem 0.35rem !important;
+  border-radius: 6px !important;
+  font-size: 0.85em !important;
+  border: 1px solid rgba(56, 189, 248, 0.2) !important;
+}
+
+/* Admonitions styling overrides */
+/* Admonitions styling overrides - Diverse Cozy Tones */
+.md-typeset .admonition.note {
+  border-left: 4px solid #06b6d4 !important; /* Teal */
+  background: rgba(6, 182, 212, 0.04) !important;
+}
+.md-typeset .admonition.tip {
+  border-left: 4px solid #10b981 !important; /* Emerald */
+  background: rgba(16, 185, 129, 0.04) !important;
+}
+.md-typeset .admonition.warning {
+  border-left: 4px solid #f97316 !important; /* Orange */
+  background: rgba(249, 115, 22, 0.04) !important;
+}
+.md-typeset .admonition.important {
+  border-left: 4px solid #8b5cf6 !important; /* Purple */
+  background: rgba(139, 92, 246, 0.04) !important;
+}
+.md-typeset .admonition.danger,
+.md-typeset .admonition.caution {
+  border-left: 4px solid #ef4444 !important; /* Red */
+  background: rgba(239, 68, 68, 0.04) !important;
+}
+
+/* Custom list layout */
+.md-typeset ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.md-typeset ul li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  padding-left: 1.25rem;
+}
+
+.md-typeset ul li::before {
+  content: "•";
+  color: #38bdf8; /* Soft Sky Blue Bullets */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Premium Video / Iframe wrapper card style with Resizable handle */
+.resizable-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 450px; /* Default height */
+  min-height: 250px;
+  max-height: 800px;
+  resize: vertical;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  background-color: #181a1f;
+  margin: 1.5rem 0;
+}
+
+/* Force iframe to expand inside the resizable wrapper */
+.resizable-iframe-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Custom visual indicator for resizing at the bottom-right corner */
+.resizable-iframe-container::-webkit-resizer {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path d="M10,0 L0,10 L10,10 Z" fill="rgba(255, 214, 0, 0.5)"/></svg>');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+/* Premium Details & Summary Accordion for Hidden Solutions */
+.md-typeset details {
+  background: rgba(17, 24, 39, 0.5) !important;
+  border: 1px solid rgba(255, 214, 0, 0.15) !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
+  margin: 1.2rem 0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.md-typeset details[open] {
+  border-color: rgba(255, 214, 0, 0.4) !important;
+  background: rgba(17, 24, 39, 0.8) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 214, 0, 0.05) !important;
+}
+
+.md-typeset details summary {
+  font-weight: 600;
+  color: #ffd600 !important;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  padding: 0.8rem 1.2rem !important;
+  transition: color 0.2s ease !important;
+}
+
+.md-typeset details summary:hover {
+  color: #ffe082 !important;
+}
+
+.md-typeset details summary::marker {
+  color: #ffd600;
+}
+
+.md-typeset details .details-content {
+  padding: 0.8rem 1.2rem !important;
+  border-top: 1px dashed rgba(255, 214, 0, 0.15);
+  color: #e2e8f0;
+}
+
+/* Force hide Grammarly and LanguageTool extension UI elements */
+grammarly-extension,
+grammarly-popups,
+[data-gr-id],
+lt-mirror,
+lt-highlighter,
+lt-div,
+.lt-icon,
+.lt-tooltip,
+[class^="lt-"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Custom header codebox button styling */
+#toggle-fixed-codebox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0b0f19; /* Dark background for clear visibility on yellow header */
+  border: 1px solid rgba(255, 214, 0, 0.4);
+  color: #ffd600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 12px;
+  height: 32px;
+  align-self: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+#toggle-fixed-codebox:hover {
+  background: #181a1f;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+#toggle-fixed-codebox:active {
+  transform: translateY(0);
+}
+
+#toggle-fixed-codebox svg {
+  flex-shrink: 0;
+}
+
+/* Fixed Codebox Container styling */
+#fixed-codebox {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  background: #181a1f;
+  border-top: 3px solid #ffd600;
+  z-index: 9999;
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.6);
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Resizable top border for fixed codebox */
+.codebox-resize-handle {
+  height: 6px;
+  background: rgba(255, 214, 0, 0.1);
+  cursor: ns-resize;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  transition: background 0.2s;
+}
+
+.codebox-resize-handle:hover {
+  background: #ffd600;
+}
+
+/* Premium Thai paragraph indentation styling */
+.md-typeset p {
+  text-indent: 2.5em;
+  text-align: justify;
+}
+
+/* Exclude specific components where indentation is not appropriate */
+.md-typeset li p,
+.md-typeset td p,
+.md-typeset th p,
+.md-typeset .admonition p,
+.md-typeset details p,
+.md-typeset .details-content p,
+.md-typeset .tabbed-content p,
+#fixed-codebox p {
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+/* High-End Modern Table Customizations */
+.md-typeset table:not([class]) {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 213, 79, 0.15) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35) !important;
+  margin: 1.8rem 0 !important;
+}
+
+.md-typeset table:not([class]) th {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(17, 24, 39, 0.98)) !important;
+  color: #ffd54f !important;
+  font-weight: 700 !important;
+  padding: 14px 18px !important;
+  border-bottom: 2px solid rgba(255, 213, 79, 0.35) !important;
+  font-size: 15px !important;
+  letter-spacing: 0.03em !important;
+  text-align: left !important;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 14px 18px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.md-typeset table:not([class]) tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.015) !important;
+}
+
+.md-typeset table:not([class]) tr:nth-child(odd) td {
+  background-color: rgba(255, 255, 255, 0.003) !important;
+}
+
+/* Accentuate first column (commands/methods) with a subtle yellow text glow */
+.md-typeset table:not([class]) td:first-child strong,
+.md-typeset table:not([class]) td:first-child code,
+.md-typeset table:not([class]) td:first-child {
+  color: #ffd54f !important;
+  font-weight: 600 !important;
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background-color: rgba(255, 213, 79, 0.05) !important;
+  color: #ffffff !important;
+}
+
+/* VS Code One Dark Pro Highlight Theme Overrides for code blocks */
+.md-typeset pre,
+.md-typeset pre code,
+.md-typeset .highlight {
+  background-color: #282c34 !important; /* One Dark Pro editor bg */
+  color: #abb2bf !important; /* Default text */
+}
+
+/* Syntax Tokens */
+.md-typeset .highlight .c, 
+.md-typeset .highlight .c1, 
+.md-typeset .highlight .cm { 
+  color: #5c6370 !important; 
+  font-style: italic !important; 
+} /* Comments */
+
+.md-typeset .highlight .k, 
+.md-typeset .highlight .kd, 
+.md-typeset .highlight .kn, 
+.md-typeset .highlight .kp, 
+.md-typeset .highlight .kr, 
+.md-typeset .highlight .kt { 
+  color: #c678dd !important; 
+  font-weight: bold !important; 
+} /* Keywords */
+
+.md-typeset .highlight .s, 
+.md-typeset .highlight .s1, 
+.md-typeset .highlight .s2, 
+.md-typeset .highlight .sb, 
+.md-typeset .highlight .sc, 
+.md-typeset .highlight .sd, 
+.md-typeset .highlight .se, 
+.md-typeset .highlight .sh, 
+.md-typeset .highlight .si, 
+.md-typeset .highlight .sx { 
+  color: #98c379 !important; 
+} /* Strings */
+
+.md-typeset .highlight .nf, 
+.md-typeset .highlight .fm { 
+  color: #61afef !important; 
+} /* Functions / Methods */
+
+.md-typeset .highlight .nc, 
+.md-typeset .highlight .nn { 
+  color: #e5c07b !important; 
+} /* Classes */
+
+.md-typeset .highlight .nb { 
+  color: #56b6c2 !important; 
+} /* Built-ins (like console, document, Math, window) */
+
+.md-typeset .highlight .nx, 
+.md-typeset .highlight .nv, 
+.md-typeset .highlight .n { 
+  color: #abb2bf !important; 
+} /* General names/variables */
+
+.md-typeset .highlight .m, 
+.md-typeset .highlight .mi, 
+.md-typeset .highlight .mf, 
+.md-typeset .highlight .mo, 
+.md-typeset .highlight .mh { 
+  color: #d19a66 !important; 
+} /* Numbers */
+
+.md-typeset .highlight .o, 
+.md-typeset .highlight .ow { 
+  color: #56b6c2 !important; 
+} /* Operators */
+
+.md-typeset .highlight .p { 
+  color: #abb2bf !important; 
+} /* Punctuation */
+
+.md-typeset .highlight .na { 
+  color: #d19a66 !important; 
+} /* Attributes (HTML) */
+
+.md-typeset .highlight .nt { 
+  color: #e06c75 !important; 
+} /* Tags (HTML) */
+
+
+
