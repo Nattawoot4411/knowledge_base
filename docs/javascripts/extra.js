@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="#ffd600" style="vertical-align: middle;"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zm-3-8h6v2H9v-2zm0-4h6v2H9V8z"/></svg>
             <span style="vertical-align: middle;">Quick Playground (test.js)</span>
           </div>
-          <button id="close-fixed-codebox" style="background: transparent; border: none; color: #abb2bf; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 2px; border-radius: 4px; transition: all 0.2s;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <button id="close-fixed-codebox" style="background: transparent; border: none; color: #abb2bf; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 4px; transition: all 0.2s; margin-right: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
           </button>
         </div>
         <div style="flex: 1; position: relative; background: #181a1f;">
@@ -97,8 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const box = document.getElementById("fixed-codebox");
     if (box) {
       if (box.style.display === "none" || box.style.display === "") {
+        // Show fullscreen
         box.style.display = "flex";
+        box.style.position = "fixed";
+        box.style.top = "0";
+        box.style.left = "0";
+        box.style.width = "100vw";
+        box.style.height = "100vh";
+        box.style.zIndex = "9999";
       } else {
+        // Hide box
         box.style.display = "none";
       }
     }
@@ -155,6 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const box = document.getElementById("fixed-codebox");
         if (box) {
           box.style.display = "flex";
+          box.style.position = "fixed";
+          box.style.top = "0";
+          box.style.left = "0";
+          box.style.width = "100vw";
+          box.style.height = "100vh";
+          box.style.zIndex = "9999";
         }
         
         // Post the code content to the iframe
