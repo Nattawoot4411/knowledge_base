@@ -71,11 +71,13 @@
       <div id="editorContainer" class="absolute inset-0 w-full h-full"></div>
     </div>
 
-    <!-- Resize Handle -->
-    <div id="terminalResizeHandle" class="h-[5px] bg-[#282c34] hover:bg-[#ffd600] cursor-ns-resize transition-colors w-full z-10"></div>
+    <!-- Resize Handle (Thicker for better touch target) -->
+    <div id="terminalResizeHandle" class="h-[16px] bg-[#21252b] hover:bg-[#ffd600] cursor-ns-resize transition-colors w-full z-10 flex items-center justify-center border-y border-[#181a1f]">
+      <div class="h-[2px] w-8 bg-[#4b5263] rounded"></div>
+    </div>
 
     <!-- Output Console (Integrated terminal style matching One Dark Theme) -->
-    <div id="terminalContainer" class="h-1/2 md:h-[150px] bg-[#181a1f] flex flex-col overflow-hidden">
+    <div id="terminalContainer" class="h-[150px] bg-[#181a1f] flex flex-col overflow-hidden">
       <div class="bg-[#21252b] px-4 py-1.5 border-b border-[#181a1f] text-[10px] text-[#9da5b4] font-bold uppercase tracking-wider select-none font-mono flex items-center justify-between">
         <div class="flex items-center space-x-3">
           <span>Terminal</span>
@@ -313,12 +315,21 @@
     // Listen for code load messages from the parent page
     window.addEventListener('message', function(event) {
       if (event.data && event.data.type === 'LOAD_CODE') {
+        
+        // When the codebox opens, if it's a mobile device, set the terminal to 50% of the screen height
+        if (window.innerWidth < 768) {
+          termContainer.style.height = (window.innerHeight * 0.5) + "px";
+        }
+
         if (editor) {
           editor.setValue(event.data.code);
+          // Layout editor to accommodate the new terminal height
+          editor.layout();
         } else {
           let checkInterval = setInterval(function() {
             if (editor) {
               editor.setValue(event.data.code);
+              editor.layout();
               clearInterval(checkInterval);
             }
           }, 50);
