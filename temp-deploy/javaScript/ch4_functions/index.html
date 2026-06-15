@@ -1,0 +1,1260 @@
+
+<!doctype html>
+<html lang="th" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Nattawoot4411.github.io/knowledge_base/javaScript/ch4_functions/">
+      
+      
+        <link rel="prev" href="../ch3_conditions_loops/">
+      
+      
+        <link rel="next" href="../ch5_structures/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>บทที่ 4: การสร้างฟังก์ชัน (Functions) - Javascript & Visual Studio Code</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="yellow" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-functions" class="md-skip">
+          ข้ามไปที่เนื้อหา
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="หัวข้อ">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-header__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Javascript & Visual Studio Code
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              บทที่ 4: การสร้างฟังก์ชัน (Functions)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="ค้นหา" placeholder="ค้นหา" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="ค้นหา">
+        
+        <button type="reset" class="md-search__icon md-icon" title="ล้าง" aria-label="ล้าง" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            กำลังเริ่มต้นการค้นหา
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="แท็บ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  หน้าแรก
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  การติดตั้งโปรแกรม vs code, nodejs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../extensions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  extension ที่ต้องติดตั้งเพิ่ม
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ตัวนำทาง" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Javascript &amp; Visual Studio Code" class="md-nav__button md-logo" aria-label="Javascript & Visual Studio Code" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Javascript & Visual Studio Code
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    หน้าแรก
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    หน้าแรก
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทเรียน
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2_variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 2: ตัวแปร ชนิดข้อมูล และโอเปอเรเตอร์
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3_conditions_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 3: เงื่อนไขและการวนลูป (Conditions and Loops)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 4: การสร้างฟังก์ชัน (Functions)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 4: การสร้างฟังก์ชัน (Functions)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-function-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. พื้นฐานและการประกาศฟังก์ชัน (Function Basics)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-parameters-and-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การรับและส่งคืนข้อมูลในฟังก์ชัน (Parameters and Return)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-variable-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ขอบเขตของตัวแปร (Variable Scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. เทคนิคการจัดการพารามิเตอร์ขั้นสูง
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-advanced-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. รูปแบบการใช้งานฟังก์ชันขั้นสูง (Advanced Functions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 5: โครงสร้างข้อมูล (Array, Object และ JSON)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6_advanced_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 6: การประมวลผลข้อมูลขั้นสูง (Advanced Data)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7_dom_bom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    บทที่ 7: การสร้างเว็บเพจเชิงตอบสนอง (DOM & BOM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    การติดตั้งโปรแกรม vs code, nodejs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    extension ที่ต้องติดตั้งเพิ่ม
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="สารบัญ">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      สารบัญ
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        จุดประสงค์การเรียนรู้
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-function-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. พื้นฐานและการประกาศฟังก์ชัน (Function Basics)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-parameters-and-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. การรับและส่งคืนข้อมูลในฟังก์ชัน (Parameters and Return)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-variable-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ขอบเขตของตัวแปร (Variable Scope)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. เทคนิคการจัดการพารามิเตอร์ขั้นสูง
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-advanced-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. รูปแบบการใช้งานฟังก์ชันขั้นสูง (Advanced Functions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        สรุปบทเรียน
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ คำถามทบทวน (Review Questions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-functions">บทที่ 4: การสร้างฟังก์ชัน (Functions)</h1>
+<p>เมื่อโปรแกรมคอมพิวเตอร์มีขนาดใหญ่ขึ้นและมีความซับซ้อนมากขึ้น การเขียนคำสั่งทั้งหมดเรียงต่อกันตั้งแต่บรรทัดแรกจนถึงบรรทัดสุดท้ายจะทำให้โค้ดมีความยาว จัดการได้ยาก และเกิดความซ้ำซ้อน แนวทางปฏิบัติที่ดีในการเขียนโปรแกรมคือการแบ่งย่อยกระบวนการทำงานออกเป็นส่วนๆ ที่มีหน้าที่เฉพาะเจาะจง ซึ่งเราเรียกว่า "ฟังก์ชัน" (Function) การสร้างฟังก์ชันเปรียบเสมือนการสร้างเครื่องมือหรือเครื่องจักรขนาดเล็กที่เราสามารถเรียกใช้งานกี่ครั้งก็ได้เมื่อต้องการ ช่วยให้สถาปัตยกรรมของโปรแกรมมีความเป็นระเบียบ นำกลับมาใช้ใหม่ได้ (Reusable) และง่ายต่อการตรวจสอบข้อผิดพลาด ในบทเรียนนี้เราจะศึกษาตั้งแต่โครงสร้างพื้นฐานของฟังก์ชัน ไปจนถึงเทคนิคการจัดการข้อมูลแบบซับซ้อน และรูปแบบฟังก์ชันขั้นสูง</p>
+<hr />
+<h2 id="_1">จุดประสงค์การเรียนรู้</h2>
+<p>เมื่อศึกษาบทเรียนนี้จบแล้ว ผู้เรียนควรมีความสามารถดังนี้:
+*   อธิบายแนวคิด ความสำคัญ และโครงสร้างพื้นฐานของฟังก์ชันได้
+*   สามารถสร้าง เรียกใช้งาน และควบคุมทิศทางการทำงานของฟังก์ชันได้
+*   เข้าใจหลักการส่งผ่านข้อมูล (Parameters &amp; Arguments) และการส่งคืนค่า (Return)
+*   อธิบายและจัดการกับขอบเขตการเข้าถึงตัวแปร (Variable Scope) ได้อย่างถูกต้อง
+*   ประยุกต์ใช้เทคนิคพารามิเตอร์ขั้นสูง ได้แก่ Default Parameter, Rest Parameter และ Spread Operator ได้
+*   เข้าใจและสามารถเขียนฟังก์ชันรูปแบบพิเศษ เช่น ฟังก์ชันเวียนเกิด (Recursive), ฟังก์ชันนิรนาม (Anonymous) และฟังก์ชันเรียกกลับ (Callback) ได้</p>
+<hr />
+<h2 id="1-function-basics">1. พื้นฐานและการประกาศฟังก์ชัน (Function Basics)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ฟังก์ชันคือกลุ่มของคำสั่งที่ถูกรวบรวมไว้เป็นหมวดหมู่และตั้งชื่อกำกับไว้ เพื่อทำหน้าที่ประมวลผลงานอย่างใดอย่างหนึ่งให้เสร็จสมบูรณ์ภายในตัวเอง ฟังก์ชันจะไม่ทำงานจนกว่าจะถูก "เรียกใช้งาน" (Function Call/Invoke)</li>
+<li><strong>รายละเอียดเชิงลึก:</strong><ul>
+<li><strong>การสร้างและการเรียกใช้:</strong> การสร้างฟังก์ชันทำได้โดยใช้คีย์เวิร์ด <code>function</code> ตามด้วยชื่อฟังก์ชัน วงเล็บ <code>()</code> และบล็อกคำสั่งที่อยู่ภายในปีกกา <code>{}</code> เมื่อต้องการให้ฟังก์ชันทำงาน ให้พิมพ์ชื่อฟังก์ชันตามด้วยวงเล็บ</li>
+<li><strong>ลำดับการเขียนในโค้ด (Hoisting):</strong> ในหลายภาษาโปรแกรมรวมถึง JavaScript มีกลไกที่เรียกว่า <strong>Hoisting</strong> ซึ่งอนุญาตให้เราสามารถ "เรียกใช้" ฟังก์ชันในบรรทัดที่อยู่ก่อนหน้าการ "ประกาศ" ฟังก์ชันได้ หรือจะประกาศก่อนแล้วค่อยเรียกใช้ภายหลังก็ได้เช่นกัน</li>
+</ul>
+</li>
+</ul>
+<h3 id="_2">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">// การเรียกใช้งานฟังก์ชัน (สามารถเรียกก่อนบรรทัดที่ประกาศได้)
+showGreeting(); 
+
+// การประกาศฟังก์ชัน
+function showGreeting() {
+    console.log(&quot;สวัสดี! ยินดีต้อนรับเข้าสู่ระบบ&quot;);
+}
+</code></pre>
+<hr />
+<h2 id="2-parameters-and-return">2. การรับและส่งคืนข้อมูลในฟังก์ชัน (Parameters and Return)</h2>
+<p>ฟังก์ชันที่มีประสิทธิภาพมักจะมีการรับข้อมูลตั้งต้นเข้าไปประมวลผล และเมื่อประมวลผลเสร็จสิ้นก็สามารถส่งมอบผลลัพธ์กลับออกมาให้โปรแกรมหลักนำไปใช้ต่อได้</p>
+<h3 id="21-return-statement">2.1 การคืนค่าและการออกจากฟังก์ชัน (Return Statement)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คีย์เวิร์ด <code>return</code> มีหน้าที่ 2 ประการหลัก คือ การส่งข้อมูลที่เป็นผลลัพธ์การคำนวณกลับไปยังจุดที่เรียกใช้ฟังก์ชัน และ การสั่งให้ฟังก์ชันยุติการทำงานโดยทันที</li>
+<li><strong>รายละเอียดเชิงลึก:</strong><ul>
+<li>เมื่อโปรแกรมอ่านพบคำสั่ง <code>return</code> คำสั่งอื่นๆ ที่อยู่บรรทัดถัดไปภายในฟังก์ชันนั้นจะไม่ถูกประมวลผลอีก</li>
+<li>ฟังก์ชันสามารถมี <code>return</code> ได้หลายจุด (มักใช้คู่กับคำสั่งเงื่อนไข <code>if</code>) เพื่อใช้ตรวจสอบข้อผิดพลาดและสั่งให้ออกจากฟังก์ชันก่อนกำหนดได้</li>
+<li>หากฟังก์ชันไม่มีคีย์เวิร์ด <code>return</code> หรือมีเพียงคำว่า <code>return</code> เปล่าๆ โดยไม่มีข้อมูลต่อท้าย เมื่อจบการทำงานฟังก์ชันจะส่งค่า <code>undefined</code> กลับมาโดยอัตโนมัติ</li>
+</ul>
+</li>
+</ul>
+<h4 id="_3">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">function checkStock(amount) {
+    if (amount &lt;= 0) {
+        return &quot;สินค้าหมด&quot;; // ออกจากฟังก์ชันและส่งข้อความนี้กลับไปทันที
+    }
+    return &quot;สินค้าพร้อมจำหน่าย จำนวน: &quot; + amount; // ส่งค่าผลลัพธ์กลับไป
+}
+
+let stockStatus = checkStock(15);
+console.log(stockStatus); 
+</code></pre>
+<h3 id="22-parameters-arguments">2.2 พารามิเตอร์และอาร์กิวเมนต์ (Parameters &amp; Arguments)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ตัวแปรที่รอรับค่าตอนที่เราสร้างฟังก์ชันเรียกว่า "พารามิเตอร์" (Formal Parameter) ส่วนข้อมูลจริงที่เราส่งเข้าไปตอนเรียกใช้ฟังก์ชันเรียกว่า "อาร์กิวเมนต์" (Actual Parameter / Argument)</li>
+<li><strong>รายละเอียดเชิงลึก:</strong><ul>
+<li>ฟังก์ชันสามารถมีพารามิเตอร์กี่ตัวก็ได้ หรือรับข้อมูลได้หลากหลายประเภทโดยไม่ต้องระบุชนิดข้อมูลกำกับ (ในกรณีของ JavaScript)</li>
+<li><strong>กฎการส่งค่า:</strong> ลำดับการส่งอาร์กิวเมนต์ต้องตรงกับลำดับของพารามิเตอร์ที่ตั้งไว้</li>
+<li><strong>กรณีข้อมูลไม่พอดี:</strong><ul>
+<li>หากส่งอาร์กิวเมนต์เข้าไป <strong>มากกว่า</strong> พารามิเตอร์ที่รอรับ ข้อมูลส่วนเกินจะถูกเพิกเฉยทิ้งไป โดยไม่เกิด Error</li>
+<li>หากส่งอาร์กิวเมนต์เข้าไป <strong>น้อยกว่า</strong> พารามิเตอร์ที่รอรับ พารามิเตอร์ตัวที่ไม่มีข้อมูลส่งมาให้จะมีค่าเป็น <code>undefined</code> ซึ่งอาจทำให้การคำนวณผิดพลาดได้</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="_4">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">function displayInfo(name, age) {
+    console.log(&quot;ชื่อ: &quot; + name + &quot;, อายุ: &quot; + age);
+}
+
+// 1. ส่งค่าครบถ้วน
+displayInfo(&quot;สมชาย&quot;, 25);
+
+// 2. ส่งค่าน้อยกว่าพารามิเตอร์ (พารามิเตอร์ตัวที่ขาดจะเป็น undefined)
+displayInfo(&quot;สมหญิง&quot;); 
+
+// 3. ส่งค่ามากกว่าพารามิเตอร์ (ค่าส่วนเกินจะถูกเพิกเฉย)
+displayInfo(&quot;สมศักดิ์&quot;, 30, &quot;วิศวกร&quot;); 
+</code></pre>
+<hr />
+<h2 id="3-variable-scope">3. ขอบเขตของตัวแปร (Variable Scope)</h2>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ตัวแปรที่ถูกประกาศในตำแหน่งที่ต่างกัน จะมีอายุการใช้งานและพื้นที่ที่สามารถถูกเรียกใช้งานได้ต่างกัน แบ่งเป็นตัวแปรระดับออบเจ็กต์/โกลบอล (Global Variable) และตัวแปรระดับท้องถิ่น (Local Variable)</li>
+<li><strong>รายละเอียดเชิงลึก:</strong><ul>
+<li><strong>Local Variable:</strong> ตัวแปรที่ประกาศ <em>ภายใน</em> บล็อกของฟังก์ชัน (รวมถึงตัวพารามิเตอร์เองด้วย) จะถูกสร้างขึ้นเมื่อฟังก์ชันทำงาน และถูกทำลายทิ้งเมื่อฟังก์ชันจบการทำงาน ตัวแปรเหล่านี้ไม่สามารถถูกอ้างอิงหรือเรียกใช้จากภายนอกฟังก์ชันได้</li>
+<li><strong>Global Variable:</strong> ตัวแปรที่ประกาศ <em>ภายนอก</em> ฟังก์ชัน จะสามารถถูกมองเห็นและถูกนำไปใช้งานหรือเปลี่ยนแปลงค่าจากโค้ดส่วนใดก็ได้ รวมถึงจากภายในฟังก์ชันด้วย</li>
+</ul>
+</li>
+<li><strong>ประเด็นที่ควรรู้:</strong> การตั้งชื่อตัวแปรภายในฟังก์ชันซ้ำกับตัวแปรภายนอก จะทำให้โปรแกรมให้ความสำคัญกับตัวแปรภายในฟังก์ชัน (Local) ก่อนเสมอ</li>
+</ul>
+<h3 id="_5">ตัวอย่างประกอบ:</h3>
+<pre><code class="language-javascript">let globalName = &quot;สมเกียรติ&quot;; // Global Variable
+
+function sayHello() {
+    let localMessage = &quot;สวัสดี&quot;; // Local Variable
+    console.log(localMessage + &quot; คุณ &quot; + globalName); // สามารถอ่านตัวแปร Global ได้
+}
+
+sayHello();
+
+// หากนำมาเรียกใช้นอกฟังก์ชัน บรรทัดด้านล่างนี้จะเกิด Error: localMessage is not defined
+// console.log(localMessage); 
+</code></pre>
+<hr />
+<h2 id="4">4. เทคนิคการจัดการพารามิเตอร์ขั้นสูง</h2>
+<p>ภาษาโปรแกรมยุคใหม่มีไวยากรณ์ที่ช่วยให้การจัดการพารามิเตอร์ยืดหยุ่นและทรงพลังมากขึ้น</p>
+<h3 id="41-default-parameter">4.1 Default Parameter (พารามิเตอร์ค่าเริ่มต้น)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คือการตั้งค่าสำรองให้กับพารามิเตอร์เอาไว้ล่วงหน้า เพื่อป้องกันปัญหาที่ผู้ใช้งานลืมส่งข้อมูลเข้ามา (หรือตั้งใจไม่ส่ง) ซึ่งช่วยลดปัญหาค่าเป็น <code>undefined</code></li>
+<li><strong>ประเด็นที่ควรรู้:</strong> กฎเหล็กของการใช้ Default Parameter คือ ต้องวางพารามิเตอร์ที่มีค่าเริ่มต้นไว้ด้านขวาสุด (ตัวท้ายสุด) เสมอ หากนำไปไว้ด้านหน้า พารามิเตอร์ที่ไม่มีค่าเริ่มต้นจะถูกเลื่อนลำดับการรับค่า ทำให้การป้อนข้อมูลตอนเรียกใช้งานเกิดความสับสนและจับคู่ข้อมูลผิดพลาด</li>
+</ul>
+<h4 id="_6">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">// rate มีค่าเริ่มต้นคือ 7 ถ้าผู้เรียกไม่ส่งค่านี้มา ให้ใช้เลข 7
+function calculateTax(price, rate = 7) {
+    return price + (price * (rate / 100));
+}
+
+console.log(&quot;ราคาสินค้ารวมภาษี (อัตราเริ่มต้น 7%): &quot; + calculateTax(100)); 
+console.log(&quot;ราคาสินค้ารวมภาษี (อัตรากำหนดเอง 10%): &quot; + calculateTax(100, 10));
+</code></pre>
+<h3 id="42-rest-parameter">4.2 Rest Parameter (การรวบข้อมูล)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ใช้เมื่อเราไม่ทราบจำนวนล่วงหน้าว่าข้อมูล (Arguments) จะถูกส่งเข้ามามากน้อยเพียงใด เทคนิคนี้จะรวบรวมข้อมูลทั้งหมดที่ส่งเข้ามาเก็บไว้ในรูปแบบของ อาร์เรย์ (Array)</li>
+<li><strong>ประเด็นที่ควรรู้:</strong><ul>
+<li>สัญลักษณ์ที่ใช้คือ จุดสามจุด <code>...</code> นำหน้าชื่อพารามิเตอร์ (เช่น <code>...numbers</code>)</li>
+<li>ในหนึ่งฟังก์ชัน จะมี Rest Parameter ได้เพียงตัวเดียวเท่านั้น</li>
+<li>ต้องวาง Rest Parameter ไว้เป็น <strong>ลำดับสุดท้าย</strong> ของพารามิเตอร์ทั้งหมดเสมอ</li>
+</ul>
+</li>
+</ul>
+<h3 id="43-spread-operator">4.3 Spread Operator (การกระจายข้อมูล)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> ทำงานตรงข้ามกับ Rest Parameter โดยใช้สัญลักษณ์ <code>...</code> เช่นเดียวกัน แต่ใช้ในฝั่งของ "การเรียกใช้งานฟังก์ชัน" หน้าที่ของมันคือการนำอาร์เรย์หรือกลุ่มข้อมูลมากระจายแตกออกเป็นชิ้นๆ เพื่อป้อนเข้าเป็นอาร์กิวเมนต์แบบรายตัว</li>
+</ul>
+<h4 id="_7">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">function findMaximum(...scores) { // Rest: รวบค่าเป็นอาร์เรย์ scores
+    let max = scores[0];
+    for (let score of scores) {
+        if (score &gt; max) {
+            max = score;
+        }
+    }
+    return max;
+}
+
+let studentGrades = [85, 92, 78, 99, 88];
+let maxGrade = findMaximum(...studentGrades); // Spread: กระจายข้อมูลในอาร์เรย์ส่งไปทีละตัว
+console.log(&quot;คะแนนสูงสุดคือ: &quot; + maxGrade);
+</code></pre>
+<hr />
+<h2 id="5-advanced-functions">5. รูปแบบการใช้งานฟังก์ชันขั้นสูง (Advanced Functions)</h2>
+<h3 id="51-recursive-function">5.1 Recursive Function (ฟังก์ชันเวียนเกิด)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คือฟังก์ชันที่ออกแบบมาให้ "เรียกใช้งานตัวเอง" ซ้ำๆ ซ้อนกันลงไปเรื่อยๆ ภายในบล็อกคำสั่งของตัวมันเอง</li>
+<li><strong>ประเด็นที่ควรรู้:</strong> การเขียนฟังก์ชันประเภทนี้ จำเป็นต้องมี <strong>จุดหยุด (Base Case)</strong> เสมอ หากไม่มีกลไกให้หยุดเรียกตัวเอง โปรแกรมจะทำงานวนลูปไม่รู้จบจนหน่วยความจำเต็มและล่มในที่สุด (Stack Overflow)</li>
+</ul>
+<h4 id="_8">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">function countDown(number) {
+    // จุดหยุด (Base Case)
+    if (number &lt;= 0) {
+        console.log(&quot;สิ้นสุดการนับถอยหลัง!&quot;);
+        return;
+    }
+    console.log(number);
+    countDown(number - 1); // เรียกตัวเองซ้ำโดยลดค่าลง 1
+}
+
+countDown(3);
+</code></pre>
+<h3 id="52-anonymous-function">5.2 Anonymous Function (ฟังก์ชันนิรนาม)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คือการสร้างฟังก์ชันขึ้นมาโดยไม่ตั้งชื่อกำกับ นิยมใช้โดยการนำไปกำหนดค่าเป็นตัวแปร (Assign to variable) ทำให้ตัวแปรนั้นมีสถานะเป็นฟังก์ชัน</li>
+<li><strong>ประเด็นที่ควรรู้:</strong> เมื่อประกาศฟังก์ชันลักษณะนี้เพื่อเก็บลงตัวแปร ไวยากรณ์บังคับว่าจะต้องปิดท้ายบล็อกปีกกาด้วยเครื่องหมายเซมิโคลอน <code>;</code> เสมอ</li>
+</ul>
+<h4 id="_9">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">const calculateArea = function(width, height) {
+    return width * height;
+}; // ต้องมี ; ปิดท้าย
+
+console.log(&quot;พื้นที่สี่เหลี่ยมคือ: &quot; + calculateArea(5, 10));
+</code></pre>
+<h3 id="53-callback-function">5.3 Callback Function (ฟังก์ชันเรียกกลับ)</h3>
+<ul>
+<li><strong>หลักการสำคัญ:</strong> คือการที่เราส่ง "ฟังก์ชันหนึ่ง" เข้าไปเป็นอาร์กิวเมนต์ให้กับ "อีกฟังก์ชันหนึ่ง" เพื่อให้ฟังก์ชันหลักทำงานของตนเองให้เสร็จก่อน แล้วจึงทำการรัน (Call back) ฟังก์ชันที่เราส่งไปให้ในภายหลัง</li>
+<li><strong>ประเด็นที่ควรรู้:</strong> นิยมใช้มากในกระบวนการทำงานแบบไม่พร้อมเพรียงกัน (Asynchronous) หรือใช้ร่วมกับฟังก์ชันนิรนามเพื่อกำหนดพฤติกรรมการทำงานเฉพาะกิจ</li>
+</ul>
+<h4 id="_10">ตัวอย่างประกอบ:</h4>
+<pre><code class="language-javascript">function processData(data, callback) {
+    // สมมติว่าทำการประมวลผลข้อมูลเสร็จสิ้นแล้ว
+    let result = data + &quot; Processed&quot;;
+
+    // เรียกใช้ฟังก์ชันที่ถูกส่งเข้ามา
+    callback(result); 
+}
+
+// ใช้งานโดยส่ง Anonymous function เข้าไปเป็น Callback
+processData(&quot;Document1&quot;, function(finalOutput) {
+    console.log(&quot;งานเสร็จแล้ว ผลลัพธ์คือ: &quot; + finalOutput);
+});
+</code></pre>
+<hr />
+<h2 id="_11">สรุปบทเรียน</h2>
+<p>ฟังก์ชันเป็นหัวใจสำคัญที่ช่วยยกระดับการเขียนโค้ดจากการเรียงบรรทัดธรรมดา ไปสู่การจัดโครงสร้างที่มีระบบ เราสามารถส่งข้อมูลเข้าสู่ฟังก์ชันผ่าน Parameters และรับผลลัพธ์กลับผ่าน Return การทำความเข้าใจเรื่องขอบเขตของตัวแปร (Scope) จะช่วยป้องกันข้อบกพร่องของโปรแกรมได้ นอกจากนี้ไวยากรณ์สมัยใหม่ เช่น Default, Rest Parameter และ Spread Operator ยังช่วยให้จัดการกับข้อมูลที่ซับซ้อนและมีจำนวนไม่แน่นอนได้ง่ายขึ้น ท้ายที่สุด การประยุกต์ใช้ Anonymous และ Callback Function ถือเป็นทักษะขั้นสูงที่จำเป็นอย่างยิ่งในการเขียนโปรแกรมสมัยใหม่ที่ต้องมีการเชื่อมโยงการทำงานหลายส่วนเข้าด้วยกัน</p>
+<hr />
+<h2 id="review-questions">❓ คำถามทบทวน (Review Questions)</h2>
+<p>คลิกที่การ์ดคำถามด้านล่างเพื่อแสดงเฉลยคำตอบของคำถามแต่ละข้อ:</p>
+<ol>
+<li>
+<p><strong>การใช้ฟังก์ชันมีข้อดีเหนือกว่าการเขียนโค้ดทุกอย่างรวมกันในส่วนหลักของโปรแกรมอย่างไร?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ช่วยลดความซ้ำซ้อนของโค้ดโดยเขียนชุดคำสั่งเพียงครั้งเดียวแต่เรียกใช้ซ้ำได้บ่อยเท่าที่ต้องการ (Reusability) ส่งผลให้โค้ดเป็นระบบ อ่านง่าย บำรุงรักษาง่าย และตรวจสอบข้อผิดพลาด (Debug) ได้สะดวกขึ้น
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากเราเรียกใช้งานฟังก์ชันในบรรทัดที่อยู่ก่อนหน้าตำแหน่งที่มีการประกาศฟังก์ชันนั้นในโค้ด โปรแกรมจะทำงานได้หรือไม่ เพราะเหตุใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ทำงานได้ หากประกาศฟังก์ชันแบบธรรมดา (Function Declaration) เนื่องจากมีกลไกที่เรียกว่า <strong>Hoisting</strong> ของภาษา JavaScript ที่จะยกการประกาศฟังก์ชันขึ้นไปไว้ด้านบนสุดของสโคปก่อนเริ่มทำงานจริง
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>คีย์เวิร์ด return มีหน้าที่หลัก 2 อย่าง อะไรบ้าง?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       1. ส่งข้อมูลที่เป็นผลลัพธ์จากการประมวลผลภายในฟังก์ชันกลับคืนไปยังจุดที่เรียกใช้งานฟังก์ชัน<br>2. ยุติการทำงานของฟังก์ชันนั้นในทันที
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ความแตกต่างระหว่างคำว่า Parameter และ Argument ในบริบทของฟังก์ชันคืออะไร?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       <strong>Parameter</strong> คือ ตัวแปรที่ตั้งชื่อรับไว้ในวงเล็บตอนประกาศสร้างฟังก์ชัน ส่วน <strong>Argument</strong> คือ ข้อมูลจริง (เช่น ตัวเลข สตริง ตัวแปร) ที่เราส่งเข้าไปให้ฟังก์ชันใช้งานขณะเรียกใช้ฟังก์ชันจริง
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากสร้างฟังก์ชันที่รับพารามิเตอร์ 3 ตัว แต่ตอนเรียกใช้งานส่งอาร์กิวเมนต์เข้าไปเพียง 2 ตัว จะเกิดผลลัพธ์อย่างไรกับพารามิเตอร์ตัวที่ 3?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       พารามิเตอร์ตัวที่ 3 จะมีค่าเป็น <code>undefined</code> ซึ่งถ้าหากไม่มีการจัดการหรือไม่มี Default Parameter ตั้งค่าสำรองไว้ อาจนำไปสู่การคำนวณที่ผิดพลาดหรือได้ผลลัพธ์เป็น <code>NaN</code>
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>อธิบายความแตกต่างระหว่างตัวแปรแบบ Local และ Global Variable ในแง่ของขอบเขตการเข้าถึง</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       <strong>Local Variable</strong> คือ ตัวแปรที่ประกาศภายในฟังก์ชัน สามารถเรียกใช้งานได้เฉพาะในฟังก์ชันนั้นและจะสลายไปเมื่อฟังก์ชันทำงานเสร็จ ส่วน <strong>Global Variable</strong> คือ ตัวแปรที่ประกาศภายนอกฟังก์ชัน ซึ่งส่วนใดของโค้ดโปรแกรม (รวมถึงในฟังก์ชันอื่นๆ) ก็สามารถเข้าถึงและแก้ไขค่าได้
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>หากต้องการกำหนดพารามิเตอร์ที่มีค่าเริ่มต้น (Default Parameter) ควรวางตำแหน่งพารามิเตอร์นั้นไว้ส่วนใดของวงเล็บ และเพราะเหตุใด?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       ต้องวางไว้ที่ <strong>ด้านขวาสุด (ตัวท้ายๆ)</strong> เสมอ เพราะหากนำมาวางไว้ด้านหน้า พารามิเตอร์ที่ไม่มีค่าเริ่มต้นจะถูกเลื่อนลำดับตัวป้อนอาร์กิวเมนต์ตอนเรียกใช้ ทำให้การจับคู่ของข้อมูลเกิดความคลาดเคลื่อนและผิดพลาด
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>ความแตกต่างระหว่าง Rest Parameter และ Spread Operator แม้จะใช้สัญลักษณ์ ... เหมือนกัน คืออะไร?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       <strong>Rest Parameter</strong> ใช้ในฝั่ง <em>การประกาศฟังก์ชัน</em> เพื่อรวบรวมค่าอาร์กิวเมนต์จำนวนมากที่ป้อนเข้ามาให้กลายเป็นอาร์เรย์ตัวเดียว ส่วน <strong>Spread Operator</strong> ใช้ในฝั่ง <em>การเรียกใช้งานฟังก์ชัน</em> (หรือจัดการอาร์เรย์) เพื่อทำการแตกกระจายสมาชิกอาร์เรย์ออกเป็นค่าเดี่ยวแยกแต่ละตัว
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>"จุดหยุด" หรือ Base Case มีความสำคัญอย่างไรในการสร้าง Recursive Function?</strong>
+ <br />
+<details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+     <summary>ดูเฉลยคำตอบ</summary>
+     <div class="details-content">
+       เป็นเงื่อนไขที่สั่งยุติการเรียกตัวเองซ้ำของฟังก์ชัน หากไม่มี Base Case ฟังก์ชันจะรันทำงานเวียนตัวเองจนไม่มีที่สิ้นสุด จนทำให้เกิดปัญหาหน่วยความจำเต็ม หรือ <strong>Stack Overflow</strong> และส่งผลให้โปรแกรมค้างหรือล่ม
+     </div>
+   </details>
+</p>
+</li>
+<li>
+<p><strong>Callback Function คืออะไร และมักจะถูกนำไปใช้งานร่วมกับฟังก์ชันประเภทใดบ่อยที่สุด?</strong>
+    <details spellcheck="false" data-lt-active="false" data-gramm="false" data-gramm_editor="false">
+      <summary>ดูเฉลยคำตอบ</summary>
+      <div class="details-content">
+        คือ ฟังก์ชันที่ถูกส่งผ่านเป็นอาร์กิวเมนต์เข้าไปในฟังก์ชันหลัก เพื่อรอเรียกประมวลผลย้อนหลังเมื่อกระบวนการหลักบางอย่างทำงานเสร็จสิ้น มักนิยมนำไปประยุกต์ใช้งานในระบบ Asynchronous (ทำงานไม่พร้อมกัน เช่น การโหลดข้อมูลเครือข่าย) และทำงานร่วมกับฟังก์ชันนิรนาม (Anonymous Function)
+      </div>
+    </details></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e41\u0e25\u0e49\u0e27", "clipboard.copy": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01", "search.result.more.one": "\u0e2d\u0e35\u0e01\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.more.other": "# \u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21\u0e43\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e19\u0e35\u0e49", "search.result.none": "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.one": "\u0e1e\u0e1a\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.other": "\u0e1e\u0e1a # \u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e17\u0e35\u0e48\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19", "search.result.placeholder": "\u0e1e\u0e34\u0e21\u0e1e\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e23\u0e34\u0e48\u0e21\u0e04\u0e49\u0e19\u0e2b\u0e32", "search.result.term.missing": "\u0e44\u0e21\u0e48\u0e1e\u0e1a", "select.version": "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e0a\u0e31\u0e19"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
